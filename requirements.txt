@@ -1,0 +1,4 @@
+Django==4.2.13 # Or your preferred Django version, ensure it's compatible
+Pillow==10.3.0 # Required for ImageField in models
+djangorestframework==3.15.1 # For building APIs later
+psycopg2-binary==2.9.9 # If you switch to PostgreSQL, but good to have

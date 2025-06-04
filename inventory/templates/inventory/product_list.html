@@ -1,0 +1,114 @@
+{% extends 'inventory/base.html' %} {# This line tells Django to use base.html #}
+
+{% block title %}{{ page_title }}{% endblock %} {# Set page title specific to this page #}
+
+{% block content %} {# Start the content block #}
+    <h1 class="text-4xl font-extrabold mb-8 text-gray-800">{{ page_title }}</h1>
+
+    <div class="bg-white p-6 rounded-lg shadow-xl mb-8 border border-gray-200"> {# Added shadow-xl and border #}
+        <h2 class="text-2xl font-semibold mb-5 text-gray-700">Filter & Search Products</h2>
+        <form method="GET" action="{% url 'inventory:product_list' %}" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 items-end"> {# Added lg:grid-cols-4 and items-end #}
+            <div>
+                <label for="category" class="block text-sm font-medium text-gray-700 mb-1">Category:</label>
+                <select id="category" name="category" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
+                    <option value="">All Categories</option>
+                    {% for category in categories %}
+                        <option value="{{ category.pk }}" {% if category.pk|stringformat:"s" == selected_category_id %}selected{% endif %}>
+                            {{ category.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <label for="size" class="block text-sm font-medium text-gray-700 mb-1">Size:</label>
+                <select id="size" name="size" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
+                    <option value="">All Sizes</option>
+                    {% for size_obj in sizes %}
+                        <option value="{{ size_obj.pk }}" {% if size_obj.pk|stringformat:"s" == selected_size_id %}selected{% endif %}>
+                            {{ size_obj.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="md:col-span-2 lg:col-span-1"> {# Adjusted span for better layout on larger screens #}
+                <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Search:</label>
+                <input type="text" id="search" name="q" value="{{ search_query|default_if_none:'' }}" placeholder="Search by name, code, color..." class="mt-1 block w-full pl-3 pr-3 py-2.5 text-base border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
+            </div>
+
+            <div class="md:col-span-3 lg:col-span-1 flex justify-end gap-3 mt-4 md:mt-0"> {# Adjusted span and margin #}
+                <button type="submit" class="w-full md:w-auto inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+                    Apply Filters
+                </button>
+                <a href="{% url 'inventory:product_list' %}" class="w-full md:w-auto inline-flex items-center justify-center px-5 py-2.5 border border-gray-300 text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out">
+                    Clear
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"> {# Increased gap #}
+        {% for product in products %}
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"> {# Added rounded-xl, shadow-lg, border, hover effects #}
+                {% if product.photo %}
+                    <img src="{{ product.photo.url }}" alt="{{ product.name }}" class="w-full h-56 object-cover object-center group-hover:scale-105 transition-transform duration-300"> {# Increased height, added object-center, hover effect #}
+                {% else %}
+                    <div class="w-full h-56 bg-gray-200 flex items-center justify-center text-gray-500 text-lg rounded-lg">No Image</div>
+                {% endif %}
+                <div class="p-5"> {# Increased padding #}
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2 truncate">{{ product.name }}</h2> {# Added truncate #}
+                    <p class="text-gray-600 text-sm mb-1">Item Code: <span class="font-medium">{{ product.item_code }}</span></p>
+                    <p class="text-gray-600 text-sm mb-1">
+                        Category: <span class="font-medium">{{ product.category.name|default:"N/A" }}</span>
+                    </p>
+                    <p class="text-gray-600 text-sm mb-3">
+                        Sizes:
+                        {% if product.size.all %}
+                            <div class="mt-1 flex flex-wrap gap-1"> {# Added flex-wrap and gap #}
+                                {% for size_item in product.size.all %}
+                                    <span class="inline-block bg-blue-100 text-blue-800 rounded-full px-2 py-0.5 text-xs font-semibold">
+                                        {{ size_item.name }}
+                                    </span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </p>
+                    <p class="text-gray-900 font-extrabold text-2xl mt-4">${{ product.price }}</p> {# Increased font size and weight #}
+                    <a href="{% url 'inventory:product_detail' item_code=product.item_code %}"
+                       class="mt-5 block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-5 rounded-lg text-center shadow-md hover:shadow-lg transition-all duration-300"> {# Larger button, more shadow/hover #}
+                        View Details
+                    </a>
+                </div>
+            </div>
+        {% empty %}
+            <p class="col-span-full text-center text-lg text-gray-600 py-10">No products found matching your criteria.</p>
+        {% endfor %}
+    </div>
+
+    <div class="mt-10 flex justify-center items-center space-x-3"> {# Increased top margin, spacing #}
+        {% if products.has_previous %}
+            <a href="?page={{ products.previous_page_number }}{% if selected_category_id %}&category={{ selected_category_id }}{% endif %}{% if selected_size_id %}&size={{ selected_size_id }}{% endif %}{% if search_query %}&q={{ search_query }}{% endif %}"
+               class="px-5 py-2 rounded-lg bg-gray-300 text-gray-800 font-medium hover:bg-gray-400 transition-colors duration-200 shadow-sm">
+                Previous
+            </a>
+        {% else %}
+            <span class="px-5 py-2 rounded-lg bg-gray-200 text-gray-500 cursor-not-allowed">Previous</span>
+        {% endif %}
+
+        <span class="text-lg font-semibold text-gray-700">
+            Page {{ products.number }} of {{ products.paginator.num_pages }}
+        </span>
+
+        {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}{% if selected_category_id %}&category={{ selected_category_id }}{% endif %}{% if selected_size_id %}&size={{ selected_size_id }}{% endif %}{% if search_query %}&q={{ search_query }}{% endif %}"
+               class="px-5 py-2 rounded-lg bg-gray-300 text-gray-800 font-medium hover:bg-gray-400 transition-colors duration-200 shadow-sm">
+                Next
+            </a>
+        {% else %}
+            <span class="px-5 py-2 rounded-lg bg-gray-200 text-gray-500 cursor-not-allowed">Next</span>
+        {% endif %}
+    </div>
+{% endblock content %} {# End the content block #}

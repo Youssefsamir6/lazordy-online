@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice - {{ invoice.invoice_number }}</title>
+    <meta charset="utf-8">
+    {% load inventory_tags static %} {# Keep this line here for other static tag uses #}
+
+    <style>
+        /* Embed CSS directly here, or link to an external CSS file */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20mm;
+            font-size: 10pt;
+            line-height: 1.5;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .header, .footer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .invoice-details, .customer-details, .company-details {
+            margin-bottom: 20px;
+        }
+        .invoice-details div, .customer-details div {
+            margin-bottom: 5px;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .total-row {
+            font-weight: bold;
+            background-color: #e0e0e0;
+        }
+        .amount-due {
+            background-color: #ffcccc;
+        }
+        .amount-paid {
+            background-color: #ccffcc;
+        }
+        @page {
+            size: A4;
+            margin: 20mm;
+            @top-right {
+                content: "Page " counter(page) " of " counter(pages);
+                font-size: 8pt;
+                color: #555;
+            }
+        }
+        .logo-top {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo-top img {
+            max-width: 150px; /* Adjust size as needed */
+            height: auto;
+        }
+
+        /* Watermark styling */
+        .watermark {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* CRITICAL FIX: Use STATIC_URL directly for CSS background-image */
+            background-image: url("{{ request.scheme }}://{{ request.get_host }}/static/inventory/images/background_logo.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 80%;
+            opacity: 0.1;
+            z-index: -999;
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark"></div>
+
+    <div class="logo-top">
+        {# Use {% static %} for img tags as it's directly in HTML #}
+        <img src="{% static 'inventory/images/primary_logo.png' %}" alt="Lazordy Logo">
+    </div>
+
+    <div class="header">
+        <h1>Invoice</h1>
+        <div class="company-details">
+            <h2>Seller Information:</h2>
+            <strong>{{ company_name }}</strong><br>
+            {{ company_address }}<br>
+            Phone: {{ company_phone }} | Email: {{ company_email }}
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="invoice-details">
+        <div><strong>Invoice Number:</strong> {{ invoice.invoice_number }}</div>
+        <div><strong>Invoice Date:</strong> {{ invoice.invoice_date|date:"F d, Y" }}</div>
+        <div><strong>Status:</strong> {{ invoice.get_status_display }}</div>
+        {% if invoice_maker %}
+            <div><strong>Invoice Prepared By:</strong> {{ invoice_maker }}</div>
+        {% endif %}
+    </div>
+
+    <div class="customer-details">
+        <h3>Bill To:</h3>
+        <div><strong>Customer Name:</strong> {{ invoice.customer_name }}</div>
+        {% if invoice.home_address %}<div>{{ invoice.home_address }}</div>{% endif %}
+        {% if invoice.customer_phone %}<div>Phone: {{ invoice.customer_phone }}</div>{% endif %}
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th class="text-right">Unit Price</th>
+                <th class="text-right">Quantity</th>
+                <th class="text-right">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in invoice_items %}
+            <tr>
+                <td>{{ item.product_name }}</td>
+                <td class="text-right">{{ item.unit_price|floatformat:2 }}</td>
+                <td class="text-right">{{ item.quantity }}</td>
+                <td class="text-right">{{ item.subtotal|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+            <tr class="total-row">
+                <td colspan="3" class="text-right">Subtotal:</td>
+                <td class="text-right">{{ invoice_items|lineitems_subtotal|floatformat:2 }}</td>
+            </tr>
+            {% if invoice.discount_amount > 0 %}
+            <tr class="total-row">
+                <td colspan="3" class="text-right">Discount:</td>
+                <td class="text-right">- {{ invoice.discount_amount|floatformat:2 }}</td>
+            </tr>
+            {% endif %}
+            <tr class="total-row">
+                <td colspan="3" class="text-right">Total Amount:</td>
+                <td class="text-right">{{ invoice.total_amount|floatformat:2 }}</td>
+            </tr>
+            <tr class="total-row amount-paid">
+                <td colspan="3" class="text-right">Amount Paid:</td>
+                <td class="text-right">{{ invoice.amount_paid|floatformat:2 }}</td>
+            </tr>
+            <tr class="total-row amount-due">
+                <td colspan="3" class="text-right">Amount Remaining:</td>
+                <td class="text-right">{{ invoice.amount_remaining|floatformat:2 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer" style="margin-top: 50px;">
+        <p>Thank you for your business!</p>
+        <p>Generated on: {{ current_date }}</p>
+    </div>
+</body>
+</html>

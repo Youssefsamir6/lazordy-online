@@ -1,0 +1,43 @@
+{% load static %} {# Add this line at the very top to use static files #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lazordy Inventory{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    {# <link rel="stylesheet" href="{% static 'css/styles.css' %}"> #}
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-gray-100 font-sans antialiased text-gray-800">
+
+    <nav class="bg-blue-600 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="{% url 'inventory:product_list' %}" class="flex items-center space-x-2"> {# Added flex and space-x for logo and text alignment if you decide to keep text #}
+                <img src="{% static 'inventory/images/primary_logo.png' %}" alt="Lazordy Logo" class="h-10">{# Adjust h-10 as needed for logo height #}
+                {# Uncomment the span below if you want text next to the logo #}
+                {# <span class="text-white text-2xl font-bold tracking-tight hover:text-blue-100 transition-colors duration-200">Lazordy</span> #}
+            </a>
+            <div class="space-x-4">
+                <a href="{% url 'inventory:product_list' %}" class="text-white hover:text-blue-100 font-medium px-3 py-2 rounded-md transition-colors duration-200">Products</a>
+                <a href="{% url 'admin:index' %}" class="text-white hover:text-blue-100 font-medium px-3 py-2 rounded-md transition-colors duration-200">Admin</a>
+                {# Add more links here later, e.g., for creating invoices #}
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-6 mt-4">
+        {% block content %}
+            {# Content from child templates will go here #}
+        {% endblock content %}
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center p-4 mt-8">
+        <div class="container mx-auto text-sm">
+            &copy; {% now "Y" %} Lazordy Inventory. All rights reserved.
+        </div>
+    </footer>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

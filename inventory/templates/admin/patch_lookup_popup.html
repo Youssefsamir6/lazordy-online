@@ -1,0 +1,32 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    /* Optional: clean up popup size/scroll behavior */
+</style>
+{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/admin/RelatedObjectLookup.js' %}"></script>
+<script>
+    // Patch the popup dismiss function for selecting related objects
+    window.dismissRelatedLookupPopup = function(win, chosenId) {
+        var name = windowname_to_id(win.name);
+        var elem = document.getElementById(name);
+
+        if (elem) {
+            elem.value = chosenId;
+        } else {
+            console.error("Target input not found: ", name);
+        }
+
+        win.close();
+    };
+</script>
+{% endblock %}
