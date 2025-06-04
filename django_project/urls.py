@@ -15,8 +15,7 @@ urlpatterns = [
     # Include regular inventory views under /inventory/
     path('inventory/', include('inventory.urls')),
 
-    # Include API views under /api/
-    path('api/', include('inventory.api_urls', namespace='api_inventory')), # THIS IS THE CORRECTED LINE
+
 ]
 
 # Serve media and static files in development (make sure STATIC_ROOT is defined in settings.py)
