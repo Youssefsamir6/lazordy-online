@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Tailwind Project</title>
+  <link href="./dist/output.css" rel="stylesheet" />
+</head>
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300">
+
+  <button id="theme-toggle" class="m-4 px-4 py-2 bg-gray-300 dark:bg-gray-700 rounded">
+    Toggle Dark Mode
+  </button>
+
+  <h1 class="text-3xl font-bold underline text-blue-600 dark:text-blue-300">
+    Hello, Tailwind CSS!
+  </h1>
+  <p class="mt-4 p-6 bg-green-200 rounded shadow-lg dark:bg-green-800 dark:text-green-200">
+    This text is styled with Tailwind!
+  </p>
+
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+  </script>
+
+</body>
+</html>
