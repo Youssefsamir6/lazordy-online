@@ -1,15 +1,22 @@
-# D:\lazordy\lazordy\inventory\urls.py
-
 from django.urls import path
 from . import views # Import your regular views
 
-app_name = 'inventory' # Keep this app_name for the regular views
+app_name = 'inventory'
 
 urlpatterns = [
-    # --- Non-API Views (Only these should remain here) ---
-    path('', views.product_list, name='product_list_root'), # Mapped as the root of the /inventory/ prefix
+    # Map the root of the inventory app's URLs (which is now the project root '/') to the dashboard
+    path('', views.dashboard_view, name='dashboard'),
+
+    # Keep the product list at /products/
     path('products/', views.product_list, name='product_list'),
-    path('products/<str:item_code>/', views.product_detail, name='product_detail'), # Using item_code
+
+    # The specific product detail page
+    path('products/<str:item_code>/', views.product_detail, name='product_detail'),
+
+    # Invoice and product price related URLs
     path('invoice/<int:invoice_id>/pdf/', views.generate_invoice_pdf, name='invoice_pdf'),
     path('get_product_price/<int:pk>/', views.get_product_price_view, name='get_product_price_view'),
+
+    path('admin/inventory/dashboard/', views.dashboard_view, name='admin_inventory_dashboard'),
+    # path('dashboard/', views.dashboard_view, name='dashboard'),
 ]

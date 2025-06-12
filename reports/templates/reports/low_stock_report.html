@@ -1,0 +1,37 @@
+{# D:\lazordy\lazordy\reports\templates\reports\low_stock_report.html #}
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
+    <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">{{ title }}</h1>
+
+    {% if low_stock_items %}
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
+            <thead class="bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200">
+                <tr>
+                    <th class="py-3 px-4 text-left border-b border-gray-300 dark:border-gray-600">Product Name</th>
+                    <th class="py-3 px-4 text-left border-b border-gray-300 dark:border-gray-600">Current Stock</th>
+                    <th class="py-3 px-4 text-left border-b border-gray-300 dark:border-gray-600">Minimum Stock</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-800 dark:text-gray-100 divide-y divide-gray-200 dark:divide-gray-600">
+                {% for item in low_stock_items %}
+                <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                    <td class="py-3 px-4">{{ item.name }}</td>
+                    <td class="py-3 px-4">{{ item.current_stock }}</td>
+                    <td class="py-3 px-4">{{ item.min_stock }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="text-gray-600 dark:text-gray-300">No low stock items found.</p>
+    {% endif %}
+</div>
+{% endblock %}

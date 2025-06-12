@@ -3,7 +3,8 @@
 from django.contrib import admin
 from django.urls import reverse # Import reverse to get URL
 from django.utils.html import format_html # Import format_html
-from .models import Product, Category, Size, Invoice, InvoiceItem
+from django.shortcuts import redirect # Import redirect for the DashboardAdmin
+from .models import Product, Category, Size, Invoice, InvoiceItem, Dashboard # Import your new Dashboard model
 from decimal import Decimal
 from django.db.models import Sum
 
@@ -69,7 +70,7 @@ class InvoiceItemInline(admin.TabularInline):
 class InvoiceAdmin(admin.ModelAdmin):
     list_display = (
         'invoice_number', 'customer_name', 'invoice_date', 'total_amount',
-        'amount_paid', 'amount_remaining', 'status', 
+        'amount_paid', 'amount_remaining', 'status',
         'view_pdf_link','created_at', 'updated_at',
         'created_by_display', 'last_modified_by_display'
     )
@@ -82,7 +83,7 @@ class InvoiceAdmin(admin.ModelAdmin):
         (None, {
             'fields': (('customer_name', 'customer_phone'), 'home_address', ('invoice_date', 'status'), 'discount_amount'),
         }),
-        ('Payment Details', { 
+        ('Payment Details', {
             'fields': ('amount_paid', 'amount_remaining'),
             'description': "Enter amount paid if invoice is uncompleted or paid. Amount remaining is calculated.",
             'classes': ('collapse',), # You might want this to be open by default, or collapse
@@ -97,22 +98,20 @@ class InvoiceAdmin(admin.ModelAdmin):
         }),
     )
 
-    readonly_fields = ('invoice_number', 'total_amount', 'amount_remaining', 'created_at', 'updated_at','created_by', 'last_modified_by') 
+    readonly_fields = ('invoice_number', 'total_amount', 'amount_remaining', 'created_at', 'updated_at','created_by', 'last_modified_by')
 
     # Add JavaScript to show/hide fields based on status
     class Media:
         js = (
             'admin/js/vendor/jquery/jquery.min.js',
             'admin/js/jquery.init.js',
-            'inventory/js/invoice_admin_status_logic.js', 
+            'inventory/js/invoice_admin_status_logic.js',
         )
-  # Custom method to display PDF link in list_display
+    # Custom method to display PDF link in list_display
     def view_pdf_link(self, obj):
-        if obj.pk: 
-           
+        if obj.pk:
             url = reverse('inventory:invoice_pdf', args=[obj.pk])
             return format_html('<a class="button" href="{}" target="_blank">View PDF</a>', url)
-       
         return "-"
     view_pdf_link.short_description = 'PDF'
 
@@ -126,13 +125,45 @@ class InvoiceAdmin(admin.ModelAdmin):
 
 
     def save_model(self, request, obj, form, change):
-         if not obj.pk: # Only set created_by on initial creation
+        if not obj.pk: # Only set created_by on initial creation
             obj.created_by = request.user
-         obj.last_modified_by = request.user
-         super().save_model(request, obj, form, change)
+        obj.last_modified_by = request.user
+        super().save_model(request, obj, form, change)
 
     def save_formset(self, request, form, formset, change):
         formset.save()
         invoice = form.instance
         if invoice.pk:
-            invoice.save() 
+            invoice.save()
+
+# Custom Admin for the Dashboard "model"
+@admin.register(Dashboard)
+class DashboardAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        return False # Hide the "Add" button for Dashboard
+
+    def has_change_permission(self, request, obj=None):
+        return True # Allow clicking the name to view (redirect to dashboard)
+
+    def has_delete_permission(self, request, obj=None):
+        return False # Hide the "Delete" button for Dashboard
+
+    def get_model_perms(self, request):
+        """
+        Returns a dict of the perms for this model.
+        We want 'view' perm to display it in the admin index.
+        """
+        return {
+            'add': self.has_add_permission(request),
+            'change': self.has_change_permission(request),
+            'delete': self.has_delete_permission(request),
+            'view': self.has_view_permission(request), # Ensure view permission is true
+        }
+
+    def changelist_view(self, request, extra_context=None):
+        """
+        Redirects to your actual dashboard view.
+        """
+        # Use reverse with the fully qualified URL name for your dashboard view
+        dashboard_url = reverse('inventory:dashboard')
+        return redirect(dashboard_url)

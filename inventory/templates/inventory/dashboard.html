@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - Lazordy Inventory{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-8">Inventory Dashboard</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center">
+            <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-2">Total Products</h5>
+            <p class="text-5xl font-extrabold text-blue-600 dark:text-blue-400">{{ total_products }}</p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center">
+            <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-2">Total Estimated Value</h5>
+            <p class="text-5xl font-extrabold text-green-600 dark:text-green-400">{{ total_value|floatformat:2 }} EGP</p>
+            <small class="text-gray-500 dark:text-gray-400 mt-2">Based on current stock.</small>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center">
+            <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-2">Low Stock Items</h5>
+            <p class="text-5xl font-extrabold text-red-600 dark:text-red-400">{{ low_stock_items|length }}</p>
+            <small class="text-gray-500 dark:text-gray-400 mt-2">Threshold: {{ low_stock_threshold }} units.</small>
+        </div>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md mb-8">
+        <div class="bg-yellow-500 text-white p-4 rounded-t-lg">
+            <h4 class="text-2xl font-semibold mb-0">Products with Low Stock (Below {{ low_stock_threshold }} units)</h4>
+        </div>
+        <div class="p-6">
+            {% if low_stock_items %}
+            <ul class="divide-y divide-gray-200 dark:divide-gray-700">
+                {% for product in low_stock_items %}
+                <li class="py-3 flex justify-between items-center">
+                    <a href="{% url 'inventory:product_detail' item_code=product.item_code %}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200">
+                        {{ product.name }} ({{ product.item_code }})
+                    </a>
+                    <span class="px-3 py-1 text-sm font-medium bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-100 rounded-full">
+                        {{ product.stock_quantity }} in stock
+                    </span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="text-gray-600 dark:text-gray-300">No products are currently in low stock! 🎉</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+            <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Sales Overview</h5>
+            <ul class="divide-y divide-gray-200 dark:divide-gray-700">
+                <li class="py-3 flex justify-between items-center">
+                    Total Invoices
+                    <span class="px-3 py-1 text-sm font-medium bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 rounded-full">{{ sales_overview.total_invoices }}</span>
+                </li>
+                <li class="py-3 flex justify-between items-center">
+                    Total Sales Amount
+                    <span class="px-3 py-1 text-sm font-medium bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100 rounded-full">{{ sales_overview.total_sales_amount|floatformat:2 }} EGP</span>
+                </li>
+                <li class="py-3 flex justify-between items-center">
+                    Average Invoice Value
+                    <span class="px-3 py-1 text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100 rounded-full">{{ sales_overview.average_invoice_value|floatformat:2 }} EGP</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+            <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Top Selling Products ({{ product_movement_timeframe }})</h5>
+            {% if product_movement %}
+            <ul class="divide-y divide-gray-200 dark:divide-gray-700">
+                {% for item in product_movement %}
+                <li class="py-3 flex justify-between items-center">
+                    {{ item.product__name }}
+                    <span class="px-3 py-1 text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-800 dark:text-purple-100 rounded-full">{{ item.total_quantity_sold }} sold</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="text-gray-600 dark:text-gray-300">No product movement data for {{ product_movement_timeframe }}.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
+        <div class="border-b border-gray-200 dark:border-gray-700 pb-4 mb-4">
+            <h4 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">Monthly Sales</h4>
+        </div>
+        <div>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">Sales data by month:</p>
+            <ul class="divide-y divide-gray-200 dark:divide-gray-700">
+                {% for month_data in monthly_sales %}
+                <li class="py-2 flex justify-between items-center">
+                    <span class="text-gray-700 dark:text-gray-200">{{ month_data.month }}</span>
+                    <span class="px-3 py-1 text-sm font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 rounded-full">
+                        {{ month_data.total_sales|floatformat:2 }} EGP
+                    </span>
+                </li>
+                {% empty %}
+                <li class="py-2 text-gray-600 dark:text-gray-300">No monthly sales data available.</li>
+                {% endfor %}
+            </ul>
+            <p class="text-gray-500 dark:text-gray-400 mt-4 text-sm">
+                To visualize this data with a chart, you would typically use a JavaScript charting library (e.g., Chart.js, ApexCharts, D3.js). You would pass the `monthly_sales` data from Django to your JavaScript code.
+            </p>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

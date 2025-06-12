@@ -16,8 +16,8 @@
         }
     </script>
 
-    {# Your Tailwind CSS link #}
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+   
     {# If you compile your own Tailwind CSS, uncomment this and adjust path: #}
     {# <link rel="stylesheet" href="{% static 'css/output.css' %}"> #}
 
@@ -29,13 +29,21 @@
 
     <nav class="bg-blue-600 p-4 shadow-lg dark:bg-gray-800"> {# Added dark mode for navbar background #}
         <div class="container mx-auto flex justify-between items-center">
-            <a href="{% url 'inventory:product_list' %}" class="flex items-center space-x-2">
+            {# LOGO LINK: Now points to the Dashboard #}
+            <a href="{% url 'inventory:dashboard' %}" class="flex items-center space-x-2"> {# <--- CHANGED HERE #}
                 <img src="{% static 'inventory/images/primary_logo.png' %}" alt="Lazordy Logo" class="h-10">
                 {# Uncomment the span below if you want text next to the logo #}
                 {# <span class="text-white text-2xl font-bold tracking-tight hover:text-blue-100 transition-colors duration-200">Lazordy</span> #}
             </a>
             <div class="flex items-center space-x-4"> {# Changed to flex to align links and toggle button #}
+
+                {# DASHBOARD LINK #}
+                <a href="{% url 'inventory:dashboard' %}" class="text-white hover:text-blue-100 font-medium px-3 py-2 rounded-md transition-colors duration-200">Dashboard</a> {# <--- CHANGED HERE #}
+
+                {# PRODUCTS LINK (Already correct) #}
                 <a href="{% url 'inventory:product_list' %}" class="text-white hover:text-blue-100 font-medium px-3 py-2 rounded-md transition-colors duration-200">Products</a>
+
+                {# ADMIN LINK (Already correct as admin is a built-in app) #}
                 <a href="{% url 'admin:index' %}" class="text-white hover:text-blue-100 font-medium px-3 py-2 rounded-md transition-colors duration-200">Admin</a>
                 {# Add more links here later, e.g., for creating invoices #}
 

@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-import os  # Import the os module
+import os 
 
 from pathlib import Path
 
@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# DANGER! THIS IS FOR DEVELOPMENT DEBUGGING ON  ONLY!
+# DANGER! THIS IS FOR DEVELOPMENT DEBUGGING ON ONLY!
 # NEVER USE '*' IN PRODUCTION FOR SECURITY REASONS.
 # This setting tells Django to allow requests from any host.
 ALLOWED_HOSTS = [
@@ -43,8 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'inventory',  
-    'rest_framework', 
+    'inventory',
+    'reports',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -62,7 +63,8 @@ ROOT_URLCONF = 'django_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'django_project', 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -135,15 +137,15 @@ STATIC_ROOT = os.path.join(
 # Media files (for user-uploaded content like product photos)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,
-                          'media')  # Where user-uploaded files will be stored
+                             'media')  # Where user-uploaded files will be stored
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#  Specific (might be needed for some  setups for Django Admin JS)
-# This usually only applies when DEBUG=False, but sometimes helps with  proxy
+# Specific (might be needed for some setups for Django Admin JS)
+# This usually only applies when DEBUG=False, but sometimes helps with proxy
 # if not explicitly handling static files. For now, keep it simple.
 # You don't usually need to modify URL_PREFIX for Django unless using specific proxy setups.
 # If you run into issues with static files not loading (404s), revisit this.
@@ -152,19 +154,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ... (your existing settings) ...
 
-# DANGER! THIS IS FOR DEVELOPMENT DEBUGGING ON  ONLY!
+# DANGER! THIS IS FOR DEVELOPMENT DEBUGGING ON ONLY!
 # NEVER USE '*' IN PRODUCTION FOR SECURITY REASONS.
 ALLOWED_HOSTS = [
     '*',  # Keep this as it is for now
 ]
 
-# Add CSRF Trusted Origins for  dynamic URLs
+# Add CSRF Trusted Origins for dynamic URLs
 # This is crucial for environments behind proxies that might
 # interfere with the Origin header.
 CSRF_TRUSTED_ORIGINS = [
-    'https://2e484a9a-461e-4e1d-81ea-544a49533b23-00-yvybadytzint.kirk.replit.dev',  # Your exact  URL
-    'https://*.replit.dev',  # General wildcard for  URLs
-    'https://*.*.replit.dev',  # More general pattern for multi-level  subdomains
+    'https://2e484a9a-461e-4e1d-81ea-544a49533b23-00-yvybadytzint.kirk.replit.dev',  # Your exact URL
+    'https://*.replit.dev',  # General wildcard for URLs
+    'https://*.*.replit.dev',  # More general pattern for multi-level subdomains
     'https://*.*.*.replit.dev',  # Even more general
 ]
 

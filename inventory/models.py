@@ -266,7 +266,7 @@ class InvoiceItem(models.Model):
         ordering = ['id']
 
 
-    def __str__(self):
+    def __str__(selfself):
         return f"{self.quantity} x {self.product_name} on Invoice {self.invoice.invoice_number}"
 
     def save(self, *args, **kwargs):
@@ -282,3 +282,17 @@ class InvoiceItem(models.Model):
 
         if self.invoice:
             self.invoice.save()
+
+
+# Corrected: Dashboard model is now at the top level, not nested inside InvoiceItem
+class Dashboard(models.Model):
+    class Meta:
+        managed = False  # Tells Django not to create a database table for this model
+        verbose_name = "Dashboard"
+        verbose_name_plural = "Dashboard"
+        # Optional: Set default_permissions to an empty list to hide add/change/delete links
+        # permissions = [] # Uncomment if you want to explicitly hide all links
+        default_permissions = () # This is typically used for models that don't represent database tables
+
+    def __str__(self):
+        return "Inventory Dashboard"
