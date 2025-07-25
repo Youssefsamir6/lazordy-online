@@ -51,45 +51,27 @@
     }
 
     .app-container {
-      display: flex;
-      min-height: 100vh;
-      font-family: system-ui, -apple-system, sans-serif;
-    }
-
-    .sidebar {
-      width: var(--sidebar-width);
-      background-color: var(--sidebar-bg);
-      color: var(--sidebar-text);
-      border-right: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      z-index: 50;
-    }
-
-/* RTL override */
-[dir="rtl"] .sidebar {
-  right: 0;
-  left: auto;
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
-    .main-content {
-      margin-left: var(--sidebar-width);
-      width: calc(100% - var(--sidebar-width));
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      background-color: var(--main-bg);
-      color: var(--main-text);
-    }
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
 
-[dir="rtl"] .main-content {
-  margin-left: 0;
-  margin-right: var(--sidebar-width);
-  width: calc(100% - var(--sidebar-width));
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .main-content {
+    width: 100%;
+    margin: 0;
+  }
 }
 
     .header {
@@ -270,9 +252,10 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 {% endif %}
 
-  <div class="app-container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
+  <div class="flex flex-col md:flex-row min-h-screen font-sans">
+  <!-- Sidebar -->
+  <aside class="w-full md:w-64 fixed md:relative z-40 h-auto md:h-screen bg-[var(--sidebar-bg)] text-[var(--sidebar-text)] border-r border-[var(--border-color)]">
+
       <div class="sidebar-header">
         <div style="display: flex; align-items: center; gap: 0.75rem;">
           <img src="{% static 'lazordy_theme/images/primary_logo.png' %}" alt="Lazordy" class="sidebar-logo-img" />
@@ -335,7 +318,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="flex-1 md:ml-64 bg-[var(--main-bg)] text-[var(--main-text)]">
       <header class="header">
         <div style="display: flex; align-items: center; gap: 0.75rem;">
           <img src="{% static 'lazordy_theme/images/primary_logo.png' %}" alt="Lazordy" class="logo-img" />
