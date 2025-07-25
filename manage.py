@@ -2,12 +2,17 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 def main():
     """Run administrative tasks."""
     # THIS IS THE CRUCIAL LINE: Ensure 'django_project' matches your main project directory name
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_project.settings')
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_project.settings")
+
+
+
+
+
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -20,3 +25,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+

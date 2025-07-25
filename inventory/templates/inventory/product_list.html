@@ -1,134 +1,131 @@
-{% extends 'base.html' %} {# This line tells Django to use base.html #}
+{# D:\lazordy\lazordy\inventory\templates\inventory\product_list.html #}
+{% load i18n %}
 
-{% block title %}{{ page_title }}{% endblock %} {# Set page title specific to this page #}
+{% extends 'base.html' %}
+{% load static %} {# Ensure static files can be loaded, especially for images #}
+{% load tz %} {# For using 'now' filter if you have timezone support enabled #}
 
-{% block content %} {# Start the content block #}
-    <h1 class="text-4xl font-extrabold mb-8 text-gray-800 dark:text-gray-100">{{ page_title }}</h1>
+{% block title %}{{ page_title }}{% endblock %}
 
-    <div class="bg-white p-6 rounded-lg shadow-xl mb-8 border border-gray-200 dark:bg-gray-700 dark:border-gray-600"> {# Added dark classes #}
-        <h2 class="text-2xl font-semibold mb-5 text-gray-700 dark:text-gray-200">Filter & Search Products</h2> {# Added dark classes #}
-        <form method="GET" action="{% url 'inventory:product_list' %}" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 items-end"> {# Added lg:grid-cols-4 and items-end #}
+{% block content %}
+    <h1 class="text-4xl font-extrabold mb-8 text-gray-800 dark:text-gray-100">
+        {{ page_title }}
+        <a href="{% url 'inventory:add_product' %}" class="ml-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg text-sm transition duration-300 ease-in-out">
+            Add New Product
+        </a>
+    </h1>
+
+    <div class="bg-white p-6 rounded-lg shadow-xl mb-8 border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+        <h2 class="text-2xl font-semibold mb-5 text-gray-700 dark:text-gray-200">Filter, Sort & Search Products</h2>
+        <form method="GET" action="{% url 'inventory:product_list' %}" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 items-end">
             <div>
-                <label for="category" class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Category:</label> {# Added dark classes #}
-                <select id="category" name="category" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"> {# Added dark classes #}
+                <label for="category" class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Category:</label>
+                <select id="category" name="category" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100">
                     <option value="">All Categories</option>
                     {% for category in categories %}
-                        <option value="{{ category.pk }}" {% if category.pk|stringformat:"s" == selected_category_id %}selected{% endif %}>
-                            {{ category.name }}
-                        </option>
+                        <option value="{{ category.pk }}" {% if category.pk|stringformat:"s" == selected_category_id %}selected{% endif %}>{{ category.name }}</option>
                     {% endfor %}
                 </select>
             </div>
 
             <div>
-                <label for="size" class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Size:</label> {# Added dark classes #}
-                <select id="size" name="size" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"> {# Added dark classes #}
+                <label for="size" class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Size:</label>
+                <select id="size" name="size" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100">
                     <option value="">All Sizes</option>
                     {% for size_obj in sizes %}
-                        <option value="{{ size_obj.pk }}" {% if size_obj.pk|stringformat:"s" == selected_size_id %}selected{% endif %}>
-                            {{ size_obj.name }}
-                        </option>
+                        <option value="{{ size_obj.pk }}" {% if size_obj.pk|stringformat:"s" == selected_size_id %}selected{% endif %}>{{ size_obj.name }}</option>
                     {% endfor %}
                 </select>
             </div>
 
-            <div class="md:col-span-2 lg:col-span-1"> {# Adjusted span for better layout on larger screens #}
-                <label for="search" class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Search:</label> {# Added dark classes #}
-                <input type="text" id="search" name="q" value="{{ search_query|default_if_none:'' }}" placeholder="Search by name, code, color..." class="mt-1 block w-full pl-3 pr-3 py-2.5 text-base border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"> {# Added dark classes #}
+            <div>
+                <label for="sort" class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Sort By:</label>
+                <select id="sort" name="sort" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100">
+                    <option value="">Default</option>
+                    <option value="name" {% if sort == 'name' %}selected{% endif %}>Name (A-Z)</option>
+                    <option value="name_desc" {% if sort == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                    <option value="price_asc" {% if sort == 'price_asc' %}selected{% endif %}>Price (Low to High)</option>
+                    <option value="price_desc" {% if sort == 'price_desc' %}selected{% endif %}>Price (High to Low)</option>
+                </select>
             </div>
 
-            <div class="md:col-span-3 lg:col-span-1 flex justify-end gap-3 mt-4 md:mt-0"> {# Adjusted span and margin #}
-                <button type="submit" class="w-full md:w-auto inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out dark:bg-blue-700 dark:hover:bg-blue-600"> {# Added dark classes #}
+            <div class="md:col-span-2 lg:col-span-1">
+                <label for="search" class="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Search:</label>
+                <input type="text" id="search" name="q" value="{{ search_query|default_if_none:'' }}" placeholder="Search by name, code, color..." class="mt-1 block w-full pl-3 pr-3 py-2.5 text-base border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100">
+            </div>
+
+            <div class="md:col-span-3 lg:col-span-1 flex justify-end gap-3 mt-4 md:mt-0">
+                <button type="submit" class="w-full md:w-auto inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out dark:bg-blue-700 dark:hover:bg-blue-600">
                     Apply Filters
                 </button>
-                <a href="{% url 'inventory:product_list' %}" class="w-full md:w-auto inline-flex items-center justify-center px-5 py-2.5 border border-gray-300 text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out dark:bg-gray-600 dark:border-gray-500 dark:text-gray-100 dark:hover:bg-gray-500"> {# Added dark classes #}
+                <a href="{% url 'inventory:product_list' %}" class="w-full md:w-auto inline-flex items-center justify-center px-5 py-2.5 border border-gray-300 text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out dark:bg-gray-600 dark:border-gray-500 dark:text-gray-100 dark:hover:bg-gray-500">
                     Clear
                 </a>
             </div>
         </form>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"> {# Increased gap #}
-        {% load tz %} {# Ensure tz is loaded for 'now' filter #}
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {% for product in products %}
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 relative group dark:bg-gray-700 dark:border-gray-600"> {# Added dark classes #}
-
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 relative group dark:bg-gray-700 dark:border-gray-600">
                 <div class="absolute top-2 left-2 space-y-1 z-10 opacity-0 -translate-y-2 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:translate-y-0">
-                    {% if product.created_at|date:"U" > now|date:"U"|add:"-604800" %}
-                        <span class="text-xs bg-green-100 text-green-800 font-semibold px-2.5 py-0.5 rounded-full shadow-md inline-flex items-center gap-1 select-none">
-                            🆕 New
-                        </span>
+                    {# Assuming 'created_at' field exists on your Product model #}
+                    {% if product.created_at|date:"U" > now|date:"U"|add:"-604800" %} {# Check if created within last 7 days #}
+                        <span class="text-xs bg-green-100 text-green-800 font-semibold px-2.5 py-0.5 rounded-full shadow-md inline-flex items-center gap-1 select-none">🆕 New</span>
                     {% endif %}
                     {% if product.quantity == 0 %}
-                        <span class="text-xs bg-red-100 text-red-800 font-semibold px-2.5 py-0.5 rounded-full shadow-md inline-flex items-center gap-1 select-none">
-                            ❌ Out of Stock
-                        </span>
+                        <span class="text-xs bg-red-100 text-red-800 font-semibold px-2.5 py-0.5 rounded-full shadow-md inline-flex items-center gap-1 select-none">❌ Out of Stock</span>
                     {% elif product.quantity < 5 %}
-                        <span class="text-xs bg-yellow-100 text-yellow-800 font-semibold px-2.5 py-0.5 rounded-full shadow-md inline-flex items-center gap-1 select-none">
-                            ⚠️ Low Stock
-                        </span>
+                        <span class="text-xs bg-yellow-100 text-yellow-800 font-semibold px-2.5 py-0.5 rounded-full shadow-md inline-flex items-center gap-1 select-none">⚠️ Low Stock</span>
                     {% endif %}
                 </div>
 
-                {% if product.photo %}
-                    <img src="{{ product.photo.url }}" alt="{{ product.name }}" class="w-full h-56 object-cover object-center group-hover:scale-105 transition-transform duration-300 rounded-t-xl"> {# Increased height, added object-center, hover effect, rounded top corners #}
-                {% else %}
-                    {# Remember to load static in base.html if using `{% static 'images/placeholder.png' %}` #}
-                    <div class="w-full h-56 bg-gray-200 flex items-center justify-center text-gray-500 text-lg rounded-t-xl dark:bg-gray-600 dark:text-gray-300">No Image</div> {# Added dark classes #}
-                {% endif %}
-                <div class="p-5"> {# Increased padding #}
-                    <h2 class="text-xl font-semibold mb-2 truncate text-gray-800 dark:text-gray-100">{{ product.name }}</h2> {# Added dark classes #}
-                    <p class="text-gray-600 text-sm mb-1 dark:text-gray-300">Item Code: <span class="font-medium">{{ product.item_code }}</span></p> {# Added dark classes #}
-                    <p class="text-gray-600 text-sm mb-1 dark:text-gray-300"> {# Added dark classes #}
-                        Category: <span class="font-medium">{{ product.category.name|default:"N/A" }}</span>
-                    </p>
-                    <p class="text-gray-600 text-sm mb-3 dark:text-gray-300"> {# Added dark classes #}
+               {% if product.photo %}
+                    <img src="{{ product.photo.url }}" alt="{{ product.name }}" class="w-full h-56 object-cover object-center group-hover:scale-105 transition-transform duration-300 rounded-t-xl">
+               {% else %}
+                    <div class="w-full h-56 bg-gray-200 flex items-center justify-center text-gray-500 text-lg rounded-t-xl dark:bg-gray-600 dark:text-gray-300">No Image</div>
+               {% endif %}
+
+                <div class="p-5">
+                    <h2 class="text-xl font-semibold mb-2 truncate text-gray-800 dark:text-gray-100">{{ product.name }}</h2>
+                    <p class="text-gray-600 text-sm mb-1 dark:text-gray-300">Item Code: <span class="font-medium">{{ product.item_code }}</span></p>
+                    <p class="text-gray-600 text-sm mb-1 dark:text-gray-300">Category: <span class="font-medium">{{ product.category.name|default:"N/A" }}</span></p>
+                    <p class="text-gray-600 text-sm mb-3 dark:text-gray-300">
                         Sizes:
-                        {% if product.size.all %}
-                            <div class="mt-1 flex flex-wrap gap-1"> {# Added flex-wrap and gap #}
-                                {% for size_item in product.size.all %}
-                                    <span class="inline-block bg-blue-100 text-blue-800 rounded-full px-2 py-0.5 text-xs font-semibold dark:bg-blue-800 dark:text-blue-100"> {# Added dark classes #}
-                                        {{ size_item.name }}
-                                    </span>
+                        {% if product.sizes.all %} {# Changed from product.size.all to product.sizes.all #}
+                            <div class="mt-1 flex flex-wrap gap-1">
+                                {% for size_item in product.sizes.all %}
+                                    <span class="inline-block bg-blue-100 text-blue-800 rounded-full px-2 py-0.5 text-xs font-semibold dark:bg-blue-800 dark:text-blue-100">{{ size_item.name }}</span>
                                 {% endfor %}
                             </div>
-                        {% else %}
-                            N/A
-                        {% endif %}
+                        {% else %}N/A{% endif %}
                     </p>
-                    <p class="text-gray-900 font-extrabold text-2xl mt-4 dark:text-gray-100">${{ product.price }}</p> {# Added dark classes #}
-                    <a href="{% url 'inventory:product_detail' item_code=product.item_code %}"
-                       class="mt-5 block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-5 rounded-lg text-center shadow-md hover:shadow-lg transition-all duration-300 dark:bg-green-700 dark:hover:bg-green-600"> {# Added dark classes #}
-                        View Details
-                    </a>
+                    <p class="text-gray-900 font-extrabold text-2xl mt-4 dark:text-gray-100">EGP {{ product.price|floatformat:2 }}</p> {# Added EGP and floatformat #}
+                    <div class="mt-5 flex gap-2">
+                        <a href="{% url 'inventory:product_detail' item_code=product.item_code %}" class="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-5 rounded-lg text-center shadow-md hover:shadow-lg transition-all duration-300 dark:bg-green-700 dark:hover:bg-green-600 text-sm">View</a>
+                        <a href="{% url 'inventory:update_product' product.pk %}" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-5 rounded-lg text-center shadow-md hover:shadow-lg transition-all duration-300 dark:bg-yellow-700 dark:hover:bg-yellow-600 text-sm">Edit</a>
+                        <a href="{% url 'inventory:delete_product' product.pk %}" class="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-5 rounded-lg text-center shadow-md hover:shadow-lg transition-all duration-300 dark:bg-red-700 dark:hover:bg-red-600 text-sm">Delete</a>
+                    </div>
                 </div>
             </div>
         {% empty %}
-            <p class="col-span-full text-center text-lg text-gray-600 py-10 dark:text-gray-300">No products found matching your criteria.</p> {# Added dark classes #}
+            <p class="col-span-full text-center text-lg text-gray-600 py-10 dark:text-gray-300">No products found matching your criteria.</p>
         {% endfor %}
     </div>
 
-    <div class="mt-10 flex justify-center items-center space-x-3"> {# Increased top margin, spacing #}
+    <div class="mt-10 flex justify-center items-center space-x-3">
         {% if products.has_previous %}
-            <a href="?page={{ products.previous_page_number }}{% if selected_category_id %}&category={{ selected_category_id }}{% endif %}{% if selected_size_id %}&size={{ selected_size_id }}{% endif %}{% if search_query %}&q={{ search_query }}{% endif %}"
-               class="px-5 py-2 rounded-lg bg-gray-300 text-gray-800 font-medium hover:bg-gray-400 transition-colors duration-200 shadow-sm dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-500"> {# Added dark classes #}
-                Previous
-            </a>
+            <a href="?page={{ products.previous_page_number }}{% if selected_category_id %}&category={{ selected_category_id }}{% endif %}{% if selected_size_id %}&size={{ selected_size_id }}{% endif %}{% if search_query %}&q={{ search_query }}{% endif %}{% if sort %}&sort={{ sort }}{% endif %}" class="px-5 py-2 rounded-lg bg-gray-300 text-gray-800 font-medium hover:bg-gray-400 transition-colors duration-200 shadow-sm dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-500">Previous</a>
         {% else %}
-            <span class="px-5 py-2 rounded-lg bg-gray-200 text-gray-500 cursor-not-allowed dark:bg-gray-700 dark:text-gray-400">Previous</span> {# Added dark classes #}
+            <span class="px-5 py-2 rounded-lg bg-gray-200 text-gray-500 cursor-not-allowed dark:bg-gray-700 dark:text-gray-400">Previous</span>
         {% endif %}
 
-        <span class="text-lg font-semibold text-gray-700 dark:text-gray-200"> {# Added dark classes #}
-            Page {{ products.number }} of {{ products.paginator.num_pages }}
-        </span>
+        <span class="text-lg font-semibold text-gray-700 dark:text-gray-200">Page {{ products.number }} of {{ products.paginator.num_pages }}</span>
 
         {% if products.has_next %}
-            <a href="?page={{ products.next_page_number }}{% if selected_category_id %}&category={{ selected_category_id }}{% endif %}{% if selected_size_id %}&size={{ selected_size_id }}{% endif %}{% if search_query %}&q={{ search_query }}{% endif %}"
-               class="px-5 py-2 rounded-lg bg-gray-300 text-gray-800 font-medium hover:bg-gray-400 transition-colors duration-200 shadow-sm dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-500"> {# Added dark classes #}
-                Next
-            </a>
+            <a href="?page={{ products.next_page_number }}{% if selected_category_id %}&category={{ selected_category_id }}{% endif %}{% if selected_size_id %}&size={{ selected_size_id }}{% endif %}{% if search_query %}&q={{ search_query }}{% endif %}{% if sort %}&sort={{ sort }}{% endif %}" class="px-5 py-2 rounded-lg bg-gray-300 text-gray-800 font-medium hover:bg-gray-400 transition-colors duration-200 shadow-sm dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-500">Next</a>
         {% else %}
-            <span class="px-5 py-2 rounded-lg bg-gray-200 text-gray-500 cursor-not-allowed dark:bg-gray-700 dark:text-gray-400">Next</span> {# Added dark classes #}
+            <span class="px-5 py-2 rounded-lg bg-gray-200 text-gray-500 cursor-not-allowed dark:bg-gray-700 dark:text-gray-400">Next</span>
         {% endif %}
     </div>
-{% endblock content %} {# End the content block #}
+{% endblock content %}

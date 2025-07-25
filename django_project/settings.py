@@ -9,10 +9,17 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-import os 
-
+import os
+from dotenv import load_dotenv
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 
+
+
+BASE_URL = "http://127.0.0.1:8000"
+
+
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,30 +34,31 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# DANGER! THIS IS FOR DEVELOPMENT DEBUGGING ON ONLY!
 # NEVER USE '*' IN PRODUCTION FOR SECURITY REASONS.
 # This setting tells Django to allow requests from any host.
-ALLOWED_HOSTS = [
-    '*',
-]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
+
+    'inventory', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'inventory',
     'reports',
     'rest_framework',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -65,7 +73,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
                  os.path.join(BASE_DIR, 'django_project', 'templates'),],
-        'APP_DIRS': True,
+        'APP_DIRS': True, # This must be True
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -81,13 +89,19 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+import os
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'lazordydb',
+        'USER': 'postgres',
+        'PASSWORD': 'venom66samir+d',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -114,21 +128,32 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
-TIME_ZONE = 'UTC'
+LANGUAGES = [
+    ('ar', _('Arabic')),
+    ('en', _('English')),
+]
+
+TIME_ZONE = 'Africa/Cairo'
 
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
+
+
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'static', # This is a common place for project-wide static files
-    # BASE_DIR / 'inventory' / 'static', # You can optionally add this if your app's static is not found via BASE_DIR / 'static'
+   
+    os.path.join(BASE_DIR, 'inventory', 'static'),  
 ]
 STATIC_ROOT = os.path.join(
     BASE_DIR,
@@ -137,40 +162,39 @@ STATIC_ROOT = os.path.join(
 # Media files (for user-uploaded content like product photos)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,
-                             'media')  # Where user-uploaded files will be stored
+                           'media')  # Where user-uploaded files will be stored
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Specific (might be needed for some setups for Django Admin JS)
-# This usually only applies when DEBUG=False, but sometimes helps with proxy
-# if not explicitly handling static files. For now, keep it simple.
-# You don't usually need to modify URL_PREFIX for Django unless using specific proxy setups.
-# If you run into issues with static files not loading (404s), revisit this.
-# For DEBUG=True, runserver handles static files automatically.
-# django_project/settings.py
-
-# ... (your existing settings) ...
-
-# DANGER! THIS IS FOR DEVELOPMENT DEBUGGING ON ONLY!
-# NEVER USE '*' IN PRODUCTION FOR SECURITY REASONS.
-ALLOWED_HOSTS = [
-    '*',  # Keep this as it is for now
-]
-
 # Add CSRF Trusted Origins for dynamic URLs
 # This is crucial for environments behind proxies that might
 # interfere with the Origin header.
 CSRF_TRUSTED_ORIGINS = [
-    'https://2e484a9a-461e-4e1d-81ea-544a49533b23-00-yvybadytzint.kirk.replit.dev',  # Your exact URL
-    'https://*.replit.dev',  # General wildcard for URLs
-    'https://*.*.replit.dev',  # More general pattern for multi-level subdomains
-    'https://*.*.*.replit.dev',  # Even more general
+    "http://127.0.0.1:8000",
+    "http://localhost:8000",
 ]
 
 
-# Media files (for user-uploaded content like product photos)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media' # This creates a 'media' directory in your project root
+# jazzmin dark theme settings
+JAZZMIN_SETTINGS = {
+    "site_title": "Lazordy Inventory",
+    "site_header": "Lazordy Admin",
+    "site_brand": "Lazordy",
+    "site_logo": "lazordy_theme/img/lazordy_logo.png",  # Make sure this path is correct
+    "welcome_sign": "Welcome to Lazordy Admin",
+    "copyright": "© 2025 Lazordy",
+    "custom_css": "lazordy_theme/css/admin_dark_mode_fix.css",  
+}
+
+
+LOGIN_REDIRECT_URL = '/inventory/'
+
+
+CLOUDINARY = {
+    'cloud_name': 'dkeopupxb',
+    'api_key': '814938212617526',
+    'api_secret': 'VRnq0HKU8uS8y0gG6nCTsrY1tt0',
+}

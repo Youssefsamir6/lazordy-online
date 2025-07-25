@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {# IMPORTANT: Make sure it's 'base.html' #}
+{% load i18n %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mx-auto p-4 max-w-lg">
+    <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+        <h1 class="text-2xl font-bold mb-6 text-center">{% if form.instance.pk %}Edit Product{% else %}Add New Product{% endif %}</h1>
+        <form method="post" enctype="multipart/form-data" class="space-y-4">
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="mb-4">
+                    <label for="{{ field.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">
+                        {{ field.label }}
+                    </label>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <p class="text-gray-600 text-xs italic">{{ field.help_text }}</p>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <p class="text-red-500 text-xs italic">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+            <div class="flex justify-end space-x-4">
+                <a href="{% url 'inventory:product_list' %}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                    Cancel
+                </a>
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    {% if form.instance.pk %}Update Product{% else %}Add Product{% endif %}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{# Add any specific JS for product form here if needed, e.g., for image preview #}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const photoInput = document.getElementById('id_photo');
+        if (photoInput) {
+            photoInput.classList.add('block', 'w-full', 'text-sm', 'text-gray-900', 'border', 'border-gray-300', 'rounded-lg', 'cursor-pointer', 'bg-gray-50', 'focus:outline-none');
+            photoInput.setAttribute('aria-describedby', 'photo_help_text');
+        }
+
+        // Apply Tailwind classes to other fields if not already done by crispy forms or similar
+        // Select fields
+        document.querySelectorAll('select').forEach(function(select) {
+            select.classList.add('block', 'w-full', 'p-2', 'border', 'border-gray-300', 'rounded-md', 'shadow-sm', 'focus:ring-indigo-500', 'focus:border-indigo-500', 'sm:text-sm');
+        });
+
+        // Input text, number, etc.
+        document.querySelectorAll('input[type="text"], input[type="number"], input[type="email"], input[type="url"], textarea').forEach(function(input) {
+            input.classList.add('mt-1', 'block', 'w-full', 'p-2', 'border', 'border-gray-300', 'rounded-md', 'shadow-sm', 'focus:ring-indigo-500', 'focus:border-indigo-500', 'sm:text-sm');
+        });
+    });
+</script>
+{% endblock %}

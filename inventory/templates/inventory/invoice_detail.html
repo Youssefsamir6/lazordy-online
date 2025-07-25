@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-6">
+
+  <!-- Language Toggle -->
+  <div class="flex justify-end mb-4">
+    <button id="langToggle" class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800 transition">
+      🇸🇦 Arabic
+    </button>
+  </div>
+
+  <!-- Invoice Header -->
+  <div class="bg-white dark:bg-gray-900 p-6 rounded shadow text-left">
+    <h1 class="text-2xl font-bold mb-4" data-en="Invoice Details" data-ar="تفاصيل الفاتورة">Invoice Details</h1>
+
+    <!-- Company Info -->
+    <div class="mb-6">
+      <p class="text-sm" data-en="Company: {{ invoice.company_name }}" data-ar="الشركة: {{ invoice.company_name }}">
+        Company: {{ invoice.company_name }}
+      </p>
+      <p class="text-sm" data-en="Address: {{ invoice.company_address }}" data-ar="العنوان: {{ invoice.company_address }}">
+        Address: {{ invoice.company_address }}
+      </p>
+      <p class="text-sm" data-en="Phone: {{ invoice.company_phone }}" data-ar="الهاتف: {{ invoice.company_phone }}">
+        Phone: {{ invoice.company_phone }}
+      </p>
+    </div>
+
+    <!-- Invoice Info -->
+    <div class="mb-6">
+      <p class="text-sm" data-en="Invoice #: {{ invoice.invoice_number }}" data-ar="رقم الفاتورة: {{ invoice.invoice_number }}">
+        Invoice #: {{ invoice.invoice_number }}
+      </p>
+      <p class="text-sm" data-en="Date: {{ invoice.date }}" data-ar="التاريخ: {{ invoice.date }}">
+        Date: {{ invoice.date }}
+      </p>
+    </div>
+
+    <!-- Invoice Items Table -->
+    <div class="overflow-x-auto mb-6">
+      <table class="min-w-full table-auto border-collapse border border-gray-300 dark:border-gray-700">
+        <thead>
+          <tr class="bg-gray-200 dark:bg-gray-800">
+            <th class="px-4 py-2 border" data-en="Product" data-ar="المنتج">Product</th>
+            <th class="px-4 py-2 border" data-en="Quantity" data-ar="الكمية">Quantity</th>
+            <th class="px-4 py-2 border" data-en="Unit Price" data-ar="سعر الوحدة">Unit Price</th>
+            <th class="px-4 py-2 border" data-en="Total" data-ar="الإجمالي">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in invoice.items.all %}
+          <tr>
+            <td class="px-4 py-2 border">{{ item.product.name }}</td>
+            <td class="px-4 py-2 border">{{ item.quantity }}</td>
+            <td class="px-4 py-2 border">{{ item.unit_price }}</td>
+            <td class="px-4 py-2 border">{{ item.total_price }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Totals -->
+    <div class="text-sm mb-6">
+      <p data-en="Subtotal: {{ invoice.subtotal }}" data-ar="الإجمالي الفرعي: {{ invoice.subtotal }}">
+        Subtotal: {{ invoice.subtotal }}
+      </p>
+      <p data-en="Total: {{ invoice.total }}" data-ar="الإجمالي: {{ invoice.total }}">
+        Total: {{ invoice.total }}
+      </p>
+      <p data-en="Paid: {{ invoice.paid_amount }}" data-ar="المدفوع: {{ invoice.paid_amount }}">
+        Paid: {{ invoice.paid_amount }}
+      </p>
+      <p data-en="Remaining: {{ invoice.remaining_amount }}" data-ar="المتبقي: {{ invoice.remaining_amount }}">
+        Remaining: {{ invoice.remaining_amount }}
+      </p>
+    </div>
+
+    <!-- QR Code -->
+    {% if invoice.qr_code %}
+    <div class="mt-6">
+      <p class="mb-2 font-medium" data-en="Scan to view invoice:" data-ar="امسح لعرض الفاتورة:">Scan to view invoice:</p>
+      <img src="{{ invoice.qr_code.url }}" alt="QR Code" class="w-40 h-40">
+    </div>
+    {% endif %}
+
+    <!-- PDF Download Link -->
+    {% if invoice.pdf_file %}
+    <div class="mt-6">
+      <a href="{{ invoice.pdf_file.url }}" target="_blank" class="text-blue-600 hover:underline" data-en="Download PDF" data-ar="تحميل PDF">
+        Download PDF
+      </a>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+
+<!-- Language Toggle Script -->
+<script>
+document.getElementById('langToggle').addEventListener('click', () => {
+    const isArabic = document.documentElement.getAttribute('dir') !== 'rtl';
+    document.documentElement.setAttribute('dir', isArabic ? 'rtl' : 'ltr');
+    document.body.classList.toggle('text-right', isArabic);
+    document.body.classList.toggle('text-left', !isArabic);
+
+    // Update all elements with translatable content
+    document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+        el.textContent = isArabic ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+    });
+
+    // Update button label
+    const btn = document.getElementById('langToggle');
+    btn.textContent = isArabic ? '🇬🇧 English' : '🇸🇦 Arabic';
+});
+</script>
+{% endblock %}

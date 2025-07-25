@@ -1,114 +1,241 @@
 {% extends 'base.html' %}
+{% load i18n %}
+
 {% load static %}
 
 {% block title %}Dashboard - Lazordy Inventory{% endblock %}
 
-{% block content %}
-<div class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-8">Inventory Dashboard</h1>
+{% block extra_head %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <style>
+        /* Optional: Basic styling for chart containers if not using Tailwind's height/width classes directly on canvas */
+        .chart-container {
+            position: relative;
+            height: 400px; /* Adjust height as needed */
+            width: 100%;
+        }
+    </style>
+{% endblock %}
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center">
-            <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-2">Total Products</h5>
+{% block content %}
+<div class="px-4 py-6">
+    <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">{% trans "Inventory Dashboard" %}</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 text-center">
+            <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-1">{% trans "Total Products" %}</h2>
             <p class="text-5xl font-extrabold text-blue-600 dark:text-blue-400">{{ total_products }}</p>
         </div>
 
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center">
-            <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-2">Total Estimated Value</h5>
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 text-center">
+            <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-1">Total Estimated Value</h2>
             <p class="text-5xl font-extrabold text-green-600 dark:text-green-400">{{ total_value|floatformat:2 }} EGP</p>
-            <small class="text-gray-500 dark:text-gray-400 mt-2">Based on current stock.</small>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Based on current stock.</p>
         </div>
 
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center justify-center">
-            <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-2">Low Stock Items</h5>
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 text-center">
+            <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-1">{% trans "Low Stock Items" %}</h2>
             <p class="text-5xl font-extrabold text-red-600 dark:text-red-400">{{ low_stock_items|length }}</p>
-            <small class="text-gray-500 dark:text-gray-400 mt-2">Threshold: {{ low_stock_threshold }} units.</small>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Threshold: {{ low_stock_threshold }} units</p>
         </div>
     </div>
 
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md mb-8">
-        <div class="bg-yellow-500 text-white p-4 rounded-t-lg">
-            <h4 class="text-2xl font-semibold mb-0">Products with Low Stock (Below {{ low_stock_threshold }} units)</h4>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6">
+            <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-4">{% trans "Monthly Sales Overview" %}</h3>
+            <div class="chart-container">
+                <canvas id="monthlySalesChart"></canvas>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6">
+            <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-4">{% trans "Top Sold Products" %} ({{ product_movement_timeframe }})</h3>
+            <div class="chart-container">
+                <canvas id="topSellingProductsChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow mb-10 overflow-hidden">
+        <div class="bg-yellow-500 text-white px-6 py-4">
+            <h3 class="text-xl font-semibold">{% blocktrans with threshold=low_stock_threshold %}Products with Low Stock (Below {{ threshold }} units){% endblocktrans %}</h3>
         </div>
         <div class="p-6">
             {% if low_stock_items %}
-            <ul class="divide-y divide-gray-200 dark:divide-gray-700">
-                {% for product in low_stock_items %}
-                <li class="py-3 flex justify-between items-center">
-                    <a href="{% url 'inventory:product_detail' item_code=product.item_code %}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200">
-                        {{ product.name }} ({{ product.item_code }})
-                    </a>
-                    <span class="px-3 py-1 text-sm font-medium bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-100 rounded-full">
-                        {{ product.stock_quantity }} in stock
-                    </span>
-                </li>
-                {% endfor %}
-            </ul>
+                <ul class="divide-y divide-gray-200 dark:divide-gray-700">
+                    {% for product in low_stock_items %}
+                    <li class="py-3 flex justify-between items-center">
+                        <a href="{% url 'inventory:product_detail' item_code=product.item_code %}"
+                           class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium transition">
+                            {{ product.name }} ({{ product.item_code }})
+                        </a>
+                        <span class="px-3 py-1 text-sm font-medium bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-100 rounded-full">
+                            {{ product.quantity }} in stock
+                        </span>
+                    </li>
+                    {% endfor %}
+                </ul>
             {% else %}
-            <p class="text-gray-600 dark:text-gray-300">No products are currently in low stock! 🎉</p>
+                <p class="text-gray-600 dark:text-gray-300">{% trans "No products are currently in low stock! 🎉" %} </p>
             {% endif %}
         </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Sales Overview</h5>
-            <ul class="divide-y divide-gray-200 dark:divide-gray-700">
-                <li class="py-3 flex justify-between items-center">
-                    Total Invoices
-                    <span class="px-3 py-1 text-sm font-medium bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 rounded-full">{{ sales_overview.total_invoices }}</span>
-                </li>
-                <li class="py-3 flex justify-between items-center">
-                    Total Sales Amount
-                    <span class="px-3 py-1 text-sm font-medium bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100 rounded-full">{{ sales_overview.total_sales_amount|floatformat:2 }} EGP</span>
-                </li>
-                <li class="py-3 flex justify-between items-center">
-                    Average Invoice Value
-                    <span class="px-3 py-1 text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100 rounded-full">{{ sales_overview.average_invoice_value|floatformat:2 }} EGP</span>
-                </li>
-            </ul>
-        </div>
-
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Top Selling Products ({{ product_movement_timeframe }})</h5>
-            {% if product_movement %}
-            <ul class="divide-y divide-gray-200 dark:divide-gray-700">
-                {% for item in product_movement %}
-                <li class="py-3 flex justify-between items-center">
-                    {{ item.product__name }}
-                    <span class="px-3 py-1 text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-800 dark:text-purple-100 rounded-full">{{ item.total_quantity_sold }} sold</span>
-                </li>
-                {% endfor %}
-            </ul>
-            {% else %}
-            <p class="text-gray-600 dark:text-gray-300">No product movement data for {{ product_movement_timeframe }}.</p>
-            {% endif %}
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 mb-10">
+        <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Sales Trends & Analytics</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <p class="text-gray-700 dark:text-gray-200">Average Invoice Value: <strong class="text-blue-600 dark:text-blue-400">${{ sales_overview.average_invoice_value|floatformat:2 }}</strong></p>
+            <p class="text-gray-700 dark:text-gray-200">Total Invoices: <strong class="text-blue-600 dark:text-blue-400">{{ sales_overview.total_invoices }}</strong></p>
         </div>
     </div>
 
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
-        <div class="border-b border-gray-200 dark:border-gray-700 pb-4 mb-4">
-            <h4 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">Monthly Sales</h4>
-        </div>
-        <div>
-            <p class="text-gray-600 dark:text-gray-300 mb-4">Sales data by month:</p>
-            <ul class="divide-y divide-gray-200 dark:divide-gray-700">
-                {% for month_data in monthly_sales %}
-                <li class="py-2 flex justify-between items-center">
-                    <span class="text-gray-700 dark:text-gray-200">{{ month_data.month }}</span>
-                    <span class="px-3 py-1 text-sm font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 rounded-full">
-                        {{ month_data.total_sales|floatformat:2 }} EGP
-                    </span>
-                </li>
-                {% empty %}
-                <li class="py-2 text-gray-600 dark:text-gray-300">No monthly sales data available.</li>
-                {% endfor %}
-            </ul>
-            <p class="text-gray-500 dark:text-gray-400 mt-4 text-sm">
-                To visualize this data with a chart, you would typically use a JavaScript charting library (e.g., Chart.js, ApexCharts, D3.js). You would pass the `monthly_sales` data from Django to your JavaScript code.
-            </p>
-        </div>
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 mb-10" style="display: none;">
+        <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Raw Monthly Sales Data</h3>
+        <ul class="divide-y divide-gray-200 dark:divide-gray-700">
+            {% for month_data in monthly_sales %}
+            <li class="py-3 flex justify-between items-center">
+                <span>{{ month_data.month }}</span>
+                <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-3 py-1 text-sm rounded-full">
+                    {{ month_data.total_sales|floatformat:2 }} EGP
+                </span>
+            </li>
+            {% empty %}
+            <li class="py-3 text-gray-600 dark:text-gray-300">No monthly inventory data available.</li>
+            {% endfor %}
+        </ul>
     </div>
-
 </div>
-{% endblock content %}
+
+{{ monthly_sales|json_script:"monthly-sales-data" }}
+{{ product_movement|json_script:"top-selling-products-data" }}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- Data for Monthly Sales Chart ---
+        // Get data from the script tag generated by json_script
+        const monthlySalesDataElement = document.getElementById('monthly-sales-data');
+        const monthlySalesData = monthlySalesDataElement ? JSON.parse(monthlySalesDataElement.textContent) : [];
+
+        const monthlySalesLabels = monthlySalesData.map(item => item.month);
+        const monthlySalesValues = monthlySalesData.map(item => item.total_sales);
+
+        const ctxMonthly = document.getElementById('monthlySalesChart');
+        if (ctxMonthly) { // Check if canvas element exists
+            new Chart(ctxMonthly, {
+                type: 'line',
+                data: {
+                    labels: monthlySalesLabels,
+                    datasets: [{
+                        label: 'Total Sales (EGP)',
+                        data: monthlySalesValues,
+                        borderColor: 'rgb(75, 192, 192)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        tension: 0.3, // Slightly curved line
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Total Sales (EGP)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Month'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw.toFixed(2) + ' EGP';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // --- Data for Top Selling Products Chart ---
+        // Get data from the script tag generated by json_script
+        const topSellingProductsDataElement = document.getElementById('top-selling-products-data');
+        const topSellingProductsData = topSellingProductsDataElement ? JSON.parse(topSellingProductsDataElement.textContent) : [];
+
+        const productNames = topSellingProductsData.map(item => item.product__name);
+        const quantitiesSold = topSellingProductsData.map(item => item.total_quantity_sold);
+
+        const ctxTopSelling = document.getElementById('topSellingProductsChart');
+        if (ctxTopSelling) { // Check if canvas element exists
+            new Chart(ctxTopSelling, {
+                type: 'bar',
+                data: {
+                    labels: productNames,
+                    datasets: [{
+                        label: 'Quantity Sold',
+                        data: quantitiesSold,
+                        backgroundColor: [
+                            'rgba(153, 102, 255, 0.6)',
+                            'rgba(255, 159, 64, 0.6)',
+                            'rgba(255, 99, 132, 0.6)',
+                            'rgba(54, 162, 235, 0.6)',
+                            'rgba(75, 192, 192, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(75, 192, 192, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Total Quantity Sold'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Product'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}

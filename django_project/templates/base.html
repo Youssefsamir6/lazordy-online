@@ -1,107 +1,383 @@
+{% load i18n %}
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Lazordy Inventory{% endblock %}</title>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Lazordy - Inventory Management{% endblock %}</title>
+  <meta name="description" content="Lazordy Inventory Management System - Chandeliers • Furniture • Antiques" />
+  <meta name="author" content="Lazordy" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="{% static 'lazordy_theme/images/primary_logo.png' %}" />
 
-    {# Script to check and apply dark mode on load - MUST BE BEFORE CSS #}
-    <script>
-        // Check localStorage for a theme preference, or default to system preference
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    </script>
+  <!-- Select2 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="{% static 'css/output.css' %}">
-   
-    {# If you compile your own Tailwind CSS, uncomment this and adjust path: #}
-    {# <link rel="stylesheet" href="{% static 'css/output.css' %}"> #}
+  <!-- Prevent flash of incorrect theme -->
+  <style>html { visibility: hidden; }</style>
+  <script>
+    if (
+      localStorage.getItem('theme') === 'dark' ||
+      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+    }
+    document.documentElement.style.visibility = 'visible';
+  </script>
 
-    {% block extra_head %}{% endblock %}
+  <!-- Lazordy Theme CSS -->
+  <style>
+    :root {
+      --sidebar-width: 16rem;
+      --header-height: 4rem;
+      --golden: #FFD700;
+      --golden-dark: #FFA500;
+    }
 
+    .dark {
+      --sidebar-bg: hsl(0, 0%, 5%);
+      --sidebar-text: hsl(45, 100%, 62%);
+      --main-bg: hsl(0, 0%, 5%);
+      --main-text: hsl(45, 100%, 62%);
+      --border-color: hsl(0, 0%, 15%);
+    }
+
+    :root:not(.dark) {
+      --sidebar-bg: hsl(0, 0%, 5%);
+      --sidebar-text: hsl(45, 100%, 62%);
+      --main-bg: #ffffff;
+      --main-text: #0f172a;
+      --border-color: #e2e8f0;
+    }
+
+    .app-container {
+      display: flex;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .sidebar {
+      width: var(--sidebar-width);
+      background-color: var(--sidebar-bg);
+      color: var(--sidebar-text);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      z-index: 50;
+    }
+
+/* RTL override */
+[dir="rtl"] .sidebar {
+  right: 0;
+  left: auto;
+}
+
+    .main-content {
+      margin-left: var(--sidebar-width);
+      width: calc(100% - var(--sidebar-width));
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: var(--main-bg);
+      color: var(--main-text);
+    }
+
+[dir="rtl"] .main-content {
+  margin-left: 0;
+  margin-right: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+}
+
+    .header {
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      background-color: var(--main-bg);
+    }
+
+    .content-area {
+      flex: 1;
+      padding: 1.5rem;
+      overflow-y: auto;
+    }
+
+    .sidebar-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+
+    .sidebar-footer {
+      padding: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.25rem;
+      border-radius: 0.375rem;
+      color: var(--sidebar-text);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: all 0.2s;
+    }
+
+    .nav-item:hover {
+      background-color: var(--golden);
+      color: #000;
+    }
+
+    /* Icon animation on hover */
+    .nav-item span:first-child {
+      display: inline-flex;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-item:hover span:first-child {
+      transform: scale(1.25) rotate(5deg);
+    }
+
+    .user-avatar {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: var(--golden);
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .theme-toggle {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background-color: rgba(255, 215, 0, 0.1);
+      border: 1px solid var(--border-color);
+      border-radius: 0.375rem;
+      color: var(--sidebar-text);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .theme-toggle:hover {
+      background-color: var(--golden);
+      color: #000;
+    }
+
+    .golden-text {
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: bold;
+    }
+
+    .logo-img,
+    .sidebar-logo-img {
+      height: 2rem;
+      object-fit: contain;
+    }
+
+    .sidebar-logo-img {
+      width: 2rem;
+    }
+
+    /* NEW CSS: Scrollbar Styling for Dark Mode */
+    /* Webkit (Chrome, Safari, Edge) */
+    .content-area::-webkit-scrollbar {
+        width: 10px; /* Width of the vertical scrollbar */
+        height: 10px; /* Height of the horizontal scrollbar */
+    }
+
+    .content-area::-webkit-scrollbar-track {
+        background: var(--main-bg); /* Use your dark background for the track */
+        border-radius: 5px;
+    }
+
+    .content-area::-webkit-scrollbar-thumb {
+        background: rgba(255, 215, 0, 0.3); /* A slightly transparent golden color for the thumb */
+        border-radius: 5px;
+        border: 2px solid var(--main-bg); /* Add a border to blend more */
+    }
+
+    .content-area::-webkit-scrollbar-thumb:hover {
+        background: var(--golden); /* Brighter golden on hover */
+    }
+
+    /* Firefox */
+    .content-area {
+        scrollbar-width: thin; /* "auto" or "none" */
+        scrollbar-color: rgba(255, 215, 0, 0.3) var(--main-bg); /* thumb-color track-color */
+    }
+
+  </style>
+
+  <link rel="stylesheet" href="{% static 'css/output.css' %}" />
+  {% block extra_head %}{% endblock %}
 </head>
-{# Apply dark mode classes to the body for default text and background colors #}
-<body class="bg-gray-100 font-sans antialiased text-gray-800 dark:bg-gray-900 dark:text-gray-100">
 
-    <nav class="bg-blue-600 p-4 shadow-lg dark:bg-gray-800"> {# Added dark mode for navbar background #}
-        <div class="container mx-auto flex justify-between items-center">
-            {# LOGO LINK: Now points to the Dashboard #}
-            <a href="{% url 'inventory:dashboard' %}" class="flex items-center space-x-2"> {# <--- CHANGED HERE #}
-                <img src="{% static 'inventory/images/primary_logo.png' %}" alt="Lazordy Logo" class="h-10">
-                {# Uncomment the span below if you want text next to the logo #}
-                {# <span class="text-white text-2xl font-bold tracking-tight hover:text-blue-100 transition-colors duration-200">Lazordy</span> #}
-            </a>
-            <div class="flex items-center space-x-4"> {# Changed to flex to align links and toggle button #}
+<body>
 
-                {# DASHBOARD LINK #}
-                <a href="{% url 'inventory:dashboard' %}" class="text-white hover:text-blue-100 font-medium px-3 py-2 rounded-md transition-colors duration-200">Dashboard</a> {# <--- CHANGED HERE #}
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-                {# PRODUCTS LINK (Already correct) #}
-                <a href="{% url 'inventory:product_list' %}" class="text-white hover:text-blue-100 font-medium px-3 py-2 rounded-md transition-colors duration-200">Products</a>
+{% if messages %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  {% for message in messages %}
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      icon: '{% if "error" in message.tags %}error{% elif "success" in message.tags %}success{% elif "warning" in message.tags %}warning{% elif "info" in message.tags %}info{% else %}info{% endif %}',
+      title: "{{ message|escapejs }}",
+      showConfirmButton: false,
+      timer: 3500,
+      timerProgressBar: true,
+      customClass: {
+        popup: 'rounded-lg text-sm'
+      }
+    });
+  {% endfor %}
+});
+</script>
+{% endif %}
 
-                {# ADMIN LINK (Already correct as admin is a built-in app) #}
-                <a href="{% url 'admin:index' %}" class="text-white hover:text-blue-100 font-medium px-3 py-2 rounded-md transition-colors duration-200">Admin</a>
-                {# Add more links here later, e.g., for creating invoices #}
-
-                {# --- DARK MODE TOGGLE BUTTON --- #}
-                <button id="theme-toggle" onclick="toggleTheme()"
-                        class="p-2 rounded-full text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200 dark:hover:bg-gray-700">
-                    <span id="theme-toggle-light-icon" class="inline-block">
-                        ☀️
-                    </span>
-                    <span id="theme-toggle-dark-icon" class="inline-block">
-                        🌙
-                    </span>
-                </button>
-                {# --- END DARK MODE TOGGLE BUTTON --- #}
-            </div>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <img src="{% static 'lazordy_theme/images/primary_logo.png' %}" alt="Lazordy" class="sidebar-logo-img" />
+          <div>
+            <div class="golden-text" style="font-size: 1.125rem;">LAZORDY</div>
+            <div style="font-size: 0.75rem; opacity: 0.7;">Chandeliers • Furniture • Antiques</div>
+          </div>
         </div>
-    </nav>
+      </div>
 
-    <main class="container mx-auto p-6 mt-4">
-        {% block content %}
-            {# Content from child templates will go here #}
-        {% endblock content %}
+      <nav class="sidebar-nav">
+  <a href="{% url 'inventory:dashboard' %}" class="nav-item">
+    <span>📊</span><span>{% trans "Dashboard" %}</span>
+  </a>
+  <a href="{% url 'inventory:product_list' %}" class="nav-item">
+    <span>📦</span><span>{% trans "Products" %}</span>
+  </a>
+  <a href="{% url 'inventory:invoice_list' %}" class="nav-item">
+    <span>📄</span><span>{% trans "Invoices" %}</span>
+  </a>
+  {% if user.is_authenticated %}
+    <a href="{% url 'password_change' %}" class="nav-item">
+      <span>🔑</span><span>{% trans "Change Password" %}</span>
+    </a>
+  {% endif %}
+  <a href="{% url 'admin:index' %}" class="nav-item">
+    <span>⚙️</span><span>{% trans "Admin" %}</span>
+  </a>
+</nav>
+
+
+      <!-- Sidebar Footer -->
+<div class="sidebar-footer">
+  <div class="user-info">
+    <div class="user-avatar">{{ user.username|first|upper }}</div>
+    <div>
+      <div style="font-size: 0.875rem; font-weight: 500;">{{ user.username }}</div>
+      <div style="font-size: 0.75rem; opacity: 0.7;">{{ user.groups.all.0|default:"User" }}</div>
+    </div>
+  </div>
+
+  <button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle" type="button" aria-label="Toggle dark mode">
+    <span id="theme-toggle-light-icon" style="display: none;">☀️</span>
+    <span id="theme-toggle-dark-icon" style="display: none;">🌙</span>
+    <span style="font-size: 0.875rem; font-weight: 500;">Toggle Theme</span>
+  </button>
+
+  <!-- ✅ Language Switcher Form placed OUTSIDE the button -->
+  <form action="{% url 'set_language' %}" method="post" style="margin-top: 1rem;">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="{{ request.get_full_path }}">
+    <select name="language" onchange="this.form.submit()" class="text-sm w-full px-2 py-1 rounded border border-gray-300 bg-white dark:bg-gray-900 dark:text-white">
+      <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>🇬🇧 {% trans "English" %}</option>
+      <option value="ar" {% if LANGUAGE_CODE == 'ar' %}selected{% endif %}>🇸🇦 {% trans "Arabic" %}</option>
+
+    </select>
+  </form>
+</div>
+
+  
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <img src="{% static 'lazordy_theme/images/primary_logo.png' %}" alt="Lazordy" class="logo-img" />
+          <h1 class="golden-text" style="font-size: 1.25rem;">{% trans "Inventory Management" %}</h1>
+        </div>
+        <div style="font-size: 0.875rem;">{% trans "Welcome," %} {{ user.username }}</div>
+      </header>
+
+      <div class="content-area">
+        {% block content %}{% endblock %}
+      </div>
     </main>
+  </div>
 
-    <footer class="bg-gray-800 text-white text-center p-4 mt-8 dark:bg-gray-950"> {# Added dark mode for footer background #}
-        <div class="container mx-auto text-sm">
-            &copy; {% now "Y" %} Lazordy Inventory. All rights reserved.
-        </div>
-    </footer>
+  <!-- Theme Toggle Script -->
+  <script>
+    function updateThemeToggleIcons() {
+      const lightIcon = document.getElementById("theme-toggle-light-icon");
+      const darkIcon = document.getElementById("theme-toggle-dark-icon");
+      const isDark = document.documentElement.classList.contains("dark");
 
-    {# Script for the dark mode toggle function #}
-    <script>
-        function updateThemeToggleIcons() {
-            const lightIcon = document.getElementById('theme-toggle-light-icon');
-            const darkIcon = document.getElementById('theme-toggle-dark-icon');
+      if (lightIcon && darkIcon) {
+        lightIcon.style.display = isDark ? "inline" : "none";
+        darkIcon.style.display = isDark ? "none" : "inline";
+      }
+    }
 
-            if (document.documentElement.classList.contains('dark')) {
-                // If in dark mode, show sun icon (to switch to light)
-                if (lightIcon) lightIcon.classList.remove('hidden');
-                if (darkIcon) darkIcon.classList.add('hidden');
-            } else {
-                // If in light mode, show moon icon (to switch to dark)
-                if (lightIcon) lightIcon.classList.add('hidden');
-                if (darkIcon) darkIcon.classList.remove('hidden');
-            }
-        }
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      updateThemeToggleIcons();
+    }
 
-        function toggleTheme() {
-            const html = document.documentElement;
-            const isDark = html.classList.toggle('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            updateThemeToggleIcons(); // Update icons immediately after toggling
-        }
+    document.addEventListener('DOMContentLoaded', updateThemeToggleIcons);
+  </script>
 
-        // Call the function on page load to set the initial icon state
-        document.addEventListener('DOMContentLoaded', updateThemeToggleIcons);
-    </script>
+<!-- jQuery First -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    {% block extra_js %}{% endblock %}
-</body>
-</html>
+<!-- Select2 After jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<!-- Page-specific JS should come last -->
+{% block extra_js %}{% endblock %}

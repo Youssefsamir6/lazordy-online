@@ -1,0 +1,95 @@
+
+
+/* Target the body and main content areas to ensure dark mode is applied */
+body.dark-mode,
+body.dark-mode #content,
+body.dark-mode #content > .container-fluid,
+body.dark-mode #content .module,
+body.dark-mode #content .inline-group,
+body.dark-mode #content .form-row {
+    background-color: #2a2a2a !important; /* Force dark background */
+    color: #eee !important; /* Force light text for general content */
+}
+
+/* Force dark background and light text for all paragraph elements */
+/* This is most likely the culprit for "youssef" and "01095262732" */
+body.dark-mode p {
+    background-color: #2a2a2a !important; /* Make sure the background of p tags is dark */
+    color: #eee !important; /* Ensure text is light */
+    display: inline-block !important; /* Ensure background applies to the text area */
+}
+
+/* More specific targeting for values that appear unreadable */
+body.dark-mode .form-row div, /* Targeting any div within a form-row */
+body.dark-mode .form-row span, /* Targeting any span within a form-row */
+body.dark-mode .form-row .readonly, /* Existing readonly field targeting */
+body.dark-mode input[type="text"][readonly],
+body.dark-mode textarea[readonly],
+body.dark-mode select[readonly] {
+    background-color: #383838 !important; /* Slightly distinct dark grey background */
+    color: #eee !important;            /* Light text color */
+    padding: 8px 10px !important; /* Add some padding for better appearance */
+    border: 1px solid #555 !important; /* Subtle border */
+    border-radius: 4px !important; /* Slightly rounded corners */
+    display: inline-block !important; /* Or block, ensures background applies */
+    min-width: 150px !important; /* Give it some minimum width if it collapses */
+    box-sizing: border-box !important; /* Include padding and border in sizing */
+}
+
+/* Force colors for all labels (e.g., "Customer:", "Address:", "Phone:") */
+body.dark-mode label,
+body.dark-mode .form-row strong { /* Targeting the strong tag for labels */
+    color: #ddd !important; /* Slightly darker than main text to distinguish */
+}
+
+/* Ensure any general text, help text, or descriptions within the change form are readable */
+body.dark-mode .change-form p,
+body.dark-mode .change-form div.description,
+body.dark-mode .change-form div.helptext {
+    color: #eee !important;
+}
+
+/* Headings within modules/fieldsets */
+body.dark-mode .module h2,
+body.dark-mode .inline-group h2,
+body.dark-mode .module h3 {
+    color: #fff !important; /* White for headings */
+    background-color: #333 !important; /* Darker background for headings */
+    border-bottom: 1px solid #444 !important; /* Subtle line under headings */
+    padding: 8px 10px !important; /* Add padding to headings */
+}
+
+/* Standard input fields (if they also need adjustment) */
+body.dark-mode input[type="text"]:not([readonly]),
+body.dark-mode input[type="number"]:not([readonly]),
+body.dark-mode input[type="email"]:not([readonly]),
+body.dark-mode input[type="password"]:not([readonly]),
+body.dark-mode textarea:not([readonly]),
+body.dark-mode select:not([readonly]) {
+    background-color: #3e3e3e !important;
+    color: #eee !important;
+    border: 1px solid #555 !important;
+}
+
+/* Ensure any general text or descriptions within table cells are visible */
+body.dark-mode td,
+body.dark-mode th {
+    color: #eee !important;
+}
+
+/* Specific targeting for the layout divs that contain the customer info */
+body.dark-mode div.d-flex.flex-justify-between,
+body.dark-mode div.d-flex.flex-justify-between > div,
+body.dark-mode div.d-flex.flex-justify-between > div.col-md-6 {
+    background-color: #2a2a2a !important; /* Ensure these divs have a dark background */
+    color: #eee !important;
+}
+
+body.dark-mode::before {
+    content: "✔ DARK MODE CSS LOADED";
+    color: lime;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 9999;
+}

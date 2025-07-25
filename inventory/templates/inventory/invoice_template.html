@@ -1,46 +1,48 @@
+{% load i18n %}
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="{{ lang }}">
 <head>
-    <title>Invoice - {{ invoice.invoice_number }}</title>
-    <meta charset="utf-8">
-    {% load inventory_tags static %} {# Keep this line here for other static tag uses #}
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if lang == "ar" %}فاتورة رقم {{ invoice.invoice_number }}{% else %}Invoice #{{ invoice.invoice_number }}{% endif %}</title>
     <style>
-        /* Embed CSS directly here, or link to an external CSS file */
         body {
-            font-family: Arial, sans-serif;
-            margin: 20mm;
-            font-size: 10pt;
-            line-height: 1.5;
+            font-family: {% if lang == "ar" %} 'Amiri', serif {% else %} Arial, sans-serif {% endif %};
+            margin: 10mm;
+            font-size: 9pt;
+            line-height: 1.2;
+            direction: {% if lang == "ar" %} rtl {% else %} ltr {% endif %};
+            text-align: {% if lang == "ar" %} right {% else %} left {% endif %};
         }
-        h1, h2, h3, h4, h5, h6 {
+        h1, h2, h3 {
             color: #333;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 10px;
         }
         th, td {
             border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
+            padding: 4px;
+            text-align: {% if lang == "ar" %} right {% else %} left {% endif %};
         }
         th {
             background-color: #f2f2f2;
         }
         .header, .footer {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         .invoice-details, .customer-details, .company-details {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         .invoice-details div, .customer-details div {
-            margin-bottom: 5px;
+            margin-bottom: 2px;
         }
         .text-right {
-            text-align: right;
+            text-align: {% if lang == "ar" %} left {% else %} right {% endif %};
         }
         .total-row {
             font-weight: bold;
@@ -52,123 +54,173 @@
         .amount-paid {
             background-color: #ccffcc;
         }
-        @page {
-            size: A4;
-            margin: 20mm;
-            @top-right {
-                content: "Page " counter(page) " of " counter(pages);
-                font-size: 8pt;
-                color: #555;
-            }
-        }
         .logo-top {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         .logo-top img {
-            max-width: 150px; /* Adjust size as needed */
+            max-width: 120px;
             height: auto;
         }
-
-        /* Watermark styling */
+        .qr-code {
+            text-align: {% if lang == "ar" %} left {% else %} right {% endif %};
+            margin-top: -80px;
+        }
+        .qr-code img {
+            width: 90px;
+            height: 90px;
+        }
         .watermark {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* CRITICAL FIX: Use STATIC_URL directly for CSS background-image */
-            background-image: url("{{ request.scheme }}://{{ request.get_host }}/static/inventory/images/background_logo.png");
             background-repeat: no-repeat;
             background-position: center;
-            background-size: 80%;
-            opacity: 0.1;
+            background-size: 70%;
+            opacity: 0.07;
             z-index: -999;
+        }
+        @page {
+            size: A4;
+            margin: 10mm;
+            @top-right {
+                content: "Page " counter(page) " of " counter(pages);
+                font-size: 7pt;
+                color: #555;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="watermark"></div>
-
-    <div class="logo-top">
-        {# Use {% static %} for img tags as it's directly in HTML #}
-        <img src="{% static 'inventory/images/primary_logo.png' %}" alt="Lazordy Logo">
-    </div>
+    <div class="watermark" style="background-image: url('data:image/png;base64,{{ watermark_base64 }}');"></div>
 
     <div class="header">
-        <h1>Invoice</h1>
-        <div class="company-details">
-            <h2>Seller Information:</h2>
-            <strong>{{ company_name }}</strong><br>
-            {{ company_address }}<br>
-            Phone: {{ company_phone }} | Email: {{ company_email }}
+        <div class="logo-top">
+            <img src="data:image/png;base64,{{ logo_base64 }}" alt="Company Logo">
         </div>
+        <h1>{{ company_name }}</h1>
+        <p>{% if lang == "ar" %}ثريات - أثاث - تحف{% else %}Chandeliers Furniture Antiques{% endif %}</p>
+    </div>
+
+    <div class="qr-code">
+        <img src="data:image/png;base64,{{ qr_code_base64 }}" alt="QR Code">
+        <p style="font-size: 8pt;">
+            {% if lang == "ar" %}
+            امسح لرؤية/تحميل الفاتورة
+            {% else %}
+            Scan to view/download invoice
+            {% endif %}
+        </p>
     </div>
 
     <hr>
+    <h2 style="text-align: center;">
+        {% if lang == "ar" %}فاتورة{% else %}Invoice{% endif %}
+    </h2>
+
+    <div class="company-details">
+        <h3>{% if lang == "ar" %}معلومات البائع:{% else %}Seller Information:{% endif %}</h3>
+        <p><strong>{{ company_name }}</strong></p>
+        <p><strong>{% if lang == "ar" %}العنوان:{% else %}Company Address:{% endif %}</strong> {{ company_address }}</p>
+        <p><strong>{% if lang == "ar" %}هاتف:{% else %}Phone:{% endif %}</strong> {{ company_phone }} | 
+           <strong>{% if lang == "ar" %}بريد إلكتروني:{% else %}Email:{% endif %}</strong> {{ company_email }}</p>
+    </div>
 
     <div class="invoice-details">
-        <div><strong>Invoice Number:</strong> {{ invoice.invoice_number }}</div>
-        <div><strong>Invoice Date:</strong> {{ invoice.invoice_date|date:"F d, Y" }}</div>
-        <div><strong>Status:</strong> {{ invoice.get_status_display }}</div>
-        {% if invoice_maker %}
-            <div><strong>Invoice Prepared By:</strong> {{ invoice_maker }}</div>
+        <div><strong>{% if lang == "ar" %}رقم الفاتورة:{% else %}Invoice Number:{% endif %}</strong> {{ invoice.invoice_number }}</div>
+        <div><strong>{% if lang == "ar" %}تاريخ الفاتورة:{% else %}Invoice Date:{% endif %}</strong> {{ invoice.invoice_date|date:"Y-m-d" }}</div>
+        <div><strong>{% if lang == "ar" %}الحالة:{% else %}Status:{% endif %}</strong> {{ invoice.status }}</div>
+        {% if invoice.due_date %}
+            <div><strong>{% if lang == "ar" %}تاريخ الاستحقاق:{% else %}Due Date:{% endif %}</strong> {{ invoice.due_date|date:"Y-m-d" }}</div>
         {% endif %}
+        {% if invoice.payment_method %}
+            <div><strong>{% if lang == "ar" %}طريقة الدفع:{% else %}Payment Method:{% endif %}</strong> {{ invoice.get_payment_method_display }}</div>
+        {% endif %}
+        {% if invoice.manager_discount_amount > 0 %}
+            <div><strong>{% if lang == "ar" %}خصم المدير:{% else %}Manager Discount:{% endif %}</strong> -{{ invoice.manager_discount_amount|floatformat:2 }} EGP</div>
+        {% endif %}
+        <div><strong>{% if lang == "ar" %}أعدها:{% else %}Prepared By:{% endif %}</strong> {{ invoice_maker }}</div>
     </div>
 
     <div class="customer-details">
-        <h3>Bill To:</h3>
-        <div><strong>Customer Name:</strong> {{ invoice.customer_name }}</div>
-        {% if invoice.home_address %}<div>{{ invoice.home_address }}</div>{% endif %}
-        {% if invoice.customer_phone %}<div>Phone: {{ invoice.customer_phone }}</div>{% endif %}
+        <h3>{% if lang == "ar" %}تفاصيل العميل:{% else %}Bill To:{% endif %}</h3>
+        <div><strong>{% if lang == "ar" %}الاسم:{% else %}Customer Name:{% endif %}</strong> {{ invoice.customer_name }}</div>
+        <div><strong>{% if lang == "ar" %}العنوان:{% else %}Address:{% endif %}</strong> {{ invoice.home_address }}</div>
+        <div><strong>{% if lang == "ar" %}الهاتف:{% else %}Phone:{% endif %}</strong> {{ invoice.customer_phone }}</div>
     </div>
 
     <table>
         <thead>
             <tr>
-                <th>Product</th>
-                <th class="text-right">Unit Price</th>
-                <th class="text-right">Quantity</th>
-                <th class="text-right">Subtotal</th>
+                <th>{% if lang == "ar" %}المنتج{% else %}Product{% endif %}</th>
+                <th class="text-right">{% if lang == "ar" %}سعر الوحدة{% else %}Unit Price{% endif %}</th>
+                <th class="text-right">{% if lang == "ar" %}الكمية{% else %}Quantity{% endif %}</th>
+                <th class="text-right">{% if lang == "ar" %}الإجمالي الفرعي{% else %}Subtotal{% endif %}</th>
             </tr>
         </thead>
         <tbody>
-            {% for item in invoice_items %}
-            <tr>
-                <td>{{ item.product_name }}</td>
-                <td class="text-right">{{ item.unit_price|floatformat:2 }}</td>
-                <td class="text-right">{{ item.quantity }}</td>
-                <td class="text-right">{{ item.subtotal|floatformat:2 }}</td>
-            </tr>
-            {% endfor %}
-            <tr class="total-row">
-                <td colspan="3" class="text-right">Subtotal:</td>
-                <td class="text-right">{{ invoice_items|lineitems_subtotal|floatformat:2 }}</td>
-            </tr>
-            {% if invoice.discount_amount > 0 %}
-            <tr class="total-row">
-                <td colspan="3" class="text-right">Discount:</td>
-                <td class="text-right">- {{ invoice.discount_amount|floatformat:2 }}</td>
-            </tr>
+            {% if invoice_items %}
+                {% for item in invoice_items %}
+                <tr>
+                    <td>{{ item.product_name }}</td>
+                    <td class="text-right">{{ item.unit_price|floatformat:2 }} EGP</td>
+                    <td class="text-right">{{ item.quantity }}</td>
+                    <td class="text-right">{{ item.subtotal|floatformat:2 }} EGP</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4" style="text-align: center; padding: 15px;">
+                        {% if lang == "ar" %}لا توجد عناصر{% else %}No items found{% endif %}
+                    </td>
+                </tr>
             {% endif %}
             <tr class="total-row">
-                <td colspan="3" class="text-right">Total Amount:</td>
-                <td class="text-right">{{ invoice.total_amount|floatformat:2 }}</td>
+                <td colspan="3" class="text-right">{% if lang == "ar" %}الإجمالي الفرعي:{% else %}Subtotal:{% endif %}</td>
+                <td class="text-right">{{ invoice.subtotal_amount|floatformat:2 }} EGP</td>
+            </tr>
+            <tr class="total-row">
+                <td colspan="3" class="text-right">{% if lang == "ar" %}الخصم:{% else %}Discount:{% endif %}</td>
+                <td class="text-right">- {{ invoice.discount_amount|floatformat:2 }} EGP</td>
+            </tr>
+            <tr class="total-row">
+                <td colspan="3" class="text-right">{% if lang == "ar" %}خصم المدير:{% else %}Manager Discount:{% endif %}</td>
+                <td class="text-right">- {{ invoice.manager_discount_amount|floatformat:2 }} EGP</td>
+            </tr>
+            <tr class="total-row">
+                <td colspan="3" class="text-right">{% if lang == "ar" %}الإجمالي:{% else %}Total Amount:{% endif %}</td>
+                <td class="text-right">{{ invoice.total_amount|floatformat:2 }} EGP</td>
             </tr>
             <tr class="total-row amount-paid">
-                <td colspan="3" class="text-right">Amount Paid:</td>
-                <td class="text-right">{{ invoice.amount_paid|floatformat:2 }}</td>
+                <td colspan="3" class="text-right">{% if lang == "ar" %}المدفوع:{% else %}Amount Paid:{% endif %}</td>
+                <td class="text-right">{{ invoice.amount_paid|floatformat:2 }} EGP</td>
             </tr>
             <tr class="total-row amount-due">
-                <td colspan="3" class="text-right">Amount Remaining:</td>
-                <td class="text-right">{{ invoice.amount_remaining|floatformat:2 }}</td>
+                <td colspan="3" class="text-right">{% if lang == "ar" %}المتبقي:{% else %}Amount Remaining:{% endif %}</td>
+                <td class="text-right">{{ invoice.amount_remaining|floatformat:2 }} EGP</td>
             </tr>
         </tbody>
     </table>
 
-    <div class="footer" style="margin-top: 50px;">
-        <p>Thank you for your business!</p>
-        <p>Generated on: {{ current_date }}</p>
+    {% if invoice.notes %}
+        <div style="margin-top: 10px;">
+            <strong>{% if lang == "ar" %}ملاحظات:{% else %}Notes:{% endif %}</strong>
+            <p>{{ invoice.notes }}</p>
+        </div>
+    {% endif %}
+
+    {% if invoice.terms_and_conditions %}
+        <div style="margin-top: 10px;">
+            <strong>{% if lang == "ar" %}الشروط والأحكام:{% else %}Terms & Conditions:{% endif %}</strong>
+            <p>{{ invoice.terms_and_conditions }}</p>
+        </div>
+    {% endif %}
+
+    <div class="footer">
+        <p>{% if lang == "ar" %}شكراً لتعاملكم معنا{% else %}Thank you for your business!{% endif %}</p>
+        <p>{% if lang == "ar" %}تم إنشاء الفاتورة بتاريخ{% else %}Generated on:{% endif %} {{ current_date }}</p>
     </div>
 </body>
 </html>

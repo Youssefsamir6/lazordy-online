@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Custom CSS Variables for Theme Management --- */
+
+/* Light Theme */
+:root {
+  --background-rgb: 255 255 255;
+  --foreground-rgb: 0 0 0;
+  --primary-rgb: 217 119 6;
+  --primary-foreground-rgb: 255 255 255;
+  --accent-rgb: 252 211 77;
+  --sidebar-background-rgb: 243 244 246;
+  --sidebar-foreground-rgb: 31 41 55;
+  --muted-rgb: 229 231 235;
+  --border-rgb: 209 213 219;
+  --card-rgb: 255 255 255;
+}
+
+/* Dark Theme */
+html.dark {
+  --background-rgb: 17 24 39;
+  --foreground-rgb: 255 215 0;
+  --primary-rgb: 202 138 4;
+  --primary-foreground-rgb: 0 0 0;
+  --accent-rgb: 253 224 71;
+  --sidebar-background-rgb: 31 41 55;
+  --sidebar-foreground-rgb: 255 255 255;
+  --muted-rgb: 55 65 81;
+  --border-rgb: 75 85 99;
+  --card-rgb: 20 20 20;
+}
+
+/* Force dark text colors */
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6,
+html.dark p,
+html.dark strong,
+html.dark span,
+html.dark label,
+html.dark th,
+html.dark td {
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+html.dark a {
+  color: rgb(var(--primary-rgb)) !important;
+}
