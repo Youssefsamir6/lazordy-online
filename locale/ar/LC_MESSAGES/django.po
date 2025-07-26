@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-25 09:01+0300\n"
+"POT-Creation-Date: 2025-07-26 20:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,14 +13,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-
-#: .\django_project\settings.py:135
-msgid "العربية"
-msgstr ""
-
-#: .\django_project\settings.py:136 .\django_project\templates\base.html:355
-msgid "English"
-msgstr "انجليزي"
 
 #: .\django_project\templates\base.html:328
 msgid "Dashboard"
@@ -35,7 +27,6 @@ msgid "Invoices"
 msgstr "فواتير"
 
 #: .\django_project\templates\base.html:332
-#| msgid "Password"
 msgid "Change Password"
 msgstr " تغير كلمة المرور"
 
@@ -54,6 +45,10 @@ msgstr "تبديل المظهر"
 #: .\django_project\templates\base.html:354
 msgid "Select language"
 msgstr "اختر اللغة"
+
+#: .\django_project\templates\base.html:355
+msgid "English"
+msgstr "انجليزي"
 
 #: .\django_project\templates\base.html:356
 msgid "Arabic"

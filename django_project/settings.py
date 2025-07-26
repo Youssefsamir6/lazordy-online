@@ -132,10 +132,9 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'ar'
 
 LANGUAGES = [
-    ('ar', _('العربية')),
-    ('en', _('English')),
+    ('ar', 'العربية'), 
+    ('en', 'English'),  
 ]
-
 TIME_ZONE = 'Africa/Cairo'
 
 USE_I18N = True
@@ -153,8 +152,9 @@ LOCALE_PATHS = [
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-   
-    os.path.join(BASE_DIR, 'inventory', 'static'),  
+    
+    os.path.join(BASE_DIR, 'inventory', 'static'),
+    os.path.join(BASE_DIR, 'lazordy_theme', 'static'),  
 ]
 STATIC_ROOT = os.path.join(
     BASE_DIR,
