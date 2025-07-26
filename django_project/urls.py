@@ -8,15 +8,16 @@ from django.contrib.auth import views as auth_views
 from inventory import views
 from django.views.i18n import set_language
 
+# ✅ Non-i18n URLS
+urlpatterns = [
+    path('set-language/', set_language, name='set_language'),  # Moved OUT of i18n_patterns
+]
 
-urlpatterns = []
-
+# ✅ i18n-aware URLs
 urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     path('reports/', include('reports.urls')),
-    path('inventory/', include('inventory.urls', namespace='inventory')), # This remains changed
-    path('set-language/', set_language, name='set_language'),
-    # ADDED: Maps the root URL '/' to redirect to /inventory/
+    path('inventory/', include('inventory.urls', namespace='inventory')),
     path('', RedirectView.as_view(url='/inventory/', permanent=True)),
     path('accounts/password_change/', auth_views.PasswordChangeView.as_view(template_name='registration/password_change_form.html'), name='password_change'),
     path('accounts/password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='registration/password_change_done.html'), name='password_change_done'),

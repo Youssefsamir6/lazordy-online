@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-24 20:00+0300\n"
+"POT-Creation-Date: 2025-07-25 09:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,43 +14,90 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: .\django_project\settings.py:134 .\django_project\templates\base.html:318
-msgid "Arabic"
-msgstr "عربي"
+#: .\django_project\settings.py:135
+msgid "العربية"
+msgstr ""
 
-#: .\django_project\settings.py:135 .\django_project\templates\base.html:317
+#: .\django_project\settings.py:136 .\django_project\templates\base.html:355
 msgid "English"
 msgstr "انجليزي"
 
-#: .\django_project\templates\base.html:277
+#: .\django_project\templates\base.html:328
 msgid "Dashboard"
 msgstr "لوحة التحكم"
 
-#: .\django_project\templates\base.html:280
+#: .\django_project\templates\base.html:329
 msgid "Products"
 msgstr "منتجات"
 
-#: .\django_project\templates\base.html:283
+#: .\django_project\templates\base.html:330
 msgid "Invoices"
 msgstr "فواتير"
 
-#: .\django_project\templates\base.html:287
-#, fuzzy
+#: .\django_project\templates\base.html:332
 #| msgid "Password"
 msgid "Change Password"
-msgstr "كلمة المرور"
+msgstr " تغير كلمة المرور"
 
-#: .\django_project\templates\base.html:291
+#: .\django_project\templates\base.html:334
 msgid "Admin"
-msgstr ""
+msgstr "مسؤل"
 
-#: .\django_project\templates\base.html:331
+#: .\django_project\templates\base.html:346
+msgid "Toggle dark mode"
+msgstr "تبديل الوضع المظلم"
+
+#: .\django_project\templates\base.html:349
+msgid "Toggle Theme"
+msgstr "تبديل المظهر"
+
+#: .\django_project\templates\base.html:354
+msgid "Select language"
+msgstr "اختر اللغة"
+
+#: .\django_project\templates\base.html:356
+msgid "Arabic"
+msgstr "عربي"
+
+#: .\django_project\templates\base.html:364
+msgid "Toggle sidebar"
+msgstr "تبديل الشريط الجانبي"
+
+#: .\django_project\templates\base.html:367
 msgid "Inventory Management"
 msgstr "إدارة المخزون"
 
-#: .\django_project\templates\base.html:333
-msgid "Welcome,"
-msgstr "مرحباً"
+#: .\django_project\templates\base.html:375
+msgid "Total Estimated Value"
+msgstr "إجمالي القيمة التقديرية"
+
+#: .\django_project\templates\base.html:377
+msgid "Based on current stock"
+msgstr "استنادًا علي المخزون الحالي"
+
+#: .\django_project\templates\base.html:380
+msgid "Threshold"
+msgstr "الحد الأدنى"
+
+#: .\django_project\templates\base.html:382
+msgid "Threshold: 2 units"
+msgstr "الحد الأدنى: وحدتان"
+
+#: .\django_project\templates\base.html:385
+msgid "Last 30 Days"
+msgstr "آخر ٣٠ يومًا"
+
+#: .\django_project\templates\base.html:387
+msgid "Total Sales (EGP)"
+msgstr "إجمالي المبيعات (EGP)"
+
+#: .\django_project\templates\base.html:390
+msgid "Sales Trend"
+msgstr "اتجاه المبيعات"
+
+#: .\django_project\templates\base.html:391
+msgid "Placeholder for sales chart"
+msgstr "رسم بياني توضيحي للمبيعات"
 
 #: .\env\Lib\site-packages\django\contrib\messages\apps.py:15
 #: .\env_lazordy\Lib\site-packages\django\contrib\messages\apps.py:15
@@ -77,7 +124,7 @@ msgstr "النشر المتشارك"
 #: .\env\Lib\site-packages\django\core\paginator.py:30
 #: .\env_lazordy\Lib\site-packages\django\core\paginator.py:30
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: .\env\Lib\site-packages\django\core\paginator.py:50
 #: .\env_lazordy\Lib\site-packages\django\core\paginator.py:50
@@ -1713,3 +1760,6 @@ msgstr "كلمة المرور الجديدة"
 #: .\templates\registration\password_change_form.html:55
 msgid "Confirm new password"
 msgstr "تأكيد كلمة المرور الجديدة"
+
+#~ msgid "Welcome,"
+#~ msgstr "مرحباً"

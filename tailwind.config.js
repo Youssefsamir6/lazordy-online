@@ -1,7 +1,7 @@
 1.
    /** @type {import('tailwindcss').Config} */
    const plugin = require('tailwindcss/plugin');
-   
+   const rtl = require('tailwindcss-rtl');
    module.exports = {
      content: [
        './templates/**/*.html',

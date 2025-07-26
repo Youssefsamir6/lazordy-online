@@ -553,6 +553,6 @@ def upload_to_gofile(pdf_path):
     return None
 
 def switch_language(request, lang_code):
-    if lang_code in dict(settings.LANGUAGES):
-        request.session[translation.LANGUAGE_SESSION_KEY] = lang_code
+    translation.activate(lang_code)
+    request.session[translation.LANGUAGE_SESSION_KEY] = lang_code
     return redirect(request.META.get('HTTP_REFERER', '/'))
