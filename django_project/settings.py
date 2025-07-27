@@ -129,7 +129,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'ar'
+LANGUAGE_CODE = 'en'
 
 LANGUAGES = [
     ('ar', 'العربية'), 
@@ -154,11 +154,11 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     
     os.path.join(BASE_DIR, 'inventory', 'static'),
-    os.path.join(BASE_DIR, 'lazordy_theme', 'static'),  
+      
 ]
 STATIC_ROOT = os.path.join(
     BASE_DIR,
-    'staticfiles')  # Where 'collectstatic' will gather all static files
+    'staticfiles',)  # Where 'collectstatic' will gather all static files
 
 # Media files (for user-uploaded content like product photos)
 MEDIA_URL = '/media/'

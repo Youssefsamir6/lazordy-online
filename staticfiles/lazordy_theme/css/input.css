@@ -4,3 +4,30 @@
 @tailwind components;
 @tailwind utilities;
 
+
+:root {
+    --background-rgb: 255, 255, 255;
+    --foreground-rgb: 17, 24, 39;
+    --card-rgb: 255, 255, 255;
+    --primary-rgb: 234, 179, 8;
+    --primary-foreground-rgb: 0, 0, 0;
+    --accent-rgb: 59, 130, 246;
+    --sidebar-background-rgb: 17, 24, 39;
+    --sidebar-foreground-rgb: 255, 255, 255;
+    --muted-rgb: 107, 114, 128;
+    --border-rgb: 229, 231, 235;
+}
+
+/* Optional: dark mode */
+.dark {
+    --background-rgb: 17, 24, 39;
+    --foreground-rgb: 255, 255, 255;
+    --card-rgb: 31, 41, 55;
+    --primary-rgb: 234, 179, 8;
+    --primary-foreground-rgb: 0, 0, 0;
+    --accent-rgb: 59, 130, 246;
+    --sidebar-background-rgb: 31, 41, 55;
+    --sidebar-foreground-rgb: 255, 255, 255;
+    --muted-rgb: 156, 163, 175;
+    --border-rgb: 55, 65, 81;
+}

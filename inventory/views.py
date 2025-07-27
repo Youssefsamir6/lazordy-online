@@ -27,6 +27,10 @@ import tempfile
 from django.shortcuts import redirect
 from django.utils import translation
 from django.utils.translation import gettext_lazy as _
+from django.urls import translate_url
+
+
+
 logger = logging.getLogger(__name__)
 
 # --- API / Utility Views ---
@@ -553,6 +557,14 @@ def upload_to_gofile(pdf_path):
     return None
 
 def switch_language(request, lang_code):
+    # Activate the selected language
     translation.activate(lang_code)
     request.session[translation.LANGUAGE_SESSION_KEY] = lang_code
-    return redirect(request.META.get('HTTP_REFERER', '/'))
+
+    # Get the current URL (or fallback to home)
+    current_url = request.META.get('HTTP_REFERER', '/')
+
+    # Translate the URL to the selected language
+    translated_url = translate_url(current_url, lang_code)
+
+    return redirect(translated_url)
