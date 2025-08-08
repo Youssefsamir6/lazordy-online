@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>{{ invoice.number }}</title>
+</head>
+<body>
+  <h1>Invoice {{ invoice.number }}</h1>
+  <p>Customer: {{ invoice.customer }}</p>
+  <p>Status: {{ invoice.get_status_display }}</p>
+  <p>Payment: {{ invoice.get_payment_method_display }}</p>
+  <h2>Items</h2>
+  <ul>
+    {% for item in invoice.items.all %}
+      <li>{{ item.product }} x {{ item.quantity }} @ {{ item.price }} = {{ item.subtotal }}</li>
+    {% empty %}
+      <li>No items</li>
+    {% endfor %}
+  </ul>
+  <p>Subtotal: {{ invoice.subtotal }}</p>
+  <p>Discount: {{ invoice.total_discount }}</p>
+  <p>Total: {{ invoice.total }}</p>
+  <p><a href="/invoices/{{ invoice.id }}/pdf/">View PDF</a></p>
+</body>
+</html>

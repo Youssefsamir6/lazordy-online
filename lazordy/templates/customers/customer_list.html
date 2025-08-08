@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Customers</title>
+</head>
+<body>
+  <h1>Customers</h1>
+  <ul>
+    {% for c in customers %}
+      <li><a href="/customers/{{ c.id }}/">{{ c.name }} - {{ c.phone }}</a></li>
+    {% empty %}
+      <li>No customers</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
