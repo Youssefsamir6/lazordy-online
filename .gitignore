@@ -169,3 +169,10 @@ node_modules/
 # Nix
 /result
 /result-*
+
+__pycache__/
+.venv/
+*.pyc
+/data/
+/secrets/
+/.env
