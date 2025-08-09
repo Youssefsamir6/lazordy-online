@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Products</title>
+</head>
+<body>
+  <h1>Products</h1>
+  <ul>
+    {% for p in products %}
+      <li>
+        <a href="/inventory/{{ p.id }}/">{{ p.name }} ({{ p.item_code }}) - Qty: {{ p.quantity }} - Price: {{ p.price }}</a>
+      </li>
+    {% empty %}
+      <li>No products</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

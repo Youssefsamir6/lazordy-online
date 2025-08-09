@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>{{ product.name }}</title>
+</head>
+<body>
+  <h1>{{ product.name }} ({{ product.item_code }})</h1>
+  <p>Category: {{ product.category }}</p>
+  <p>Quantity: {{ product.quantity }}</p>
+  <p>Price: {{ product.price }}</p>
+  <p>Status: {{ product.get_status_display }}</p>
+  <p>Description: {{ product.description }}</p>
+</body>
+</html>
