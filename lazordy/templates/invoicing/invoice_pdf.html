@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body { font-family: sans-serif; }
+    h1 { font-size: 20px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ddd; padding: 6px; font-size: 12px; }
+    th { background: #f0f0f0; }
+    .totals { text-align: right; }
+  </style>
+</head>
+<body>
+  <h1>Invoice {{ invoice.number }}</h1>
+  <p>Customer: {{ invoice.customer }}</p>
+  <p>Date: {{ invoice.created_at }}</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in invoice.items.all %}
+      <tr>
+        <td>{{ item.product }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.price }}</td>
+        <td>{{ item.subtotal }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p class="totals">Subtotal: {{ invoice.subtotal }}</p>
+  <p class="totals">Discount: {{ invoice.total_discount }}</p>
+  <p class="totals"><strong>Total: {{ invoice.total }}</strong></p>
+</body>
+</html>

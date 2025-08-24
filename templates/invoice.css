@@ -1,0 +1,15 @@
+@page { size: A4; margin: 20mm }
+body { font-family: 'Noto Sans', 'DejaVu Sans', sans-serif; color: #f3f3f3; background: #000; }
+.header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #b8860b; padding-bottom: 8px; margin-bottom: 16px; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.logo { width: 40px; height: 40px; background: linear-gradient(135deg, #ffd700, #b8860b); border-radius: 4px; }
+.title { font-size: 26px; letter-spacing: 2px; font-weight: 700; color: #ffd700; }
+.items { width: 100%; border-collapse: collapse; }
+.items th, .items td { border-bottom: 1px solid #333; padding: 6px 8px; }
+.items thead th { color: #ffd700; border-bottom: 2px solid #b8860b; }
+.totals { margin-top: 12px; text-align: right; }
+.totals .total { font-size: 18px; color: #ffd700; margin-top: 6px; }
+.share { margin-top: 10px; display: flex; align-items: center; gap: 12px; }
+.qr { width: 96px; height: 96px; }
+.footer { margin-top: 20px; text-align: center; color: #999; font-size: 12px; }
+[dir="rtl"] body { direction: rtl; }

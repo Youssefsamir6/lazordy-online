@@ -1,0 +1,33 @@
+/* Lazordy Black-Gold Theme */
+QWidget {
+    background-color: #0a0a0a;
+    color: #f0f0f0;
+    selection-background-color: #b8860b;
+}
+QMenuBar, QMenu, QToolBar {
+    background-color: #0f0f0f;
+    color: #f0f0f0;
+}
+QPushButton {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    border: 1px solid #b8860b;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+QPushButton:hover { background-color: #222; }
+QPushButton:disabled { color: #777; border-color: #444; }
+QLineEdit, QComboBox, QTextEdit, QSpinBox, QDoubleSpinBox, QDateEdit, QTableView {
+    background-color: #121212;
+    color: #f0f0f0;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 4px;
+}
+QHeaderView::section {
+    background-color: #111;
+    color: #ffd700;
+    border: 0px;
+    padding: 6px;
+}
+QStatusBar { background-color: #0f0f0f; }

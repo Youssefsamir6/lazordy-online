@@ -1,0 +1,4 @@
+GOLD = "#ffd700"
+DARK_GOLD = "#b8860b"
+BLACK = "#000000"
+DARK = "#0a0a0a"

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Invoices</title>
+</head>
+<body>
+  <h1>Invoices</h1>
+  <ul>
+    {% for inv in invoices %}
+      <li>
+        <a href="/invoices/{{ inv.id }}/">{{ inv.number }} - {{ inv.customer }} - {{ inv.total }}</a>
+      </li>
+    {% empty %}
+      <li>No invoices</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

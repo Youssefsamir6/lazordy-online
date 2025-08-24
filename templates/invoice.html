@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invoice {{ invoice_number }}</title>
+  <link rel="stylesheet" href="invoice.css">
+</head>
+<body>
+  <div class="header">
+    <div class="brand">
+      <div class="logo"></div>
+      <div class="title">LAZORDY</div>
+    </div>
+    <div class="meta">
+      <div>Invoice #: {{ invoice_number }}</div>
+      <div>Date: {{ created_at }}</div>
+      {% if customer %}
+      <div>Customer: {{ customer.name }}</div>
+      <div>Phone: {{ customer.phone or '' }}</div>
+      {% endif %}
+    </div>
+  </div>
+
+  <table class="items">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Qty</th>
+        <th>Unit</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for idx, item in enumerate(items, start=1) %}
+      <tr>
+        <td>{{ idx }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ '%.2f'|format(item.unit_price) }}</td>
+        <td>{{ '%.2f'|format(item.subtotal) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="totals">
+    <div>Subtotal: {{ '%.2f'|format(subtotal) }}</div>
+    <div>Regular Discount: {{ '%.2f'|format(discount_regular) }}</div>
+    <div>Manager Discount: {{ '%.2f'|format(discount_manager) }}</div>
+    <div class="total">Total: {{ '%.2f'|format(total) }}</div>
+    <div>Status: {{ status }}</div>
+    <div>Payment: {{ payment_method or '' }}</div>
+  </div>
+
+  {% if share_link %}
+  <div class="share">
+    <div>Share: <a href="{{ share_link }}">{{ share_link }}</a></div>
+    {% if qr_path %}
+      <img class="qr" src="{{ qr_path }}" alt="QR">
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <div class="footer">Thank you for your business.</div>
+</body>
+</html>
