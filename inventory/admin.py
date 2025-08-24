@@ -1,4 +1,3 @@
-# D:\lazordy\lazordy\inventory\admin.py
 from django.contrib import messages
 from django.contrib import admin
 from django.urls import reverse
@@ -12,39 +11,34 @@ from .forms import InvoiceItemForm
 from django import forms
 from django.contrib.auth.admin import UserAdmin
 
-
-
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'name', 'item_code', 'price', 'cost', 'quantity', 'category', 'status',
-        'color', 'measurements_cm', 'photo_display',
+        'color', 'measurements', 'photo_display',
     )
     list_filter = ('category', 'status', 'color', 'size')
     search_fields = (
         'name__icontains', 'item_code__iexact', 'description__icontains',
-        'color__icontains', 'measurements_cm__icontains',
+        'color__icontains', 'measurements__icontains',
     )
     filter_horizontal = ('size',)
 
     def photo_display(self, obj):
         if obj.photo:
             return format_html('<img src="{}" width="50" height="50" style="object-fit: contain;" />', obj.photo.url)
-        return "No Image"
-    photo_display.short_description = "Photo"
-
+        return _("No Image")
+    photo_display.short_description = _("Photo")
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'description')
     search_fields = ('name',)
 
-
 @admin.register(Size)
 class SizeAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
-
 
 class InvoiceItemInline(admin.TabularInline):
     model = InvoiceItem
@@ -69,19 +63,6 @@ class InvoiceItemInline(admin.TabularInline):
         form.base_fields['unit_price'].widget.attrs['style'] = 'width: 100px;'
         return formset
 
-    def save_new_objects(self, formset, commit=True):
-        instances = formset.save(commit=False)
-        for obj in instances:
-            obj.save(deduct_stock=True)
-        formset.save_m2m()
-
-    def save_existing_objects(self, formset, commit=True):
-        instances = formset.save(commit=False)
-        for obj in instances:
-            obj.save(deduct_stock=True)
-        formset.save_m2m()
-   
-    
 @admin.register(Invoice)
 class InvoiceAdmin(admin.ModelAdmin):
     list_display = (
@@ -98,29 +79,29 @@ class InvoiceAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': (('customer_name', 'customer_phone'), 'home_address',  'company_address', 'company_phone', ('invoice_date', 'status')),
+            'fields': (('customer_name', 'customer_phone'), 'home_address', 'company_address', 'company_phone', ('invoice_date', 'status')),
         }),
-        ('General Discount', {
+        (_('General Discount'), {
             'fields': ('discount_amount',),
-            'description': 'General discount applied to the invoice.',
+            'description': _('General discount applied to the invoice.'),
         }),
-        ('Special Discount from Manager', {
+        (_('Special Discount from Manager'), {
             'fields': ('manager_discount_amount', 'manager_discount_reason'),
-            'description': 'Apply a special discount by a manager if needed.',
+            'description': _('Apply a special discount by a manager if needed.'),
         }),
-        ('Payment Details', {
+        (_('Payment Details'), {
             'fields': ('amount_paid', 'amount_remaining', 'payment_method'),
-            'description': "Enter amount paid if invoice is uncompleted or paid. Amount remaining is calculated.",
+            'description': _("Enter amount paid if invoice is uncompleted or paid. Amount remaining is calculated."),
         }),
-        ('Invoice Totals', {
+        (_('Invoice Totals'), {
             'fields': ('invoice_number', 'subtotal_amount', 'total_amount'),
-            'description': "These fields are automatically generated.",
+            'description': _("These fields are automatically generated."),
         }),
-        ('Additional Information', {
-            'fields': ('notes', 'terms_and_conditions'),
-            'description': 'Any additional notes or terms for the invoice.',
+        (_('Additional Information'), {
+            'fields': ('notes', 'terms_and_conditions', 'show_product_photos'),
+            'description': _('Any additional notes or terms for the invoice.'),
         }),
-        ('Timestamps and Audit', {
+        (_('Timestamps and Audit'), {
             'fields': ('created_at', 'updated_at', 'created_by', 'last_modified_by', 'due_date'),
         }),
     )
@@ -133,6 +114,7 @@ class InvoiceAdmin(admin.ModelAdmin):
         'created_at',
         'updated_at',
         'invoice_date',
+        'last_modified_by',
     )
 
     autocomplete_fields = ['created_by', 'last_modified_by']
@@ -146,28 +128,23 @@ class InvoiceAdmin(admin.ModelAdmin):
     def view_pdf_link(self, obj):
         if obj.pk:
             url = reverse('inventory:invoice_pdf', args=[obj.pk])
-            return format_html('<a class="button" href="{}" target="_blank">View PDF</a>', url)
+            return format_html('<a class="button" href="{}" target="_blank">{}</a>', url, _("View PDF"))
         return "-"
-    view_pdf_link.short_description = 'PDF'
+    view_pdf_link.short_description = _('PDF')
 
     def created_by_display(self, obj):
-        return obj.created_by.username if obj.created_by else 'N/A'
-    created_by_display.short_description = 'Created By'
+        return obj.created_by.username if obj.created_by else _('N/A')
+    created_by_display.short_description = _('Created By')
 
     def last_modified_by_display(self, obj):
-        return obj.last_modified_by.username if obj.last_modified_by else 'N/A'
-    last_modified_by_display.short_description = 'Last Modified By'
+        return obj.last_modified_by.username if obj.last_modified_by else _('N/A')
+    last_modified_by_display.short_description = _('Last Modified By')
 
     def save_model(self, request, obj, form, change):
-        if not obj.pk and not obj.created_by:
+        if not obj.pk:
             obj.created_by = request.user
         obj.last_modified_by = request.user
-
-        try:
-            super().save_model(request, obj, form, change)
-            messages.success(request, f"Invoice #{obj.invoice_number} saved successfully.")
-        except Exception as e:
-            messages.error(request, f"Failed to save invoice: {str(e)}")
+        super().save_model(request, obj, form, change)
 
     def save_formset(self, request, form, formset, change):
         try:
@@ -177,40 +154,18 @@ class InvoiceAdmin(admin.ModelAdmin):
             formset.save_m2m()
 
             invoice = form.instance
-            if invoice.pk:
-                subtotal = invoice.subtotal_amount
-                invoice.total_amount = subtotal - invoice.discount_amount - invoice.manager_discount_amount
-
-                if invoice.amount_paid > invoice.total_amount:
-                    invoice.amount_paid = invoice.total_amount
-
-                invoice.amount_remaining = invoice.total_amount - invoice.amount_paid
-
-                if invoice.status != 'cancelled':
-                    if invoice.amount_remaining == Decimal('0.00'):
-                        invoice.status = 'paid'
-                    elif invoice.amount_paid > Decimal('0.00') and invoice.amount_remaining > Decimal('0.00'):
-                        invoice.status = 'uncompleted'
-                    elif invoice.amount_paid == Decimal('0.00') and invoice.total_amount > Decimal('0.00'):
-                        invoice.status = 'draft'
-                    elif invoice.total_amount == Decimal('0.00'):
-                        invoice.status = 'draft'
-
-                invoice.save()
-                messages.success(request, "Invoice items and product stock updated successfully.")
+            invoice.save()
+            messages.success(request, _("Invoice items and product stock updated successfully."))
         except Exception as e:
-            messages.error(request, f"Failed to update invoice items: {str(e)}")
-
-
+            messages.error(request, _(f"Failed to update invoice items: {str(e)}"))
 
     def status_colored(self, obj):
         if obj.amount_remaining > 0:
-            return format_html('<span style="color: red; font-weight: bold;">Unpaid</span>')
+            return format_html('<span style="color: red; font-weight: bold;">{}</span>', _("Unpaid"))
         else:
-            return format_html('<span style="color: green; font-weight: bold;">Paid</span>')
+            return format_html('<span style="color: green; font-weight: bold;">{}</span>', _("Paid"))
 
-    status_colored.short_description = 'Status'
-
+    status_colored.short_description = _('Status')
 
 @admin.register(Dashboard)
 class DashboardAdmin(admin.ModelAdmin):
@@ -234,4 +189,3 @@ class DashboardAdmin(admin.ModelAdmin):
     def changelist_view(self, request, extra_context=None):
         dashboard_url = reverse('inventory:dashboard')
         return redirect(dashboard_url)
-

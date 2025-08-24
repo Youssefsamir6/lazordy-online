@@ -1,0 +1,100 @@
+/* --- START Corrected & Consolidated RTL Fixes --- */
+
+/* Basic RTL direction */
+[dir="rtl"] body {
+    direction: rtl;
+}
+
+/* Flips the entire layout, sidebar to the right */
+/* This is the primary fix for the main layout structure */
+[dir="rtl"] #container {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+/* Adjust the main content area margin to accommodate the sidebar */
+[dir="rtl"] #content {
+    margin-right: 250px; /* Adjust this to your sidebar's width */
+    margin-left: 0;
+}
+
+/* Fixes the position of the sidebar in RTL */
+[dir="rtl"] #nav-sidebar {
+    right: 0;
+    left: auto;
+}
+
+/* Float the user tools to the left */
+[dir="rtl"] #user-tools {
+    float: left;
+}
+
+/* Pushes the submit buttons to the left */
+[dir="rtl"] .submit-row {
+    text-align: left;
+}
+[dir="rtl"] .submit-row input,
+[dir="rtl"] .submit-row .button {
+    float: left;
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Align form labels to the right */
+[dir="rtl"] .form-row label {
+    text-align: right;
+    padding-right: 0;
+    padding-left: 10px;
+}
+
+/* Fixes the alignment of table headers and cells */
+[dir="rtl"] th,
+[dir="rtl"] td {
+    text-align: right;
+}
+
+/* Fixes the alignment of inline formsets */
+[dir="rtl"] .inline-related {
+    direction: rtl;
+    text-align: right;
+}
+[dir="rtl"] .inline-related .form-row > div {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+[dir="rtl"] .inline-related .field-delete {
+    float: left;
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Adjusts the 'Add another' and 'Delete' buttons on inlines */
+[dir="rtl"] .inline-related .add-row,
+[dir="rtl"] .inline-related .delete-row {
+    float: right;
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+/* Fixes for filter_horizontal widget */
+[dir="rtl"] .selector {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+[dir="rtl"] .selector-available,
+[dir="rtl"] .selector-chosen {
+    display: flex;
+    flex-direction: column;
+}
+[dir="rtl"] .selector select {
+    direction: rtl;
+    text-align: right;
+}
+[dir="rtl"] .selector .selector-filter {
+    direction: rtl;
+}
+
+/* --- END Corrected & Consolidated RTL Fixes --- */

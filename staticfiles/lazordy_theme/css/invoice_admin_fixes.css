@@ -1,0 +1,38 @@
+/* Invoice Inline Form Fixes for RTL and LTR */
+
+/* Ensure inline form rows have proper spacing and alignment */
+.inline-related .form-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px;
+}
+
+/* Fix label alignment */
+.inline-related .form-row label {
+    min-width: 120px;
+    text-align: left !important;
+    margin-right: 10px !important;
+}
+
+/* Fix input field widths */
+.inline-related .form-row input,
+.inline-related .form-row select {
+    width: auto !important;
+    min-width: 100px !important;
+}
+
+/* Fix subtotal readonly field alignment */
+.inline-related .form-row .field-subtotal {
+    text-align: right !important;
+    min-width: 80px !important;
+}
+
+/* Fix add/delete icons alignment */
+.inline-group .add-row,
+.inline-group .delete-row {
+    float: right !important;
+    margin-left: 10px !important;
+    margin-right: 0 !important;
+}

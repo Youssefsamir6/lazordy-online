@@ -3,6 +3,7 @@
 from rest_framework import serializers
 from .models import Category, Size, Product, Invoice, InvoiceItem # Ensure all models are imported
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _ # Import gettext_lazy
 
 User = get_user_model() # Get the currently active User model
 
@@ -121,11 +122,11 @@ class UserSerializer(serializers.ModelSerializer):
         Determine the user's role based on superuser status or group membership.
         """
         if obj.is_superuser:
-            return 'admin'
+            return _('admin') # Wrapped for translation
         # Assuming you have a Django Group named 'Staff'
         elif obj.groups.filter(name='Staff').exists():
-            return 'staff'
-        return 'user' # Default role for other authenticated users
+            return _('staff') # Wrapped for translation
+        return _('user') # Wrapped for translation # Default role for other authenticated users
 
 class InvoiceSerializer(serializers.ModelSerializer):
     """
@@ -178,17 +179,17 @@ class InvoiceSerializer(serializers.ModelSerializer):
     #     instance.save()
     #     # Handle invoice items (add, update, delete existing)
     #     # This is a simplified example; real-world might use update_or_create/bulk_create
-    #     existing_items = {item.id: item for item in instance.items.all()}
-    #     for item_data in items_data:
-    #         item_id = item_data.get('id')
-    #         if item_id and item_id in existing_items:
-    #             item = existing_items.pop(item_id)
-    #             for attr, value in item_data.items():
-    #                 setattr(item, attr, value)
-    #             item.save()
-    #         else:
-    #             InvoiceItem.objects.create(invoice=instance, **item_data)
-    #     # Delete items not present in the new data
-    #     for item in existing_items.values():
-    #         item.delete()
-    #     return instance
+    #     # existing_items = {item.id: item for item in instance.items.all()}
+    #     # for item_data in items_data:
+    #     #     item_id = item_data.get('id')
+    #     #     if item_id and item_id in existing_items:
+    #     #         item = existing_items.pop(item_id)
+    #     #         for attr, value in item_data.items():
+    #     #             setattr(item, attr, value)
+    #     #         item.save()
+    #     #     else:
+    #     #         InvoiceItem.objects.create(invoice=instance, **item_data)
+    #     # # Delete items not present in the new data
+    #     # for item in existing_items.values():
+    #     #     item.delete()
+    #     # return instance

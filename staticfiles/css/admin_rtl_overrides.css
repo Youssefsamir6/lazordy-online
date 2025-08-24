@@ -1,0 +1,45 @@
+/* Fix alignment issues in Django admin inline formsets for RTL languages */
+[dir="rtl"][lang="ar"] .inline-related {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"][lang="ar"] .inline-related .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+[dir="rtl"][lang="ar"] .inline-related .form-row > div {
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+    flex: 1 1 auto;
+    min-width: 100px;
+}
+
+[dir="rtl"][lang="ar"] .inline-related .form-row .field-delete {
+    margin-right: 5px !important;
+    margin-left: 5px !important;
+}
+
+/* Fix table headers alignment */
+[dir="rtl"][lang="ar"] table#invoiceitem_set-group thead th {
+    text-align: right !important;
+}
+
+/* Fix input fields alignment */
+[dir="rtl"][lang="ar"] .inline-related input[type="text"],
+[dir="rtl"][lang="ar"] .inline-related input[type="number"],
+[dir="rtl"][lang="ar"] .inline-related select,
+[dir="rtl"][lang="ar"] .inline-related textarea {
+    text-align: right;
+}
+
+/* Fix add/delete icons alignment */
+[dir="rtl"][lang="ar"] .inline-related .add-row,
+[dir="rtl"][lang="ar"] .inline-related .delete-row {
+    float: right !important;
+    margin-left: 10px !important;
+    margin-right: 0 !important;
+}

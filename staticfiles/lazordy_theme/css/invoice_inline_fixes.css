@@ -1,0 +1,123 @@
+/* Consolidated Invoice Inline Form Alignment Fixes */
+
+/* Make inline form rows flex container with wrapping */
+.inline-related .form-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 8px 0 !important;
+}
+
+/* Fix photo display size and margin */
+.inline-related .field-photo_display {
+    flex: 0 0 70px !important;
+    margin-right: 12px !important;
+}
+
+.inline-related .field-photo_display img {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: contain !important;
+    border-radius: 6px !important;
+    border: 1px solid #555 !important;
+}
+
+/* Fix widths of other fields for better alignment */
+.inline-related .field-product,
+.inline-related .field-product_name {
+    flex: 1 1 250px !important;
+    min-width: 200px !important;
+}
+
+.inline-related .field-quantity,
+.inline-related .field-unit_price,
+.inline-related .field-subtotal {
+    flex: 0 0 100px !important;
+    min-width: 80px !important;
+}
+
+.inline-related .field-delete {
+    flex: 0 0 30px !important;
+    align-self: center !important;
+}
+
+/* Ensure labels are properly aligned */
+.inline-related .form-row label {
+    min-width: 120px !important;
+    text-align: left !important;
+    margin-right: 8px !important;
+    font-weight: 500 !important;
+}
+
+/* Fix input field widths */
+.inline-related .form-row input,
+.inline-related .form-row select {
+    min-width: 100px !important;
+    width: 100% !important;
+    max-width: 300px !important;
+}
+
+/* Dark mode background and text */
+.inline-related {
+    background-color: #2d3748 !important; /* Dark gray */
+    color: #e2e8f0 !important; /* Light gray */
+    padding: 14px !important;
+    border-radius: 8px !important;
+    margin-bottom: 14px !important;
+    border: 1px solid #4a5568 !important;
+}
+
+/* Dark mode input fields */
+.inline-related input,
+.inline-related select,
+.inline-related textarea {
+    background-color: #4a5568 !important; /* Medium gray */
+    color: #e2e8f0 !important;
+    border: 1px solid #718096 !important;
+    border-radius: 4px !important;
+    padding: 6px 8px !important;
+}
+
+/* Dark mode input focus */
+.inline-related input:focus,
+.inline-related select:focus,
+.inline-related textarea:focus {
+    border-color: #f6ad55 !important; /* Amber */
+    box-shadow: 0 0 0 3px rgba(246, 173, 85, 0.5) !important;
+    outline: none !important;
+}
+
+/* Fix readonly fields */
+.inline-related .readonly {
+    background-color: #2d3748 !important;
+    color: #a0aec0 !important;
+    border: 1px solid #4a5568 !important;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .inline-related .form-row {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    
+    .inline-related .form-row label {
+        min-width: auto !important;
+        text-align: left !important;
+        margin-right: 0 !important;
+        margin-bottom: 4px !important;
+    }
+    
+    .inline-related .field-product,
+    .inline-related .field-product_name {
+        flex: 1 1 100% !important;
+        min-width: 100% !important;
+    }
+    
+    .inline-related .field-quantity,
+    .inline-related .field-unit_price,
+    .inline-related .field-subtotal {
+        flex: 1 1 100px !important;
+    }
+}

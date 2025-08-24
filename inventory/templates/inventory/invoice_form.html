@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block content %}
+<div class="container mx-auto max-w-5xl p-6">
+    <div class="bg-white dark:bg-gray-900 shadow-md rounded-lg p-6">
+        <h1 class="text-2xl font-bold mb-6 text-center">
+            {% if form.instance.pk %}
+                {% trans "Edit Invoice" %}
+            {% else %}
+                {% trans "Create Invoice" %}
+            {% endif %}
+        </h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {{ form.invoice_date.label_tag }} {{ form.invoice_date }}
+                {{ form.customer.label_tag }} {{ form.customer }}
+                {{ form.company_address.label_tag }}
+                <div>
+                    <span id="address-text">{{ form.company_address.value }}</span>
+                    <input type="text" name="company_address" id="id_company_address"
+                        value="{{ form.company_address.value }}"
+                        class="hidden w-full mt-1 p-2 border rounded" />
+                    <button type="button" onclick="toggleEdit('address')"
+                        class="text-sm text-blue-600 dark:text-blue-300 underline ml-2">
+                        ✎ {% trans "Edit" %}
+                    </button>
+                </div>
+                {{ form.company_phone.label_tag }}
+                <div>
+                    <span id="phone-text">{{ form.company_phone.value }}</span>
+                    <input type="text" name="company_phone" id="id_company_phone"
+                        value="{{ form.company_phone.value }}"
+                        class="hidden w-full mt-1 p-2 border rounded" />
+                    <button type="button" onclick="toggleEdit('phone')"
+                        class="text-sm text-blue-600 dark:text-blue-300 underline ml-2">
+                        ✎ {% trans "Edit" %}
+                    </button>
+                </div>
+            </div>
+
+            <hr class="my-6">
+
+            <h2 class="text-lg font-semibold mb-4">{% trans "Invoice Items" %}</h2>
+
+            <table class="w-full text-sm text-left" id="itemTable">
+                <thead>
+                    <tr class="border-b">
+                        <th class="px-4 py-2">{% trans "Product" %}</th>
+                        <th class="px-4 py-2">{% trans "Quantity" %}</th>
+                        <th class="px-4 py-2">{% trans "Unit Price" %}</th>
+                        <th class="px-4 py-2">{% trans "Subtotal" %}</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="itemRows">
+                    <!-- Rows injected by JS -->
+                </tbody>
+            </table>
+
+            <button type="button" onclick="addInvoiceItemRow()"
+                class="mt-4 text-white bg-green-600 hover:bg-green-700 px-4 py-2 rounded">
+                + {% trans "Add Item" %}
+            </button>
+
+            <input type="hidden" name="form-TOTAL_FORMS" id="id_form-TOTAL_FORMS" value="0">
+            <input type="hidden" name="form-INITIAL_FORMS" id="id_form-INITIAL_FORMS" value="0">
+            <input type="hidden" name="form-MIN_NUM_FORMS" value="0">
+            <input type="hidden" name="form-MAX_NUM_FORMS" value="1000">
+
+            <hr class="my-6">
+
+            <div class="text-right">
+                <button type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded">{% trans "Save" %}</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'js/invoice_form_logic.js' %}"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+{% endblock %}

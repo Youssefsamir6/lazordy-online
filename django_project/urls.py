@@ -15,7 +15,9 @@ urlpatterns = [
 
 # ✅ i18n-aware URLs
 urlpatterns += i18n_patterns(
+    path('grappelli/', include('grappelli.urls')),  # Added grappelli URLs
     path('admin/', admin.site.urls),
+    path('rosetta/', include('rosetta.urls')),
     path('reports/', include('reports.urls')),
     path('inventory/', include('inventory.urls', namespace='inventory')),
     path('', RedirectView.as_view(url='/inventory/', permanent=True)),

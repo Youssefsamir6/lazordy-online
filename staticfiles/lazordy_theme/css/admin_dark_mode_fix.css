@@ -1,34 +1,136 @@
-/* admin_dark_mode_fix.css */
+/* --- START Custom RTL Sidebar to Left Override --- */
 
-/* Fix light backgrounds in dark mode */
-html.dark .bg-white {
-    background-color: #1f2937 !important; /* Tailwind gray-800 or your custom color */
+/* Force sidebar to left for RTL */
+[dir="rtl"] .main-sidebar {
+    left: 0 !important;
+    right: auto !important;
 }
 
-/* Optional: Light borders look harsh in dark mode */
-html.dark .border-gray-300 {
-    border-color: #4b5563 !important; /* Tailwind gray-600 */
+/* Adjust content wrapper margins for RTL when sidebar is on the left */
+[dir="rtl"] .content-wrapper,
+[dir="rtl"] .main-footer,
+[dir="rtl"] .main-header {
+    margin-right: 0 !important;
+    margin-left: 250px !important;
 }
 
-/* Optional: Override input background */
-html.dark input,
-html.dark select,
-html.dark textarea {
-    background-color: #111827 !important; /* Tailwind gray-900 */
-    color: #f9fafb !important; /* Light text */
-    border-color: #374151 !important;
+/* Adjust content wrapper margins for RTL when sidebar is collapsed */
+[dir="rtl"] body.sidebar-collapse .content-wrapper,
+[dir="rtl"] body.sidebar-collapse .main-footer,
+[dir="rtl"] body.sidebar-collapse .main-header {
+    margin-left: 4.6rem !important;
+    margin-right: 0 !important;
 }
 
-/* Optional: Buttons */
-html.dark .btn {
-    background-color: #1f2937;
-    color: #f9fafb;
+/* Move collapsed sidebar off-screen to the left in RTL */
+[dir="rtl"] body.sidebar-collapse .main-sidebar {
+    left: -250px !important;
+    right: auto !important;
 }
 
-/* Add any more styles as needed */
-
-html.dark .model-invoice {
-    background-color: #111 !important;
+/* Ensure the overlay appears from the left */
+[dir="rtl"] .sidebar-overlay {
+    right: auto !important;
+    left: 0 !important;
 }
 
+/* Pushmenu icon padding */
+[dir="rtl"] .main-header .navbar-nav .nav-item .nav-link {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
 
+[dir="rtl"] .main-header .navbar-nav .nav-item:first-child .nav-link {
+    padding-left: 0.5rem;
+    padding-right: 0;
+}
+
+/* Last-resort margin fix */
+[dir="rtl"] .content-wrapper.right-side,
+[dir="rtl"] .right-side.content-wrapper {
+    margin-left: 250px !important;
+    margin-right: 0 !important;
+}
+
+[dir="rtl"] body.sidebar-collapse .content-wrapper.right-side,
+[dir="rtl"] body.sidebar-collapse .right-side.content-wrapper {
+    margin-left: 4.6rem !important;
+    margin-right: 0 !important;
+}
+
+/* --- END Custom RTL Sidebar to Left Override --- */
+
+/* --- START Center align admin form labels and inputs for RTL --- */
+[dir="rtl"] .form-row,
+[dir="rtl"] .form-row label,
+[dir="rtl"] .field-box {
+    text-align: right !important;
+    direction: rtl !important;
+    float: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    display: block !important;
+}
+/* --- END Center align admin form labels and inputs for RTL --- */
+
+/* --- START Fix float and flex display for form rows in RTL --- */
+[dir="rtl"] .form-row {
+    float: none !important;
+    display: flex !important;
+    width: 100% !important;
+    flex-direction: row-reverse !important;
+    align-items: center !important;
+}
+
+[dir="rtl"] .form-row label {
+    float: none !important;
+    width: auto !important;
+    text-align: right !important;
+    margin-bottom: 0.5rem !important;
+}
+
+[dir="rtl"] .field-box {
+    display: block !important;
+    width: auto !important;
+    text-align: right !important;
+}
+/* --- END Fix float and flex display for form rows in RTL --- */
+
+/* --- START Fix Django admin filter_horizontal in RTL --- */
+[dir="rtl"] .selector {
+    display: flex !important;
+    flex-direction: row-reverse !important;
+    gap: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 1rem;
+}
+
+[dir="rtl"] .selector select {
+    width: 250px !important;
+    height: 200px !important;
+    direction: rtl !important;
+    text-align: right !important;
+    font-family: inherit;
+}
+
+[dir="rtl"] .selector-available,
+[dir="rtl"] .selector-chosen {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+[dir="rtl"] .selector .selector-available h2,
+[dir="rtl"] .selector .selector-chosen h2 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+[dir="rtl"] .selector .selector-available .selector-filter,
+[dir="rtl"] .selector .selector-chosen .selector-filter {
+    margin-bottom: 0.5rem;
+    direction: rtl;
+}
+/* --- END Fix Django admin filter_horizontal in RTL --- */

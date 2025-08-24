@@ -20,14 +20,15 @@
         {# Error messages (Django's admin errors) #}
         {% if form.errors and not form.non_field_errors %}
             <div class="bg-red-800 border border-red-600 text-red-100 px-4 py-3 rounded-md relative mb-4" role="alert">
-                <strong class="font-bold">{% translate "Please correct the error below." %}</strong>
+                {# MODIFIED: Changed the msgid to avoid conflict with plural form #}
+                <strong class="font-bold">{% translate "Please review the error below." %}</strong>
                 <span class="block sm:inline"></span>
             </div>
         {% endif %}
 
         {% if form.non_field_errors %}
             <div class="bg-red-800 border border-red-600 text-red-100 px-4 py-3 rounded-md relative mb-4" role="alert">
-                <strong class="font-bold">Error!</strong>
+                <strong class="font-bold">{% translate "Error!" %}</strong> {# Wrapped 'Error!' for translation #}
                 <span class="block sm:inline">
                 {% for error in form.non_field_errors %}
                     {{ error }}

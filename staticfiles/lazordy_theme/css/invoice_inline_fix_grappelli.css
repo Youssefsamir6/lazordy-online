@@ -1,0 +1,58 @@
+/* Invoice Inline Form Alignment Fixes for Grappelli Admin */
+
+.inline-related {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 12px !important;
+    background-color: #2a2a2a !important;
+    border-radius: 8px !important;
+}
+
+.inline-related .form-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    flex-wrap: nowrap !important;
+}
+
+.inline-related .field-photo_display {
+    flex: 0 0 70px !important;
+    margin-right: 12px !important;
+}
+
+.inline-related .field-photo_display img {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: contain !important;
+    border-radius: 6px !important;
+    border: 1px solid #555 !important;
+}
+
+.inline-related .field-product,
+.inline-related .field-product_name {
+    flex: 1 1 250px !important;
+}
+
+.inline-related .field-quantity,
+.inline-related .field-unit_price,
+.inline-related .field-subtotal {
+    flex: 0 0 100px !important;
+}
+
+.inline-related input,
+.inline-related select,
+.inline-related textarea {
+    background-color: #3a3a3a !important;
+    color: #eee !important;
+    border: 1px solid #666 !important;
+    border-radius: 4px !important;
+}
+
+.inline-related input:focus,
+.inline-related select:focus,
+.inline-related textarea:focus {
+    border-color: #fbbf24 !important;
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.5) !important;
+    outline: none !important;
+}

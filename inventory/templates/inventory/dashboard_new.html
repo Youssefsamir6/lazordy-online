@@ -1,0 +1,295 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Cool New Dashboard - Lazordy Inventory" %}{% endblock %}
+
+{% block extra_head %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet" />
+    <style>
+        /* New dashboard custom styles with gold theme */
+        .card {
+            background: linear-gradient(135deg, #FFD700 0%, #FFD700 100%);
+            color: #3B2F00;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(184, 134, 11, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .card h2 {
+            color: #3B2F00;
+        }
+        .card p {
+            color: #3B2F00;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(184, 134, 11, 0.7);
+        }
+        .card h2 {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .card p {
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 0;
+        }
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: #3B2F00;
+        }
+        .toggle-btn {
+            background-color: #FFD700;
+            color: #3B2F00;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .toggle-btn:hover {
+            background-color: #bfa14a;
+        }
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+        .low-stock-list {
+            background: #FFD700;
+            border-radius: 1rem;
+            padding: 1rem 2rem;
+            color: #3B2F00;
+            box-shadow: 0 5px 15px rgba(184, 134, 11, 0.3);
+        }
+        .low-stock-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .low-stock-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #bfa14a;
+            font-weight: 600;
+        }
+        .low-stock-list li:last-child {
+            border-bottom: none;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="px-6 py-8">
+    <div class="dashboard-header">
+        <h1 class="text-4xl font-extrabold text-yellow-700">{% trans "Inventory Dashboard" %}</h1>
+        <form method="get" action="">
+            <input type="hidden" name="use_new_dashboard" value="0" />
+            <button type="submit" class="toggle-btn">{% trans "Switch to Current Dashboard" %}</button>
+        </form>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+        <div class="card animate__animated animate__fadeInUp">
+            <h2>{% trans "Total Products" %}</h2>
+            <p>{{ total_products }}</p>
+        </div>
+        <div class="card animate__animated animate__fadeInUp animate__delay-1s">
+            <h2>{% trans "Total Stock Value" %}</h2>
+            <p>{{ total_value|floatformat:2 }} EGP</p>
+        </div>
+        <div class="card animate__animated animate__fadeInUp animate__delay-2s">
+            <h2>{% trans "Low Stock Items" %}</h2>
+            <p>{{ low_stock_items|length }}</p>
+        </div>
+    </div>
+
+    <div class="chart-container animate__animated animate__fadeIn">
+        <canvas id="monthlySalesChartNew"></canvas>
+    </div>
+
+    <div class="chart-container animate__animated animate__fadeIn animate__delay-1s">
+        <canvas id="topSellingProductsChartNew"></canvas>
+    </div>
+
+    <div class="low-stock-list animate__animated animate__fadeIn animate__delay-2s">
+        <h3>{% trans "Products with Low Stock" %}</h3>
+        {% if low_stock_items %}
+            <ul>
+                {% for product in low_stock_items %}
+                <li>{{ product.name }} ({{ product.item_code }}) - {{ product.quantity }} {% trans "in stock" %}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>{% trans "No products are currently in low stock! 🎉" %}</p>
+        {% endif %}
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 mb-10">
+        <h3 class="text-xl font-semibold text-yellow-700 dark:text-yellow-400 mb-4">{% trans "Sales Trends & Analytics" %}</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <p class="text-yellow-700 dark:text-yellow-400">{% trans "Average Invoice Value:" %} <strong>{{ sales_overview.average_invoice_value|floatformat:2 }} EGP</strong></p>
+            <p class="text-yellow-700 dark:text-yellow-400">{% trans "Total Invoices:" %} <strong>{{ sales_overview.total_invoices }}</strong></p>
+        </div>
+    </div>
+</div>
+
+{{ monthly_sales|json_script:"monthly-sales-data-new" }}
+{{ product_movement|json_script:"top-selling-products-data-new" }}
+{{ "Total Sales (EGP)"|json_script:"js-total-sales-egp-new" }}
+{{ "Month"|json_script:"js-month-label-new" }}
+{{ "Quantity Sold"|json_script:"js-quantity-sold-new" }}
+{{ "Product"|json_script:"js-product-label-new" }}
+{{ "Total Quantity Sold"|json_script:"js-total-quantity-sold-new" }}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const gettext = (id) => {
+            const element = document.getElementById(id);
+            return element ? JSON.parse(element.textContent) : id.replace('js-', '').replace(/-/g, ' ');
+        };
+
+        const translatedTotalSalesEGP = gettext('js-total-sales-egp-new');
+        const translatedMonthLabel = gettext('js-month-label-new');
+        const translatedQuantitySold = gettext('js-quantity-sold-new');
+        const translatedProductLabel = gettext('js-product-label-new');
+        const translatedTotalQuantitySold = gettext('js-total-quantity-sold-new');
+
+        const monthlySalesDataElement = document.getElementById('monthly-sales-data-new');
+        const monthlySalesData = monthlySalesDataElement ? JSON.parse(monthlySalesDataElement.textContent) : [];
+
+        const monthlySalesLabels = monthlySalesData.map(item => item.month);
+        const monthlySalesValues = monthlySalesData.map(item => item.total_sales);
+
+        const ctxMonthly = document.getElementById('monthlySalesChartNew');
+        if (ctxMonthly) {
+            new Chart(ctxMonthly, {
+                type: 'line',
+                data: {
+                    labels: monthlySalesLabels,
+                    datasets: [{
+                        label: translatedTotalSalesEGP,
+                        data: monthlySalesValues,
+                        borderColor: '#b8860b',
+                        backgroundColor: 'rgba(184, 134, 11, 0.3)',
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 5,
+                        pointHoverRadius: 7,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: translatedTotalSalesEGP
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: translatedMonthLabel
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                color: '#b8860b'
+                            }
+                        },
+                        tooltip: {
+                            mode: 'nearest',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw.toFixed(2) + ' EGP';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        const topSellingProductsDataElement = document.getElementById('top-selling-products-data-new');
+        const topSellingProductsData = topSellingProductsDataElement ? JSON.parse(topSellingProductsDataElement.textContent) : [];
+
+        const productNames = topSellingProductsData.map(item => item.product__name);
+        const quantitiesSold = topSellingProductsData.map(item => item.total_quantity_sold);
+
+        const ctxTopSelling = document.getElementById('topSellingProductsChartNew');
+        if (ctxTopSelling) {
+            new Chart(ctxTopSelling, {
+                type: 'bar',
+                data: {
+                    labels: productNames,
+                    datasets: [{
+                        label: translatedQuantitySold,
+                        data: quantitiesSold,
+                        backgroundColor: [
+                            '#f0e68c',
+                            '#fffacd',
+                            '#fafad2',
+                            '#ffe4b5',
+                            '#ffebcd'
+                        ],
+                        borderColor: [
+                            '#b8860b',
+                            '#b8860b',
+                            '#b8860b',
+                            '#b8860b',
+                            '#b8860b'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: translatedQuantitySold
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: translatedProductLabel
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}

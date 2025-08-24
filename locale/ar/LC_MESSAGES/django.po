@@ -3,101 +3,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-27 06:40+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2025-08-11 21:51+0300\n"
+"PO-Revision-Date: 2025-08-11 22:01+0300\n"
+"Last-Translator:   <venomsamir66@gmail.com>\n"
+"Language-Team: \n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-
-#: .\django_project\templates\base.html:329
-msgid "Dashboard"
-msgstr "لوحة التحكم"
-
-#: .\django_project\templates\base.html:330
-msgid "Products"
-msgstr "المنتجات"
-
-#: .\django_project\templates\base.html:331
-msgid "Invoices"
-msgstr "الفواتير"
-
-#: .\django_project\templates\base.html:333
-msgid "Change Password"
-msgstr "تغيير كلمة المرور"
-
-#: .\django_project\templates\base.html:335
-msgid "Admin"
-msgstr "المسؤول"
-
-#: .\django_project\templates\base.html:347
-msgid "Toggle dark mode"
-msgstr "تبديل الوضع الداكن"
-
-#: .\django_project\templates\base.html:350
-msgid "Toggle Theme"
-msgstr "تبديل السمة"
-
-#: .\django_project\templates\base.html:355
-msgid "Select language"
-msgstr "اختر اللغة"
-
-#: .\django_project\templates\base.html:356
-msgid "English"
-msgstr "الإنجليزية"
-
-#: .\django_project\templates\base.html:357
-msgid "Arabic"
-msgstr "العربية"
-
-#: .\django_project\templates\base.html:365
-msgid "Toggle sidebar"
-msgstr "تبديل الشريط الجانبي"
-
-#: .\django_project\templates\base.html:368
-msgid "Inventory Management"
-msgstr "إدارة المخزون"
-
-#: .\django_project\templates\base.html:376
-msgid "Total Estimated Value"
-msgstr "إجمالي القيمة المقدرة"
-
-#: .\django_project\templates\base.html:378
-msgid "Based on current stock"
-msgstr "بناءً على المخزون الحالي"
-
-#: .\django_project\templates\base.html:381
-msgid "Threshold"
-msgstr "الحد الأدنى"
-
-#: .\django_project\templates\base.html:383
-msgid "Threshold: 2 units"
-msgstr "الحد الأدنى: وحدتان"
-
-#: .\django_project\templates\base.html:386
-msgid "Last 30 Days"
-msgstr "آخر 30 يومًا"
-
-#: .\django_project\templates\base.html:388
-msgid "Total Sales (EGP)"
-msgstr "إجمالي المبيعات (جنيه مصري)"
-
-#: .\django_project\templates\base.html:391
-msgid "Sales Trend"
-msgstr "اتجاه المبيعات"
-
-#: .\django_project\templates\base.html:392
-msgid "Placeholder for sales chart"
-msgstr "عنصر نائب لمخطط المبيعات"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Generator: Poedit 3.6\n"
+"X-Translated-Using: django-rosetta 0.10.2\n"
 
 #: .\env\Lib\site-packages\django\contrib\messages\apps.py:15
 #: .\env_lazordy\Lib\site-packages\django\contrib\messages\apps.py:15
@@ -173,8 +93,8 @@ msgstr "أدخل 'سلاغ' صالحًا يتكون من حروف أو أرقا�
 #: .\env\Lib\site-packages\django\core\validators.py:267
 #: .\env_lazordy\Lib\site-packages\django\core\validators.py:267
 msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
-"hyphens."
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or"
+" hyphens."
 msgstr ""
 "أدخل 'سلاغ' صالحًا يتكون من حروف يونيكود أو أرقام أو شرطات سفلية أو واصلات"
 
@@ -245,6 +165,10 @@ msgstr[0] ""
 msgstr[1] ""
 "تأكد أن هذه القيمة تحتوي على %(limit_value)d أحرف على الأقل (يحتوي على "
 "%(show_value)d)"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: .\env\Lib\site-packages\django\core\validators.py:438
 #: .\env_lazordy\Lib\site-packages\django\core\validators.py:438
@@ -260,6 +184,10 @@ msgstr[0] ""
 msgstr[1] ""
 "تأكد أن هذه القيمة تحتوي على %(limit_value)d أحرف على الأكثر (يحتوي على "
 "%(show_value)d)"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: .\env\Lib\site-packages\django\core\validators.py:461
 #: .\env\Lib\site-packages\django\forms\fields.py:347
@@ -277,6 +205,10 @@ msgid "Ensure that there are no more than %(max)s digit in total."
 msgid_plural "Ensure that there are no more than %(max)s digits in total."
 msgstr[0] "تأكد ألا يزيد العدد الإجمالي عن %(max)s رقم."
 msgstr[1] "تأكد ألا يزيد العدد الإجمالي عن %(max)s أرقام"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: .\env\Lib\site-packages\django\core\validators.py:468
 #: .\env_lazordy\Lib\site-packages\django\core\validators.py:468
@@ -285,6 +217,10 @@ msgid "Ensure that there are no more than %(max)s decimal place."
 msgid_plural "Ensure that there are no more than %(max)s decimal places."
 msgstr[0] "تأكد ألا تزيد المنازل العشرية عن %(max)s منزلة"
 msgstr[1] "تأكد ألا تزيد المنازل العشرية عن %(max)s منازل"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: .\env\Lib\site-packages\django\core\validators.py:473
 #: .\env_lazordy\Lib\site-packages\django\core\validators.py:473
@@ -295,6 +231,10 @@ msgid_plural ""
 "Ensure that there are no more than %(max)s digits before the decimal point."
 msgstr[0] "تأكد ألا يزيد العدد عن %(max)s رقم قبل العلامة العشرية"
 msgstr[1] "تأكد ألا يزيد العدد عن %(max)s أرقام قبل العلامة العشرية"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: .\env\Lib\site-packages\django\core\validators.py:544
 #: .\env_lazordy\Lib\site-packages\django\core\validators.py:544
@@ -418,7 +358,8 @@ msgstr ""
 msgid ""
 "“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
 "date."
-msgstr "قيمة “%(value)s” لها التنسيق الصحيح (YYYY-MM-DD) ولكنها تاريخ غير صالح"
+msgstr ""
+"قيمة “%(value)s” لها التنسيق الصحيح (YYYY-MM-DD) ولكنها تاريخ غير صالح"
 
 #: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1362
 #: .\env_lazordy\Lib\site-packages\django\db\models\fields\__init__.py:1362
@@ -439,8 +380,8 @@ msgstr ""
 #: .\env_lazordy\Lib\site-packages\django\db\models\fields\__init__.py:1497
 #, python-format
 msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
-"[TZ]) but it is an invalid date/time."
+"“%(value)s” value has the correct format (YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ]) but it is an invalid date/time."
 msgstr ""
 "قيمة “%(value)s” لها التنسيق الصحيح (YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ]) "
 "ولكنها تاريخ/وقت غير صالح"
@@ -583,7 +524,8 @@ msgid ""
 "“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
 "invalid time."
 msgstr ""
-"قيمة “%(value)s” لها التنسيق الصحيح (HH:MM[:ss[.uuuuuu]]) ولكنها وقت غير صالح"
+"قيمة “%(value)s” لها التنسيق الصحيح (HH:MM[:ss[.uuuuuu]]) ولكنها وقت غير "
+"صالح"
 
 #: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2456
 #: .\env_lazordy\Lib\site-packages\django\db\models\fields\__init__.py:2456
@@ -665,7 +607,8 @@ msgid "Many-to-many relationship"
 msgstr "علاقة متعدد لمتعدد"
 
 #. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the label
+#. characters will prevent the default label_suffix to be appended to the
+#. label
 #: .\env\Lib\site-packages\django\forms\boundfield.py:184
 #: .\env_lazordy\Lib\site-packages\django\forms\boundfield.py:184
 msgid ":?.!"
@@ -729,12 +672,18 @@ msgstr "الملف المقدم فارغ"
 #: .\env\Lib\site-packages\django\forms\fields.py:625
 #: .\env_lazordy\Lib\site-packages\django\forms\fields.py:625
 #, python-format
-msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid ""
+"Ensure this filename has at most %(max)d character (it has %(length)d)."
 msgid_plural ""
 "Ensure this filename has at most %(max)d characters (it has %(length)d)."
-msgstr[0] "تأكد ألا يزيد طول اسم الملف عن %(max)d حرف (طوله الحالي %(length)d)"
+msgstr[0] ""
+"تأكد ألا يزيد طول اسم الملف عن %(max)d حرف (طوله الحالي %(length)d)"
 msgstr[1] ""
 "تأكد ألا يزيد طول اسم الملف عن %(max)d حرفًا (طوله الحالي %(length)d)"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: .\env\Lib\site-packages\django\forms\fields.py:630
 #: .\env_lazordy\Lib\site-packages\django\forms\fields.py:630
@@ -814,6 +763,10 @@ msgid "Please submit at most %(num)d form."
 msgid_plural "Please submit at most %(num)d forms."
 msgstr[0] "الرجاء إرسال نموذج واحد على الأكثر"
 msgstr[1] "الرجاء إرسال %(num)d نماذج على الأكثر"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: .\env\Lib\site-packages\django\forms\formsets.py:72
 #: .\env_lazordy\Lib\site-packages\django\forms\formsets.py:72
@@ -822,6 +775,10 @@ msgid "Please submit at least %(num)d form."
 msgid_plural "Please submit at least %(num)d forms."
 msgstr[0] "الرجاء إرسال نموذج واحد على الأقل"
 msgstr[1] "الرجاء إرسال %(num)d نماذج على الأقل"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: .\env\Lib\site-packages\django\forms\formsets.py:484
 #: .\env\Lib\site-packages\django\forms\formsets.py:491
@@ -832,6 +789,14 @@ msgstr "ترتيب"
 
 #: .\env\Lib\site-packages\django\forms\formsets.py:499
 #: .\env_lazordy\Lib\site-packages\django\forms\formsets.py:499
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\delete_confirmation.html:19
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\submit_line.html:8
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\delete_confirmation.html:19
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\submit_line.html:8
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\related_widget_wrapper.html:26
+#: .\inventory\templates\inventory\invoice_list.html:129
+#: .\inventory\templates\inventory\product_confirm_delete.html:19
+#: .\inventory\templates\inventory\product_list.html:106
 msgid "Delete"
 msgstr "حذف"
 
@@ -869,7 +834,8 @@ msgstr "القيمة المضمنة لم تتطابق مع المثيل الأص
 
 #: .\env\Lib\site-packages\django\forms\models.py:1429
 #: .\env_lazordy\Lib\site-packages\django\forms\models.py:1429
-msgid "Select a valid choice. That choice is not one of the available choices."
+msgid ""
+"Select a valid choice. That choice is not one of the available choices."
 msgstr "يرجى اختيار قيمة صحيحة. هذا الاختيار ليس ضمن الخيارات المتاحة"
 
 #: .\env\Lib\site-packages\django\forms\models.py:1568
@@ -890,6 +856,7 @@ msgstr ""
 
 #: .\env\Lib\site-packages\django\forms\widgets.py:463
 #: .\env_lazordy\Lib\site-packages\django\forms\widgets.py:463
+#: .\inventory\templates\inventory\product_list.html:61
 msgid "Clear"
 msgstr "مسح"
 
@@ -900,6 +867,11 @@ msgstr "حالياً"
 
 #: .\env\Lib\site-packages\django\forms\widgets.py:465
 #: .\env_lazordy\Lib\site-packages\django\forms\widgets.py:465
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\stacked.html:26
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\tabular.html:78
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\stacked.html:26
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\tabular.html:78
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\related_widget_wrapper.html:10
 msgid "Change"
 msgstr "تغيير"
 
@@ -933,6 +905,10 @@ msgid "%(size)d byte"
 msgid_plural "%(size)d bytes"
 msgstr[0] "%(size)d بايت"
 msgstr[1] "%(size)d بايت"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: .\env\Lib\site-packages\django\template\defaultfilters.py:910
 #: .\env_lazordy\Lib\site-packages\django\template\defaultfilters.py:910
@@ -1360,6 +1336,10 @@ msgid "%(num)d year"
 msgid_plural "%(num)d years"
 msgstr[0] "%(num)d سنة"
 msgstr[1] "%(num)d سنوات"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: .\env\Lib\site-packages\django\utils\timesince.py:9
 #: .\env_lazordy\Lib\site-packages\django\utils\timesince.py:9
@@ -1368,6 +1348,10 @@ msgid "%(num)d month"
 msgid_plural "%(num)d months"
 msgstr[0] "%(num)d شهر"
 msgstr[1] "%(num)d أشهر"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: .\env\Lib\site-packages\django\utils\timesince.py:10
 #: .\env_lazordy\Lib\site-packages\django\utils\timesince.py:10
@@ -1376,6 +1360,10 @@ msgid "%(num)d week"
 msgid_plural "%(num)d weeks"
 msgstr[0] "%(num)d أسبوع"
 msgstr[1] "%(num)d أسابيع"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: .\env\Lib\site-packages\django\utils\timesince.py:11
 #: .\env_lazordy\Lib\site-packages\django\utils\timesince.py:11
@@ -1384,6 +1372,10 @@ msgid "%(num)d day"
 msgid_plural "%(num)d days"
 msgstr[0] "%(num)d يوم"
 msgstr[1] "%(num)d أيام"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: .\env\Lib\site-packages\django\utils\timesince.py:12
 #: .\env_lazordy\Lib\site-packages\django\utils\timesince.py:12
@@ -1392,6 +1384,10 @@ msgid "%(num)d hour"
 msgid_plural "%(num)d hours"
 msgstr[0] "%(num)d ساعة"
 msgstr[1] "%(num)d ساعات"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: .\env\Lib\site-packages\django\utils\timesince.py:13
 #: .\env_lazordy\Lib\site-packages\django\utils\timesince.py:13
@@ -1400,6 +1396,10 @@ msgid "%(num)d minute"
 msgid_plural "%(num)d minutes"
 msgstr[0] "%(num)d دقيقة"
 msgstr[1] "%(num)d دقائق"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: .\env\Lib\site-packages\django\views\csrf.py:111
 #: .\env_lazordy\Lib\site-packages\django\views\csrf.py:111
@@ -1436,10 +1436,10 @@ msgstr ""
 #: .\env\Lib\site-packages\django\views\csrf.py:127
 #: .\env_lazordy\Lib\site-packages\django\views\csrf.py:127
 msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
-"including the “Referrer-Policy: no-referrer” header, please remove them. The "
-"CSRF protection requires the “Referer” header to do strict referer checking. "
-"If you’re concerned about privacy, use alternatives like <a "
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or"
+" including the “Referrer-Policy: no-referrer” header, please remove them. "
+"The CSRF protection requires the “Referer” header to do strict referer "
+"checking. If you’re concerned about privacy, use alternatives like <a "
 "rel=\"noreferrer\" …> for links to third-party sites."
 msgstr ""
 "إذا كنت تستخدم وسم <meta name=\"referrer\" content=\"no-referrer\"> أو تقوم "
@@ -1586,15 +1586,15 @@ msgstr ""
 #: .\env_lazordy\Lib\site-packages\django\views\templates\default_urlconf.html:221
 #, python-format
 msgid ""
-"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" "
-"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
-"configured any URLs."
+"You are seeing this page because <a "
+"href=\"https://docs.djangoproject.com/en/%(version)s/ref/settings/#debug\" "
+"target=\"_blank\" rel=\"noopener\">DEBUG=True</a> is in your settings file "
+"and you have not configured any URLs."
 msgstr ""
-"تظهر لك هذه الصفحة لأن <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" "
-"rel=\"noopener\">DEBUG=True</a> موجود في ملف الإعدادات الخاص بك ولم تقم "
-"بتكوين أي عناوين URL"
+"تظهر لك هذه الصفحة لأن <a "
+"href=\"https://docs.djangoproject.com/en/%(version)s/ref/settings/#debug\" "
+"target=\"_blank\" rel=\"noopener\">DEBUG=True</a> موجود في ملف الإعدادات "
+"الخاص بك ولم تقم بتكوين أي عناوين URL"
 
 #: .\env\Lib\site-packages\django\views\templates\default_urlconf.html:229
 #: .\env_lazordy\Lib\site-packages\django\views\templates\default_urlconf.html:229
@@ -1631,82 +1631,2441 @@ msgstr "تواصل، احصل على المساعدة، أو ساهم"
 msgid "No file selected!"
 msgstr "لم يتم اختيار ملف!"
 
-#: .\inventory\templates\inventory\dashboard.html:22
-msgid "Inventory Dashboard"
-msgstr "لوحة تحكم المخزون"
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\dashboards.py:87
+#: .\inventory\models.py:469 .\inventory\models.py:470
+#: .\templates\base.html:347
+msgid "Dashboard"
+msgstr "لوحة التحكم"
 
-#: .\inventory\templates\inventory\dashboard.html:26
-msgid "Total Products"
-msgstr "إجمالي المنتجات"
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\dashboards.py:131
+msgid "Quick links"
+msgstr "الروابط السريعة"
 
-#: .\inventory\templates\inventory\dashboard.html:37
-msgid "Low Stock Items"
-msgstr "منتجات منخفضة المخزون"
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\dashboards.py:134
+msgid "Return to site"
+msgstr "العودة إلى الموقع"
 
-#: .\inventory\templates\inventory\dashboard.html:45
-msgid "Monthly Sales Overview"
-msgstr "نظرة عامة على المبيعات الشهرية"
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\dashboards.py:135
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\auth\user\change_password.html:11
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\auth\user\change_password.html:57
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\base.html:103
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\auth\user\change_password.html:11
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\auth\user\change_password.html:57
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\base.html:103
+msgid "Change password"
+msgstr "تغيير كلمة المرور"
 
-#: .\inventory\templates\inventory\dashboard.html:52
-msgid "Top Sold Products"
-msgstr "المنتجات الأكثر مبيعاً"
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\dashboards.py:137
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\base.html:110
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\base.html:110
+msgid "Log out"
+msgstr "تسجيل الخروج"
 
-#: .\inventory\templates\inventory\dashboard.html:61
-#, python-format
-msgid "Products with Low Stock (Below %(threshold)s units)"
-msgstr "منتجات ذات مخزون منخفض (أقل من %(threshold)s وحدة)"
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\dashboards.py:143
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\modules.py:216
+msgid "Applications"
+msgstr "التطبيقات"
 
-#: .\inventory\templates\inventory\dashboard.html:79
-msgid "No products are currently in low stock! 🎉"
-msgstr "لا توجد منتجات منخفضة المخزون حاليًا! 🎉"
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\dashboards.py:149
+msgid "Administration"
+msgstr "الإدارة"
 
-#: .\templates\admin\change_form.html:18
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\dashboards.py:154
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\modules.py:295
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\index.html:69
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\index.html:69
+msgid "Recent actions"
+msgstr "الإجراءات الأخيرة"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\dashboards.py:158
+msgid "Latest Django News"
+msgstr "آخر أخبار Django"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\dashboards.py:165
+msgid "Support"
+msgstr "الدعم"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\dashboards.py:168
+msgid "Django documentation"
+msgstr "توثيق جانغو"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\dashboards.py:174
+msgid "Django \"django-users\" mailing list"
+msgstr "قائمة بريدية لمستخدمي Django \"django-users\""
+
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\dashboards.py:180
+msgid "Django irc channel"
+msgstr "قناة Django على IRC"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\modules.py:184
+msgid "Links"
+msgstr "روابط"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\modules.py:356
+msgid "RSS Feed"
+msgstr "خلاصة RSS"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\templates\admin\index.html:25
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\500.html:9
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\app_index.html:11
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\auth\user\change_password.html:7
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\base.html:142
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_form.html:153
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list.html:141
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_confirm.html:141
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_confirm_sidebar.html:142
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_sidebar.html:142
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\constance\change_list.html:72
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\csv_export_selected_confirmation.html:9
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\delete_confirmation.html:13
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\delete_selected_confirmation.html:13
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\index.html:18
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\invalid_setup.html:9
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\object_history.html:9
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\bookmarklets.html:8
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\index.html:9
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\missing_docutils.html:8
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\model_detail.html:20
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\model_index.html:23
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\template_filter_index.html:25
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\template_tag_index.html:27
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\view_detail.html:7
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\view_index.html:23
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\500.html:9
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\app_index.html:11
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\auth\user\change_password.html:7
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\base.html:142
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_form.html:153
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list.html:141
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_confirm.html:141
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_confirm_sidebar.html:142
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_sidebar.html:142
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\constance\change_list.html:72
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\csv_export_selected_confirmation.html:9
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\delete_confirmation.html:13
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\delete_selected_confirmation.html:13
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\index.html:18
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\invalid_setup.html:9
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\object_history.html:9
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grp_doc\basic_page_structure.html:132
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grp_doc\context_navigation.html:55
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_change_done.html:6
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_change_form.html:6
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\recover_form.html:7
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\recover_list.html:6
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\revision_form.html:7
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\smuggler\load_data_form.html:24
 msgid "Home"
 msgstr "الرئيسية"
 
-#: .\templates\admin\change_form.html:21
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\templates\grappelli\dashboard\modules\app_list.html:19
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\templates\grappelli\dashboard\modules\model_list.html:9
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\app_index.html:30
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_form.html:159
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\index.html:44
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\app_index.html:30
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_form.html:159
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\index.html:44
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\related_widget_wrapper.html:18
+msgid "Add"
+msgstr "إضافة"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\dashboard\templates\grappelli\dashboard\modules\recent_actions.html:18
+msgid "None Available"
+msgstr "لا توجد  متاحة"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\404.html:7
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\404.html:11
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\404.html:7
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\404.html:11
+msgid "Page not found"
+msgstr "الصفحة غير موجودة"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\404.html:12
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\404.html:12
+msgid "We're sorry, but the requested page could not be found."
+msgstr "عذرًا، الصفحة المطلوبة غير موجودة."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\500.html:10
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\500.html:10
+msgid "Server error"
+msgstr "خطأ في الخادم"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\500.html:15
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\500.html:15
+msgid "Server error (500)"
+msgstr "خطأ في الخادم (500)"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\500.html:19
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\500.html:19
+msgid "Server Error <em>(500)</em>"
+msgstr "خطأ في الخادم <em>(500)</em>"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\500.html:20
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\500.html:20
+msgid ""
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
+msgstr ""
+"حدث خطأ. تم إرسال تقرير إلى مسؤولي الموقع عبر البريد الإلكتروني، وسيتم "
+"إصلاحه قريبًا. شكرًا على صبرك."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\actions.html:4
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\actions.html:4
+msgid "Run the selected action"
+msgstr "تنفيذ الإجراء المحدد"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\actions.html:4
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\actions.html:4
+msgid "Go"
+msgstr "تنفيذ"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\actions.html:11
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\actions.html:11
+msgid "Click here to select the objects across all pages"
+msgstr "انقر هنا لتحديد العناصر في جميع الصفحات"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\actions.html:11
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\actions.html:11
 #, python-format
-msgid "Add %(name)s"
-msgstr "إضافة %(name)s"
+msgid "Select all %(total_count)s %(module_name)s"
+msgstr "تحديد كل %(total_count)s من %(module_name)s"
 
-#: .\templates\admin\change_form.html:43 .\templates\registration\login.html:23
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\actions.html:12
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\actions.html:12
+msgid "Clear selection"
+msgstr "إلغاء التحديد"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\app_index.html:13
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\app_index.html:13
+#, python-format
+msgid "<li>%(name)s</li>"
+msgstr ""
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\app_index.html:37
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\index.html:52
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\app_index.html:37
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\index.html:52
+msgid "You don´t have permission to edit anything."
+msgstr "ليس لديك الإذن لتعديل أي شيء."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\auth\user\change_password.html:15
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\auth\user\change_password.html:15
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_change_done.html:7
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_change_form.html:7
+msgid "Password change"
+msgstr "تغيير كلمة المرور"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\auth\user\change_password.html:24
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\auth\user\change_password.html:24
+#, python-format
+msgid "Enter a new password for the user <strong>%(username)s</strong>."
+msgstr "أدخل كلمة مرور جديدة للمستخدم %(username)s."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\auth\user\change_password.html:27
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_form.html:190
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list.html:222
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_confirm.html:230
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_confirm_sidebar.html:227
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_sidebar.html:221
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\login.html:31
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\auth\user\change_password.html:27
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_form.html:190
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list.html:222
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_confirm.html:230
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_confirm_sidebar.html:227
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_sidebar.html:221
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\login.html:31
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\smuggler\load_data_form.html:40
 msgid "Please correct the error below."
-msgid_plural "Please correct the errors below."
-msgstr[0] "يرجى تصحيح الخطأ أدناه"
-msgstr[1] "يرجى تصحيح الأخطاء أدناه"
+msgstr "يرجى تصحيح الخطأ أدناه"
 
-#: .\templates\registration\login.html:6 .\templates\registration\login.html:85
-msgid "Log in"
-msgstr "تسجيل الدخول"
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\auth\user\change_password.html:27
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_form.html:190
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list.html:222
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_confirm.html:230
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_confirm_sidebar.html:227
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_sidebar.html:221
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\login.html:31
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\auth\user\change_password.html:27
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_form.html:190
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list.html:222
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_confirm.html:230
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_confirm_sidebar.html:227
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_sidebar.html:221
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\login.html:31
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\smuggler\load_data_form.html:42
+msgid "Please correct the errors below."
+msgstr "يرجى تصحيح الأخطاء أدناه"
 
-#: .\templates\registration\login.html:41
-msgid "You are authenticated as"
-msgstr "لقد تم مصادقتك كـ"
-
-#: .\templates\registration\login.html:43
-msgid "but are not authorized to access this page."
-msgstr "ولكنك غير مصرح لك بالوصول إلى هذه الصفحة"
-
-#: .\templates\registration\login.html:53
-msgid "Username"
-msgstr "اسم المستخدم"
-
-#: .\templates\registration\login.html:70
-msgid "Password"
-msgstr "كلمة المرور"
-
-#: .\templates\registration\login.html:91
-msgid "Forgotten your password or username?"
-msgstr "هل نسيت كلمة المرور أو اسم المستخدم؟"
-
-#: .\templates\registration\password_change_form.html:26
-msgid "Old password"
-msgstr "كلمة المرور القديمة"
-
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\auth\user\change_password.html:34
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\auth\user\change_password.html:34
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_change_form.html:30
 #: .\templates\registration\password_change_form.html:39
 msgid "New password"
 msgstr "كلمة المرور الجديدة"
 
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\auth\user\change_password.html:46
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\auth\user\change_password.html:46
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_change_form.html:37
+msgid "Password (again)"
+msgstr "كلمة المرور (مرة أخرى)"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\auth\user\change_password.html:50
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\auth\user\change_password.html:50
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_confirm.html:29
+msgid "Enter the same password as above, for verification."
+msgstr "أدخل نفس كلمة المرور السابقة للتأكيد."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\base.html:82
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\base.html:82
+msgid "Django administration"
+msgstr "إدارة جانغو"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\base.html:119
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\base.html:119
+msgid "View site"
+msgstr "عرض الموقع"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\base.html:124
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\bookmarklets.html:9
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\base.html:124
+msgid "Documentation"
+msgstr "التوثيق"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_form.html:143
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\stacked.html:9
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_form.html:143
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\stacked.html:9
+msgid "Open All Items"
+msgstr "فتح جميع العناصر"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_form.html:144
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\stacked.html:10
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_form.html:144
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\stacked.html:10
+msgid "Close All Items"
+msgstr "إغلاق جميع العناصر"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_form.html:171
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\object_history.html:15
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_form.html:171
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\object_history.html:15
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\revision_form.html:11
+msgid "History"
+msgstr "السجل"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_form.html:172
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_form.html:172
+msgid "View on site"
+msgstr "عرض في الموقع"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list.html:159
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_confirm.html:159
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_confirm_sidebar.html:160
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_sidebar.html:160
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list.html:159
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_confirm.html:159
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_confirm_sidebar.html:160
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_sidebar.html:160
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\smuggler\change_list.html:15
+#, python-format
+msgid "Add %(name)s"
+msgstr "إضافة %(name)s"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list.html:188
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_confirm.html:188
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_confirm_sidebar.html:175
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_sidebar.html:175
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list.html:188
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_confirm.html:188
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_confirm_sidebar.html:175
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_sidebar.html:175
+msgid "Filter"
+msgstr "تصفية"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list.html:249
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_confirm.html:257
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_confirm_sidebar.html:254
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_sidebar.html:248
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\constance\change_list.html:108
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\submit_line.html:11
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list.html:249
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_confirm.html:257
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_confirm_sidebar.html:254
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_sidebar.html:248
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\constance\change_list.html:108
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\submit_line.html:11
+#: .\inventory\templates\inventory\invoice_form.html:77
+msgid "Save"
+msgstr "حفظ"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_confirm.html:195
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_confirm_sidebar.html:179
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_confirm.html:195
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_confirm_sidebar.html:179
+msgid "Apply"
+msgstr "تطبيق"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_confirm.html:196
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_filter_confirm_sidebar.html:180
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_confirm.html:196
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_filter_confirm_sidebar.html:180
+msgid "Reset"
+msgstr "إعادة تعيين"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_results.html:18
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_results.html:18
+msgid "Toggle sorting"
+msgstr "تبديل الترتيب"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_results.html:19
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_results.html:19
+#, python-format
+msgid "Sorting priority: %(priority_number)s"
+msgstr "أولوية الترتيب: %(priority_number)s"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\change_list_results.html:20
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\change_list_results.html:20
+msgid "Remove from sorting"
+msgstr "إزالة من الترتيب"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\constance\includes\results_list.html:8
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\constance\includes\results_list.html:8
+#: .\inventory\models.py:20 .\inventory\models.py:41 .\inventory\models.py:57
+msgid "Name"
+msgstr "الاسم"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\constance\includes\results_list.html:13
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\constance\includes\results_list.html:13
+#: .\inventory\templates\inventory\product_list.html:43
+msgid "Default"
+msgstr "افتراضي"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\constance\includes\results_list.html:18
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\constance\includes\results_list.html:18
+msgid "Value"
+msgstr "القيمة"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\constance\includes\results_list.html:23
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\constance\includes\results_list.html:23
+msgid "Is modified"
+msgstr "تم تعديله"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\constance\includes\results_list.html:67
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\constance\includes\results_list.html:67
+msgid "Reset to default"
+msgstr "إعادة التعيين إلى الإعدادات الافتراضية"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\csv_export_selected_confirmation.html:12
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\csv_export_selected_confirmation.html:12
+msgid "Export selection as CSV"
+msgstr "تصدير التحديد كملف CSV"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\csv_export_selected_confirmation.html:31
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\csv_export_selected_confirmation.html:31
+msgid "Export following fields:"
+msgstr "تصدير الحقول التالية:"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\csv_export_selected_confirmation.html:34
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\csv_export_selected_confirmation.html:34
+msgid "Select all"
+msgstr "تحديد الكل"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\csv_export_selected_confirmation.html:54
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\csv_export_selected_confirmation.html:54
+msgid "Back"
+msgstr "تصدير الحقول التالية:"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\csv_export_selected_confirmation.html:55
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\import_export\change_list_export_item.html:4
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\csv_export_selected_confirmation.html:55
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\import_export\change_list_export_item.html:4
+msgid "Export"
+msgstr "تصدير"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\delete_confirmation.html:29
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\delete_confirmation.html:29
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would result in deleting "
+"related objects, but your account doesn't have permission to delete the "
+"following types of objects:"
+msgstr ""
+"حذف %(object_name)s '%(escaped_object)s' سيؤدي إلى حذف كائنات مرتبطة، لكن "
+"حسابك لا يملك الصلاحية لحذف الأنواع التالية من الكائنات:"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\delete_confirmation.html:37
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\delete_confirmation.html:37
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the"
+" following protected related objects:"
+msgstr ""
+"حذف %(object_name)s '%(escaped_object)s' سيتطلب حذف الكائنات المرتبطة "
+"المحمية التالية:"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\delete_confirmation.html:47
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\delete_confirmation.html:47
+#, python-format
+msgid ""
+"Are you sure you want to delete the %(object_name)s \"%(escaped_object)s\"? "
+"All of the following related items will be deleted:"
+msgstr ""
+"هل أنت متأكد أنك تريد حذف %(object_name)s \"%(escaped_object)s\"؟ سيتم حذف "
+"جميع العناصر المرتبطة التالية:"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\delete_confirmation.html:55
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\delete_confirmation.html:55
+msgid "No, take me back"
+msgstr "لا، أعدني"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\delete_confirmation.html:56
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\delete_confirmation.html:56
+msgid "Yes, I’m sure"
+msgstr "نعم، أنا متأكد"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\delete_selected_confirmation.html:16
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\delete_selected_confirmation.html:16
+msgid "Delete multiple objects"
+msgstr "حذف كائنات متعددة"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\delete_selected_confirmation.html:26
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\delete_selected_confirmation.html:26
+#, python-format
+msgid ""
+"Deleting the selected %(objects_name)s would result in deleting related "
+"objects, but your account doesn't have permission to delete the following "
+"types of objects:"
+msgstr ""
+"حذف %(objects_name)s المحددة سيؤدي إلى حذف كائنات مرتبطة بها، لكن حسابك لا "
+"يملك الصلاحية لحذف الأنواع التالية من الكائنات:"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\delete_selected_confirmation.html:34
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\delete_selected_confirmation.html:34
+#, python-format
+msgid ""
+"Deleting the selected %(objects_name)s would require deleting the following "
+"protected related objects:"
+msgstr ""
+"حذف %(objects_name)s المحددة سيتطلب حذف الكائنات المرتبطة التالية المحمية:"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\delete_selected_confirmation.html:44
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\delete_selected_confirmation.html:44
+#, python-format
+msgid ""
+"Are you sure you want to delete the selected %(objects_name)s? All of the "
+"following objects and their related items will be deleted:"
+msgstr ""
+"هل أنت متأكد أنك تريد حذف %(objects_name)s المحددة؟ سيتم حذف كل الكائنات "
+"التالية والعناصر المرتبطة بها:"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\delete_selected_confirmation.html:58
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\delete_selected_confirmation.html:58
+#: .\inventory\templates\inventory\invoice_confirm_delete.html:19
+#: .\inventory\templates\inventory\product_confirm_delete.html:16
+#: .\inventory\templates\inventory\product_form.html:36
+msgid "Cancel"
+msgstr "الغاء"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\delete_selected_confirmation.html:59
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\delete_selected_confirmation.html:59
+msgid "Yes, I'm sure"
+msgstr "نعم، أنا متأكد"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\stacked.html:11
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\stacked.html:60
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\tabular.html:108
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\stacked.html:11
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\stacked.html:60
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\tabular.html:108
+#: .\inventory\templates\inventory\invoice_form.html:65
+msgid "Add Item"
+msgstr "إضافة عنصر"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\stacked.html:29
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\tabular.html:81
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\stacked.html:29
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\tabular.html:81
+msgid "View on Site"
+msgstr "عرض في الموقع"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\stacked.html:31
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\tabular.html:83
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\stacked.html:31
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\tabular.html:83
+msgid "Move Item"
+msgstr "نقل العنصر"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\stacked.html:35
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\stacked.html:40
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\tabular.html:87
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\tabular.html:92
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\stacked.html:35
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\stacked.html:40
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\tabular.html:87
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\tabular.html:92
+msgid "Delete Item"
+msgstr "حذف العنصر"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\stacked.html:58
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\tabular.html:106
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\stacked.html:58
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\tabular.html:106
+#, python-format
+msgid "Add another %(verbose_name)s"
+msgstr "إضافة %(verbose_name)s أخرى"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\edit_inline\tabular.html:9
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\edit_inline\tabular.html:9
+msgid "Add Another"
+msgstr "إضافة أخرى"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\filter.html:4
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\filter_listing.html:3
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\filter.html:4
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\filter_listing.html:3
+#, python-format
+msgid "%(filter_title)s"
+msgstr "%(filter_title)s"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\import_export\change_list_import_item.html:4
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\import_export\change_list_import_item.html:4
+msgid "Import"
+msgstr "استيراد"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\includes\object_delete_summary.html:3
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\includes\object_delete_summary.html:3
+msgid "Summary"
+msgstr "الملخص"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\index.html:57
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\index.html:57
+msgid "Custom Views"
+msgstr "طرق عرض مخصصة"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\index.html:71
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\index.html:71
+msgid "My actions"
+msgstr "إجراءاتي"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\index.html:74
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\index.html:74
+msgid "None available"
+msgstr "لا يتوفر شيء"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\invalid_setup.html:16
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\invalid_setup.html:16
+msgid ""
+"Something's wrong with your database installation. Make sure the appropriate"
+" database tables have been created, and make sure the database is readable "
+"by the appropriate user."
+msgstr ""
+"هناك خطأ في إعداد قاعدة البيانات. تأكد من أن الجداول المناسبة قد تم إنشاؤها،"
+" وأن قاعدة البيانات قابلة للقراءة من قبل المستخدم المناسب."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\login.html:26
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\login.html:67
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\login.html:26
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\login.html:67
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_complete.html:17
+#: .\templates\registration\login.html:6
+#: .\templates\registration\login.html:86
+msgid "Log in"
+msgstr "تسجيل الدخول"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\login.html:60
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\login.html:60
+#: .\templates\registration\login.html:92
+msgid "Forgotten your password or username?"
+msgstr "هل نسيت كلمة المرور أو اسم المستخدم؟"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\object_history.html:26
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\object_history.html:26
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\object_history.html:13
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\recover_list.html:22
+msgid "Date/time"
+msgstr "التاريخ/الوقت"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\object_history.html:27
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\object_history.html:27
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\object_history.html:14
+msgid "User"
+msgstr "اسم المستخدم"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\object_history.html:28
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\object_history.html:28
+msgid "Action"
+msgstr "\tالإجراء"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\object_history.html:34
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\object_history.html:34
+msgid "DATETIME_FORMAT"
+msgstr "تنسيق التاريخ والوقت"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\object_history.html:42
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\object_history.html:42
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\object_history.html:36
+msgid ""
+"This object doesn't have a change history. It probably wasn't added via this"
+" admin site."
+msgstr ""
+"لا يحتوي هذا الكائن على سجل تغييرات. من المحتمل أنه لم يُضف عبر لوحة "
+"الإدارة."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\pagination.html:9
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\pagination.html:9
+#: .\env_lazordy\Lib\site-packages\grappelli\views\related.py:257
+#, python-format
+msgid "%(counter)s result"
+msgid_plural "%(counter)s results"
+msgstr[0] "%(counter)s نتيجة"
+msgstr[1] "%(counter)s نتائج"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\pagination.html:14
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\pagination.html:16
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\pagination.html:14
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\pagination.html:16
+#, python-format
+msgid "%(full_result_count)s total"
+msgstr "المجموع: %(full_result_count)s"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\pagination.html:22
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\pagination.html:22
+#, python-format
+msgid ""
+"\n"
+"                        %(counter)s result\n"
+"                    "
+msgid_plural ""
+"\n"
+"                        %(counter)s results\n"
+"                    "
+msgstr[0] ""
+"\n"
+"%(counter)s نتيجة"
+msgstr[1] ""
+"\n"
+"%(counter)s نتائج"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\pagination.html:31
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\pagination.html:44
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\pagination.html:31
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\pagination.html:44
+msgid "Show all"
+msgstr "عرض الكل"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\popup_response.html:3
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\popup_response.html:3
+msgid "Popup closing..."
+msgstr "يتم إغلاق النافذة المنبثقة..."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\related_widget_wrapper.html:24
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\widgets\related_widget_wrapper.html:18
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\related_widget_wrapper.html:24
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\widgets\related_widget_wrapper.html:18
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\related_widget_wrapper.html:16
+#, python-format
+msgid "Add another %(model)s"
+msgstr "إضافة %(model)s أخرى"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\submit_line.html:14
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\submit_line.html:14
+msgid "Save as new"
+msgstr "حفظ كجديد"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\submit_line.html:17
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\submit_line.html:17
+msgid "Save and add another"
+msgstr "حفظ وإضافة آخر"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\submit_line.html:20
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\submit_line.html:20
+msgid "Save and continue editing"
+msgstr "حفظ ومتابعة التعديل"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\widgets\related_widget_wrapper.html:11
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\widgets\related_widget_wrapper.html:11
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\related_widget_wrapper.html:8
+#, python-format
+msgid "Change selected %(model)s"
+msgstr "تعديل %(model)s المحددة"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin\widgets\related_widget_wrapper.html:25
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\grappelli\admin\widgets\related_widget_wrapper.html:25
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\related_widget_wrapper.html:24
+#, python-format
+msgid "Delete selected %(model)s"
+msgstr "حذف %(model)s المحددة"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\bookmarklets.html:10
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\bookmarklets.html:16
+msgid "Bookmarklets"
+msgstr "الروابط المصغّرة"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\bookmarklets.html:13
+msgid "Documentation bookmarklets"
+msgstr "إشارات توثيق مرجعية"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\bookmarklets.html:18
+msgid ""
+"\n"
+"            <p>To install bookmarklets, drag the link to your bookmarks\n"
+"    toolbar, or right-click the link and add it to your bookmarks. Now you can\n"
+"    select the bookmarklet from any page in the site.  Note that some of these\n"
+"    bookmarklets require you to be viewing the site from a computer designated\n"
+"    as \"internal\" (talk to your system administrator if you aren't sure if\n"
+"    your computer is \"internal\").</p>\n"
+"        "
+msgstr ""
+"\n"
+"لتثبيت الإشارات المرجعية، اسحب الرابط إلى شريط الإشارات المرجعية، أو انقر بزر الفأرة الأيمن على الرابط وأضفه إلى الإشارات المرجعية. يمكنك الآن اختيار الإشارة المرجعية من أي صفحة في الموقع. لاحظ أن بعض هذه الإشارات تتطلب أن تكون تتصفح الموقع من جهاز كمبيوتر مُصنّف كـ \"داخلي\" (تحدث إلى مسؤول النظام إذا لم تكن متأكدًا مما إذا كان جهازك \"داخليًا\")."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\bookmarklets.html:27
+msgid "Documentation for this page"
+msgstr "التوثيق لهذه الصفحة"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\bookmarklets.html:28
+msgid ""
+"Jumps you from any page to the documentation for the view that generates "
+"that page."
+msgstr "ينقلك من أي صفحة إلى التوثيق الخاص بالعرض الذي أنشأ تلك الصفحة."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\bookmarklets.html:31
+msgid "Show object ID"
+msgstr "عرض معرف الكائن"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\bookmarklets.html:32
+msgid ""
+"Shows the content-type and unique ID for pages that represent a single "
+"object."
+msgstr "يعرض نوع المحتوى والمعرّف الفريد للصفحات التي تمثل كائناً مفرداً."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\bookmarklets.html:35
+msgid "Edit this object (current window)"
+msgstr "تعديل هذا الكائن (في نفس النافذة)"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\bookmarklets.html:36
+msgid "Jumps to the admin page for pages that represent a single object."
+msgstr "ينقلك إلى صفحة الإدارة للصفحات التي تمثل كائناً مفرداً."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\bookmarklets.html:39
+msgid "Edit this object (new window)"
+msgstr "تعديل هذا الكائن (في نافذة جديدة)"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\bookmarklets.html:40
+msgid "As above, but opens the admin page in a new window."
+msgstr "كما سبق، ولكن يفتح صفحة الإدارة في نافذة جديدة."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\view_index.html:43
+msgid "Empty namespace"
+msgstr "مساحة اسم فارغة"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\admin_doc\view_index.html:57
+msgid "Views by empty namespace"
+msgstr "العروض حسب مساحة الاسم الفارغة"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\logged_out.html:16
+msgid "Log in again"
+msgstr "تسجيل الدخول مرة اخري"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_change_done.html:16
+msgid "Your password was changed."
+msgstr "تم تغيير كلمة المرور الخاصة بك."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_change_form.html:18
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new"
+" password twice so we can verify you typed it in correctly."
+msgstr ""
+"من أجل الأمان، يرجى إدخال كلمة المرور القديمة، ثم إدخال كلمة المرور الجديدة "
+"مرتين حتى نتمكن من التحقق من كتابتها بشكل صحيح."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_change_form.html:23
+#: .\templates\registration\password_change_form.html:26
+msgid "Old password"
+msgstr "كلمة المرور القديمة"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_change_form.html:46
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_confirm.html:35
+msgid "Change my password"
+msgstr "تغيير كلمة المرور"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_complete.html:16
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr "تم تعيين كلمة المرور الخاصة بك. يمكنك الآن تسجيل الدخول."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_confirm.html:18
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+"يرجى إدخال كلمة المرور الجديدة مرتين حتى نتمكن من التحقق من كتابتها بشكل "
+"صحيح."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_confirm.html:21
+msgid "New password:"
+msgstr "كلمة المرور الجديدة"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_confirm.html:26
+msgid "Confirm password:"
+msgstr "تأكيد كلمة المرور"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_confirm.html:47
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"رابط إعادة تعيين كلمة المرور غير صالح، ربما لأنه تم استخدامه بالفعل. يرجى "
+"طلب إعادة تعيين كلمة المرور من جديد."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_done.html:5
+msgid "Password reset successful"
+msgstr "تم إعادة تعيين كلمة المرور بنجاح"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_done.html:16
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+"لقد أرسلنا إليك تعليمات لتعيين كلمة المرور، إذا كان هناك حساب مرتبط بالبريد "
+"الإلكتروني الذي أدخلته. يجب أن تصلك قريبًا."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_done.html:17
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+"إذا لم يصلك البريد الإلكتروني، تأكد من أنك أدخلت العنوان الذي سجلت به، وتحقق"
+" من مجلد الرسائل غير المرغوب فيها."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+"لقد تلقيت هذا البريد الإلكتروني لأنك طلبت إعادة تعيين كلمة المرور لحسابك في "
+"%(site_name)s."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr "الرجاء الذهاب إلى الصفحة التالية واختيار كلمة مرور جديدة:"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_email.html:8
+msgid "Your username, in case you've forgotten:"
+msgstr "اسم المستخدم الخاص بك، في حال نسيته:"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_email.html:10
+msgid "Thanks for using our site!"
+msgstr "شكرًا لاستخدامك موقعنا!"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_email.html:12
+#, python-format
+msgid "The %(site_name)s team"
+msgstr "فريق عمل %(site_name)s"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_form.html:5
+msgid "Password reset"
+msgstr "إعادة تعيين كلمة المرور"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_form.html:17
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
+msgstr ""
+"هل نسيت كلمة المرور؟ أدخل عنوان بريدك الإلكتروني أدناه وسنرسل لك تعليمات "
+"لتعيين كلمة مرور جديدة."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_form.html:20
+msgid "Email address:"
+msgstr "عنوان البريد الإلكتروني"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\registration\password_reset_form.html:28
+msgid "Reset my password"
+msgstr "إعادة تعيين كلمة المرور الخاصة بي"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\change_list.html:6
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\recover_form.html:10
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\recover_list.html:9
+#, python-format
+msgid "Recover deleted %(name)s"
+msgstr "استعادة %(name)s المحذوف"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\object_history.html:7
+msgid ""
+"Choose a date from the list below to revert to a previous version of this "
+"object."
+msgstr "اختر تاريخًا من القائمة أدناه للرجوع إلى نسخة سابقة من هذا الكائن."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\object_history.html:15
+msgid "Comment"
+msgstr "تعليق"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\recover_form.html:20
+msgid "Press the save button below to recover this version of the object."
+msgstr "اضغط على زر الحفظ أدناه لاستعادة هذه النسخة من الكائن."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\recover_list.html:16
+msgid ""
+"Choose a date from the list below to recover a deleted version of an object."
+msgstr "اختر تاريخًا من القائمة أدناه لاستعادة نسخة محذوفة من كائن."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\recover_list.html:36
+msgid "There are no deleted objects to recover."
+msgstr "لا توجد كائنات محذوفة لاستعادتها."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\revision_form.html:12
+#, python-format
+msgid "Revert %(verbose_name)s"
+msgstr "استرجاع %(verbose_name)s"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\reversion\revision_form.html:21
+msgid "Press the save button below to revert to this version of the object."
+msgstr "اضغط على زر الحفظ أدناه لاسترجاع هذا الإصدار من الكائن."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\smuggler\change_list.html:7
+msgid "Dump data"
+msgstr "تصدير البيانات"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\smuggler\change_list.html:11
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\smuggler\load_data_form.html:6
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\smuggler\load_data_form.html:25
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\smuggler\load_data_form.html:35
+msgid "Load data"
+msgstr "تحميل البيانات"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\smuggler\load_data_form.html:46
+msgid ""
+"Existing items with same <strong>primary key</strong> will be overwritten."
+msgstr ""
+"سيتم استبدال العناصر الموجودة التي لها نفس <strong>المفتاح الأساسي</strong>."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templates\smuggler\load_data_form.html:53
+msgid "Load"
+msgstr "تحميل"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\templatetags\grp_tags.py:63
+msgid "Django site admin"
+msgstr "لوحة تحكم موقع Django"
+
+#: .\env_lazordy\Lib\site-packages\grappelli\tests\test_switch.py:101
+#: .\env_lazordy\Lib\site-packages\grappelli\tests\test_switch.py:160
+#: .\env_lazordy\Lib\site-packages\grappelli\views\switch.py:44
+#: .\env_lazordy\Lib\site-packages\grappelli\views\switch.py:55
+msgid "Permission denied."
+msgstr "تم رفض الإذن."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\tests\test_switch.py:144
+#: .\env_lazordy\Lib\site-packages\grappelli\views\switch.py:47
+#: .\env_lazordy\Lib\site-packages\grappelli\views\switch.py:58
+#, python-format
+msgid "%(name)s object with primary key %(key)r does not exist."
+msgstr "الكائن %(name)s ذو المفتاح الأساسي %(key)r غير موجود."
+
+#: .\env_lazordy\Lib\site-packages\grappelli\views\related.py:127
+#: .\env_lazordy\Lib\site-packages\grappelli\views\related.py:157
+msgid "?"
+msgstr "؟"
+
+#: .\env_lazordy\Lib\site-packages\httplib2\__init__.py:408
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr "يُزعم أن المحتوى مضغوط باستخدام %s لكنه فشل في فك الضغط."
+
+#: .\env_lazordy\Lib\site-packages\httplib2\__init__.py:572
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr " قيمة غير مدعومة لـ qop: %s."
+
+#: .\env_lazordy\Lib\site-packages\httplib2\__init__.py:576
+#: .\env_lazordy\Lib\site-packages\httplib2\__init__.py:654
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr " قيمة غير مدعومة لـ algorithm: %s."
+
+#: .\env_lazordy\Lib\site-packages\httplib2\__init__.py:649
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr "التحدي لا يحتوي على \"nonce\" من الخادم، أو أن قيمته فارغة."
+
+#: .\env_lazordy\Lib\site-packages\httplib2\__init__.py:659
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr "قيمة غير مدعومة لـ pw-algorithm: %s."
+
+#: .\env_lazordy\Lib\site-packages\httplib2\__init__.py:1468
+msgid "Redirected but the response is missing a Location: header."
+msgstr "تم إعادة التوجيه ولكن الاستجابة تفتقر إلى ترويسة Location:."
+
+#: .\inventory\admin.py:30
+#: .\inventory\templates\inventory\product_list.html:85
+msgid "No Image"
+msgstr "لا توجد صورة"
+
+#: .\inventory\admin.py:31 .\inventory\models.py:107
+#: .\inventory\templates\inventory\invoice_template.html:167
+msgid "Photo"
+msgstr "صورة"
+
+#: .\inventory\admin.py:84
+msgid "General Discount"
+msgstr "خصم عام:"
+
+#: .\inventory\admin.py:86
+msgid "General discount applied to the invoice."
+msgstr "الخصم العام المطبق على الفاتورة."
+
+#: .\inventory\admin.py:88
+msgid "Special Discount from Manager"
+msgstr "خصم خاص من المدير"
+
+#: .\inventory\admin.py:90
+msgid "Apply a special discount by a manager if needed."
+msgstr "تطبيق خصم خاص من المدير عند الحاجة."
+
+#: .\inventory\admin.py:92
+msgid "Payment Details"
+msgstr "تفاصيل الدفع "
+
+#: .\inventory\admin.py:94
+msgid ""
+"Enter amount paid if invoice is uncompleted or paid. Amount remaining is "
+"calculated."
+msgstr ""
+"أدخل المبلغ المدفوع إذا كانت الفاتورة غير مكتملة أو مدفوعة. يتم حساب المبلغ "
+"المتبقي."
+
+#: .\inventory\admin.py:96
+msgid "Invoice Totals"
+msgstr " إجماليات الفاتورة"
+
+#: .\inventory\admin.py:98
+msgid "These fields are automatically generated."
+msgstr "يتم إنشاء هذه الحقول تلقائيًا."
+
+#: .\inventory\admin.py:100
+msgid "Additional Information"
+msgstr "معلومات إضافية"
+
+#: .\inventory\admin.py:102
+msgid "Any additional notes or terms for the invoice."
+msgstr "أي ملاحظات إضافية أو شروط للفاتورة."
+
+#: .\inventory\admin.py:104
+msgid "Timestamps and Audit"
+msgstr "الطوابع الزمنية والتدقيق"
+
+#: .\inventory\admin.py:131
+msgid "View PDF"
+msgstr "عرض PDF"
+
+#: .\inventory\admin.py:133
+#: .\inventory\templates\inventory\invoice_list.html:134
+msgid "PDF"
+msgstr "ملف PDF"
+
+#: .\inventory\admin.py:136 .\inventory\admin.py:140
+#: .\inventory\templates\inventory\product_list.html:100
+#: .\inventory\views.py:420 .\inventory\views.py:534 .\inventory\views.py:669
+msgid "N/A"
+msgstr "غير متوفر"
+
+#: .\inventory\admin.py:137 .\inventory\models.py:272
+msgid "Created By"
+msgstr "تم إنشاؤه بواسطة"
+
+#: .\inventory\admin.py:141 .\inventory\models.py:280
+msgid "Last Modified By"
+msgstr "آخر تعديل بواسطة"
+
+#: .\inventory\admin.py:158
+msgid "Invoice items and product stock updated successfully."
+msgstr "تم تحديث بنود الفاتورة ومخزون المنتج بنجاح."
+
+#: .\inventory\admin.py:164
+msgid "Unpaid"
+msgstr "غير مدفوعة"
+
+#: .\inventory\admin.py:166 .\inventory\models.py:253
+msgid "Paid"
+msgstr "مدفوعة"
+
+#: .\inventory\admin.py:168 .\inventory\forms.py:41 .\inventory\forms.py:97
+#: .\inventory\models.py:125 .\inventory\models.py:257
+#: .\inventory\templates\inventory\invoice_list.html:77
+msgid "Status"
+msgstr "الحالة"
+
+#: .\inventory\forms.py:32 .\inventory\models.py:385
+msgid "Product Name"
+msgstr "اسم المنتج"
+
+#: .\inventory\forms.py:33
+msgid "Item Code (Unique)"
+msgstr "كود الصنف (فريد)"
+
+#: .\inventory\forms.py:34 .\inventory\models.py:31 .\inventory\models.py:100
+msgid "Category"
+msgstr "الفئة"
+
+#: .\inventory\forms.py:35
+msgid "Available Sizes"
+msgstr "الأحجام المتاحة"
+
+#: .\inventory\forms.py:36 .\inventory\models.py:25 .\inventory\models.py:61
+msgid "Description"
+msgstr "الوصف"
+
+#: .\inventory\forms.py:37
+msgid "Selling Price (EGP)"
+msgstr "سعر البيع (جنيه مصري)"
+
+#: .\inventory\forms.py:38
+msgid "Cost Price (EGP)"
+msgstr " سعر التكلفة (جنيه مصري)"
+
+#: .\inventory\forms.py:39
+msgid "Current Stock Quantity"
+msgstr "الكمية الحالية في المخزون"
+
+#: .\inventory\forms.py:40
+msgid "Product Image"
+msgstr "صورة المنتج"
+
+#: .\inventory\forms.py:42 .\inventory\models.py:87
+msgid "Color"
+msgstr "اللون"
+
+#: .\inventory\forms.py:51
+msgid "This item code already exists. Please choose a unique one."
+msgstr "رمز الصنف هذا موجود بالفعل. يرجى اختيار رمز فريد."
+
+#: .\inventory\forms.py:58 .\inventory\forms.py:105
+msgid "Show product photos in PDF"
+msgstr "عرض صور المنتجات في ملف PDF"
+
+#: .\inventory\forms.py:87
+msgid "FPI, Damietta Furniture Point Mall"
+msgstr "FPI, Damietta Furniture Point Mall"
+
+#: .\inventory\forms.py:88
+msgid "01065881729 - 01126905990 - 01110001559"
+msgstr "01065881729 - 01126905990 - 01110001559"
+
+#: .\inventory\forms.py:90 .\inventory\models.py:168
+#: .\inventory\templates\inventory\invoice_list.html:57
+msgid "Customer Name"
+msgstr "اسم العميل"
+
+#: .\inventory\forms.py:91 .\inventory\models.py:172
+msgid "Home Address"
+msgstr "عنوان المنزل"
+
+#: .\inventory\forms.py:92 .\inventory\models.py:177
+msgid "Customer Phone"
+msgstr "هاتف العميل"
+
+#: .\inventory\forms.py:93 .\inventory\models.py:154
+msgid "Company Address"
+msgstr "عنوان الفرع"
+
+#: .\inventory\forms.py:94 .\inventory\models.py:161
+msgid "Company Phone"
+msgstr "هاتف الشركة"
+
+#: .\inventory\forms.py:95 .\inventory\models.py:262
+#: .\inventory\templates\inventory\invoice_list.html:61
+msgid "Invoice Date"
+msgstr "تاريخ الفاتورة"
+
+#: .\inventory\forms.py:96 .\inventory\models.py:264
+msgid "Due Date"
+msgstr "تاريخ التسليم"
+
+#: .\inventory\forms.py:98 .\inventory\models.py:187
+msgid "Discount Amount"
+msgstr "مبلغ الخصم "
+
+#: .\inventory\forms.py:99
+msgid "Manager's Discount Amount"
+msgstr " مبلغ خصم المدير"
+
+#: .\inventory\forms.py:100
+msgid "Reason for Manager's Discount"
+msgstr "سبب خصم المدير"
+
+#: .\inventory\forms.py:101 .\inventory\models.py:237
+#: .\inventory\templates\inventory\invoice_list.html:69
+msgid "Amount Paid"
+msgstr "المبلغ المدفوع"
+
+#: .\inventory\forms.py:102 .\inventory\models.py:210
+msgid "Payment Method"
+msgstr "طريقة الدفع"
+
+#: .\inventory\forms.py:103 .\inventory\models.py:216
+msgid "Notes"
+msgstr "ملاحظات"
+
+#: .\inventory\forms.py:104 .\inventory\models.py:218
+msgid "Terms and Conditions"
+msgstr "الشروط والأحكام"
+
+#: .\inventory\forms.py:116 .\inventory\models.py:134
+#: .\inventory\models.py:378
+#: .\inventory\templates\inventory\invoice_detail.html:53
+#: .\inventory\templates\inventory\invoice_form.html:51
+#: .\inventory\templates\inventory\invoice_template.html:169
+msgid "Product"
+msgstr "المنتج"
+
+#: .\inventory\forms.py:117
+msgid "Product Name (Custom)"
+msgstr "اسم المنتج (مخصص)"
+
+#: .\inventory\forms.py:118 .\inventory\models.py:78 .\inventory\models.py:390
+#: .\inventory\templates\inventory\invoice_detail.html:54
+#: .\inventory\templates\inventory\invoice_form.html:52
+#: .\inventory\templates\inventory\invoice_template.html:171
+msgid "Quantity"
+msgstr "الكمية"
+
+#: .\inventory\forms.py:119 .\inventory\models.py:394
+#: .\inventory\templates\inventory\invoice_detail.html:55
+#: .\inventory\templates\inventory\invoice_form.html:53
+#: .\inventory\templates\inventory\invoice_template.html:170
+msgid "Unit Price"
+msgstr "سعر الوحدة"
+
+#: .\inventory\forms.py:135
+msgid "You must select a product or enter a product name."
+msgstr "يجب عليك تحديد منتج أو إدخال اسم منتج."
+
+#: .\inventory\forms.py:144
+msgid "Unit price must be greater than zero."
+msgstr "يجب أن يكون سعر الوحدة أكبر من صفر."
+
+#: .\inventory\models.py:23
+msgid "The name of the category (e.g., Chandeliers, Furniture)."
+msgstr "اسم الفئة (مثال: ثريات، أثاث)."
+
+#: .\inventory\models.py:28
+msgid "A brief description of the category."
+msgstr "وصف موجز للفئة."
+
+#: .\inventory\models.py:32
+msgid "Categories"
+msgstr " الفئات"
+
+#: .\inventory\models.py:44
+msgid "The name of the size (e.g., 40cm,50cm,60cm,80cm,90cm,100cm)."
+msgstr "اسم الحجم (مثال: 40سم، 50سم، 60سم، 80سم، 90سم، 100سم)."
+
+#: .\inventory\models.py:47 .\inventory\models.py:114
+msgid "Size"
+msgstr "الحجم:"
+
+#: .\inventory\models.py:48
+msgid "Sizes"
+msgstr "الأحجام"
+
+#: .\inventory\models.py:59
+msgid "The name of the product."
+msgstr "اسم المنتج."
+
+#: .\inventory\models.py:64
+msgid "A detailed description of the product."
+msgstr "وصف تفصيلي للمنتج."
+
+#: .\inventory\models.py:66
+#| msgid "Unit Price"
+msgid "Price"
+msgstr "السعر "
+
+#: .\inventory\models.py:69
+msgid "The selling price of the product."
+msgstr "سعر بيع المنتج."
+
+#: .\inventory\models.py:71
+#| msgid "Cost:"
+msgid "Cost"
+msgstr "التكلفة"
+
+#: .\inventory\models.py:76
+msgid "The cost price of the product (for calculating profit)."
+msgstr "سعر تكلفة المنتج (لحساب الربح)."
+
+#: .\inventory\models.py:80
+msgid "The current stock quantity of the product."
+msgstr "الكمية الحالية للمنتج في المخزون."
+
+#: .\inventory\models.py:82
+#| msgid "Item Code:"
+msgid "Item Code"
+msgstr "كود الصنف"
+
+#: .\inventory\models.py:85
+msgid "A unique code for identifying the product."
+msgstr "رمز فريد لتحديد المنتج."
+
+#: .\inventory\models.py:91
+msgid "The color of the product (e.g., 'Red', 'Blue', 'Assorted')."
+msgstr "لون المنتج (مثال: 'أحمر', 'أزرق', 'متنوع')."
+
+#: .\inventory\models.py:93
+#| msgid "Measurements:"
+msgid "Measurements"
+msgstr "القياسات"
+
+#: .\inventory\models.py:97
+msgid ""
+"Measurements of the product in CM (e.g., '12 LAMP' or 'Diameter: 15cm')."
+msgstr "قياسات المنتج بالسنتيمتر (مثال: '12 لمبة' أو 'القطر: 15 سم')."
+
+#: .\inventory\models.py:105
+msgid "The category this product belongs to."
+msgstr "الفئة التي ينتمي إليها هذا المنتج."
+
+#: .\inventory\models.py:111
+msgid "An image of the product."
+msgstr "صورة للمنتج."
+
+#: .\inventory\models.py:117
+msgid "Select available sizes for this product."
+msgstr "اختر الأحجام المتاحة لهذا المنتج."
+
+#: .\inventory\models.py:119
+msgid "Available"
+msgstr "متاح"
+
+#: .\inventory\models.py:120
+msgid "Sold"
+msgstr "مباع"
+
+#: .\inventory\models.py:121
+msgid "Reserved"
+msgstr "محجوز"
+
+#: .\inventory\models.py:122
+msgid "Out of Stock"
+msgstr "❌ نفد من المخزون"
+
+#: .\inventory\models.py:129
+msgid "The current availability status of the product."
+msgstr "الحالة الحالية للفاتورة."
+
+#: .\inventory\models.py:130 .\inventory\models.py:268
+#| msgid "Created By"
+msgid "Created At"
+msgstr "تاريخ الإنشاء"
+
+#: .\inventory\models.py:131 .\inventory\models.py:269
+#| msgid "Update Product"
+msgid "Updated At"
+msgstr "تاريخ التحديث"
+
+#: .\inventory\models.py:135 .\templates\base.html:348
+msgid "Products"
+msgstr "المنتجات"
+
+#: .\inventory\models.py:139
+#, python-format
+msgid "%(name)s (%(item_code)s)"
+msgstr "%(name)s (%(item_code)s)"
+
+#: .\inventory\models.py:144
+#: .\inventory\templates\inventory\invoice_list.html:53
+msgid "Invoice Number"
+msgstr "رقم الفاتورة:"
+
+#: .\inventory\models.py:148
+msgid "A unique identifier for the invoice."
+msgstr "معرف فريد للفاتورة."
+
+#: .\inventory\models.py:150
+msgid "Token"
+msgstr " الرمز المميز "
+
+#: .\inventory\models.py:151
+#| msgid "Created By"
+msgid "Token Created At"
+msgstr "وقت إنشاء الرمز "
+
+#: .\inventory\models.py:152
+msgid "Cloud PDF URL"
+msgstr " رابط PDF على السحابة "
+
+#: .\inventory\models.py:159
+msgid "Optional company/branch address for this invoice."
+msgstr "عنوان الشركة/الفرع الاختياري لهذه الفاتورة."
+
+#: .\inventory\models.py:166
+msgid "Optional company phone number for this invoice."
+msgstr "رقم هاتف الشركة الاختياري لهذه الفاتورة."
+
+#: .\inventory\models.py:170
+msgid "The name of the customer for this invoice."
+msgstr "اسم العميل لهذه الفاتورة."
+
+#: .\inventory\models.py:175
+msgid "The customer's home address."
+msgstr "عنوان منزل العميل."
+
+#: .\inventory\models.py:181
+msgid "The customer's phone number."
+msgstr "رقم هاتف العميل. "
+
+#: .\inventory\models.py:183 .\inventory\models.py:287
+#| msgid "Show product photos in PDF"
+msgid "Show Product Photos"
+msgstr "إظهار صور المنتجات"
+
+#: .\inventory\models.py:185 .\inventory\models.py:289
+msgid "show product photos in the invoice PDF."
+msgstr "عرض صور المنتجات في ملف PDF الخاص بالفاتورة."
+
+#: .\inventory\models.py:191
+msgid ""
+"Discount applied to the total invoice amount (e.g., 10.00 for $10 discount)."
+msgstr ""
+"الخصم المطبق على إجمالي مبلغ الفاتورة (مثال: 10.00 لخصم 10 جنيه مصري)."
+
+#: .\inventory\models.py:193
+#| msgid "Manager's Discount Amount"
+msgid "Manager Discount Amount"
+msgstr "قيمة خصم المدير"
+
+#: .\inventory\models.py:197
+msgid "Special discount applied by manager."
+msgstr "خصم خاص من المدير."
+
+#: .\inventory\models.py:199
+#| msgid "Manager Discount:"
+msgid "Manager Discount Reason"
+msgstr "سبب خصم المدير"
+
+#: .\inventory\models.py:203
+msgid "Reason for the manager's special discount."
+msgstr "سبب الخصم الخاص للمدير."
+
+#: .\inventory\models.py:205
+msgid "Cash"
+msgstr "كاش "
+
+#: .\inventory\models.py:206
+msgid "Visa"
+msgstr "فيزا"
+
+#: .\inventory\models.py:207
+msgid "InstaPay"
+msgstr "انستا باي"
+
+#: .\inventory\models.py:215
+msgid "Method of payment."
+msgstr "طريقة الدفع"
+
+#: .\inventory\models.py:216
+msgid "Any additional notes for the invoice."
+msgstr "أي ملاحظات إضافية للفاتورة."
+
+#: .\inventory\models.py:221
+msgid "Terms and conditions for this invoice."
+msgstr "الشروط والأحكام لهذه الفاتورة."
+
+#: .\inventory\models.py:223
+#| msgid "Total Amount"
+msgid "Subtotal Amount"
+msgstr "المبلغ الإجمالي الفرعي"
+
+#: .\inventory\models.py:228
+#| msgid ""
+#| "The total amount of the invoice after discount. Calculated automatically."
+msgid "The sum of all items. Calculated automatically."
+msgstr "مجموع كل الأصناف. يتم حسابه تلقائيًا."
+
+#: .\inventory\models.py:230
+#: .\inventory\templates\inventory\invoice_list.html:65
+msgid "Total Amount"
+msgstr "إجمالي المبلغ "
+
+#: .\inventory\models.py:235
+msgid ""
+"The total amount of the invoice after discount. Calculated automatically."
+msgstr "إجمالي مبلغ الفاتورة بعد الخصم. يُحسب تلقائياً."
+
+#: .\inventory\models.py:241
+msgid "The amount paid by the customer for this invoice."
+msgstr "المبلغ المدفوع من قبل العميل لهذه الفاتورة."
+
+#: .\inventory\models.py:243
+#| msgid "Amount Remaining:"
+msgid "Amount Remaining"
+msgstr "المبلغ المتبقي"
+
+#: .\inventory\models.py:248
+msgid "The remaining balance for this invoice."
+msgstr "الرصيد المتبقي لهذه الفاتورة."
+
+#: .\inventory\models.py:250
+msgid "Draft"
+msgstr "فارغ"
+
+#: .\inventory\models.py:251
+msgid "Sent"
+msgstr "تم الإرسال"
+
+#: .\inventory\models.py:252
+msgid "Uncompleted"
+msgstr "غير مكتملة"
+
+#: .\inventory\models.py:254
+msgid "Cancelled"
+msgstr "ملغاة"
+
+#: .\inventory\models.py:261
+msgid "The current status of the invoice."
+msgstr "الحالة الحالية للفاتورة."
+
+#: .\inventory\models.py:267
+msgid "The date by which the invoice amount is due."
+msgstr "تاريخ استحقاق مبلغ الفاتورة."
+
+#: .\inventory\models.py:277
+msgid "The user who created this invoice."
+msgstr "المستخدم الذي أنشأ هذه الفاتورة."
+
+#: .\inventory\models.py:285
+msgid "The user who last modified this invoice."
+msgstr "المستخدم الذي عدّل هذه الفاتورة آخر مرة."
+
+#: .\inventory\models.py:292 .\inventory\models.py:372
+#: .\inventory\templates\inventory\invoice_template.html:143
+msgid "Invoice"
+msgstr "الفاتورة"
+
+#: .\inventory\models.py:293 .\templates\base.html:349
+msgid "Invoices"
+msgstr "الفواتير"
+
+#: .\inventory\models.py:297
+#, python-format
+msgid "Invoice %(invoice_number)s for %(customer_name)s"
+msgstr "الفاتورة رقم: %(invoice_number)s لـ %(customer_name)s"
+
+#: .\inventory\models.py:375
+msgid "The invoice this item belongs to."
+msgstr "الفاتورة التي ينتمي إليها هذا البند."
+
+#: .\inventory\models.py:383
+msgid "The product being invoiced (can be null if product deleted)."
+msgstr ""
+"المنتج الذي تتم عليه الفاتورة (يمكن أن يكون فارغًا إذا تم حذف المنتج)."
+
+#: .\inventory\models.py:392
+msgid "The quantity of the item."
+msgstr "كمية البند."
+
+#: .\inventory\models.py:397
+msgid "The price per unit of this item"
+msgstr "سعر الوحدة لهذا البند"
+
+#: .\inventory\models.py:399
+#: .\inventory\templates\inventory\invoice_form.html:54
+#: .\inventory\templates\inventory\invoice_template.html:172
+msgid "Subtotal"
+msgstr "المجموع الفرعي"
+
+#: .\inventory\models.py:404
+msgid "Calculated as quantity * unit_price."
+msgstr "تحسب كـ الكمية * سعر الوحدة."
+
+#: .\inventory\models.py:407
+msgid "Invoice Item"
+msgstr "بند الفاتورة"
+
+#: .\inventory\models.py:408
+#: .\inventory\templates\inventory\invoice_form.html:46
+msgid "Invoice Items"
+msgstr "بنود الفاتورة"
+
+#: .\inventory\models.py:412
+#, python-format
+msgid "%(quantity)s x %(product_name)s on Invoice %(invoice_number)s"
+msgstr "%(quantity)s × %(product_name)s على فاتورة %(invoice_number)s"
+
+#: .\inventory\models.py:420
+#, python-format
+msgid "Only %(quantity)s in stock for %(product_name)s."
+msgstr "يوجد %(quantity)s فقط في المخزون للمنتج %(product_name)s."
+
+#: .\inventory\models.py:443
+msgid "Unnamed Item"
+msgstr "بند غير مسمى"
+
+#: .\inventory\models.py:445
+msgid "Unit price is required for custom items."
+msgstr "سعر الوحدة مطلوب للبنود المخصصة."
+
+#: .\inventory\models.py:454
+#, python-format
+msgid "Insufficient stock for %(product_name)s"
+msgstr "المخزون غير كافٍ للمنتج %(product_name)s."
+
+#: .\inventory\models.py:474 .\inventory\templates\inventory\dashboard.html:23
+#: .\inventory\templates\inventory\dashboard_new.html:92
+msgid "Inventory Dashboard"
+msgstr "لوحة تحكم المخزون"
+
+#: .\inventory\models.py:478 .\templates\base.html:374
+msgid "English"
+msgstr "الإنجليزية"
+
+#: .\inventory\models.py:479 .\templates\base.html:375
+msgid "Arabic"
+msgstr "العربية"
+
+#: .\inventory\models.py:481
+#| msgid "Select language"
+msgid "Language"
+msgstr "اللغة"
+
+#: .\inventory\serializers.py:125
+msgid "admin"
+msgstr "المسؤول"
+
+#: .\inventory\serializers.py:128
+msgid "staff"
+msgstr "موظف"
+
+#: .\inventory\serializers.py:129
+msgid "user"
+msgstr "مستخدم"
+
+#: .\inventory\templates\inventory\dashboard.html:6
+msgid "Dashboard - Lazordy Inventory"
+msgstr "لوحة القيادة - مخزون لازوردي"
+
+#: .\inventory\templates\inventory\dashboard.html:27
+msgid "Switch to New Dashboard"
+msgstr "التبديل إلى لوحة المعلومات الجديدة"
+
+#: .\inventory\templates\inventory\dashboard.html:34
+#: .\inventory\templates\inventory\dashboard_new.html:101
+#: .\inventory\views.py:569
+msgid "Total Products"
+msgstr "إجمالي المنتجات"
+
+#: .\inventory\templates\inventory\dashboard.html:39 .\templates\base.html:394
+msgid "Total Estimated Value"
+msgstr "إجمالي القيمة المقدرة"
+
+#: .\inventory\templates\inventory\dashboard.html:41
+msgid "Based on current stock."
+msgstr "بناءً على المخزون الحالي"
+
+#: .\inventory\templates\inventory\dashboard.html:45
+#: .\inventory\templates\inventory\dashboard_new.html:109
+#: .\inventory\views.py:581
+msgid "Low Stock Items"
+msgstr "منتجات منخفضة في المخزون"
+
+#: .\inventory\templates\inventory\dashboard.html:48
+#, python-format
+msgid "Threshold: %(threshold)s units"
+msgstr "الحد الأدنى: %(threshold)s وحدة "
+
+#: .\inventory\templates\inventory\dashboard.html:54
+msgid "Monthly Sales Overview"
+msgstr "نظرة عامة على المبيعات الشهرية"
+
+#: .\inventory\templates\inventory\dashboard.html:61
+msgid "Top Sold Products"
+msgstr "المنتجات الأكثر مبيعاً"
+
+#: .\inventory\templates\inventory\dashboard.html:70
+#, python-format
+msgid "Products with Low Stock (Below %(threshold)s units)"
+msgstr "منتجات ذات مخزون منخفض (أقل من %(threshold)s وحدة)"
+
+#: .\inventory\templates\inventory\dashboard.html:82
+#, python-format
+msgid "%(quantity)s in stock"
+msgstr "%(quantity)s في المخزون"
+
+#: .\inventory\templates\inventory\dashboard.html:88
+#: .\inventory\templates\inventory\dashboard_new.html:131
+msgid "No products are currently in low stock! 🎉"
+msgstr "لا توجد منتجات منخفضة المخزون حاليًا! 🎉"
+
+#: .\inventory\templates\inventory\dashboard.html:94
+#: .\inventory\templates\inventory\dashboard_new.html:136
+msgid "Sales Trends & Analytics"
+msgstr "اتجاه المبيعات"
+
+#: .\inventory\templates\inventory\dashboard.html:96
+#: .\inventory\templates\inventory\dashboard_new.html:138
+msgid "Average Invoice Value:"
+msgstr "متوسط قيمة الفاتورة:"
+
+#: .\inventory\templates\inventory\dashboard.html:97
+#: .\inventory\templates\inventory\dashboard_new.html:139
+msgid "Total Invoices:"
+msgstr "إجمالي الفواتير: "
+
+#: .\inventory\templates\inventory\dashboard.html:102
+msgid "Raw Monthly Sales Data"
+msgstr "نظرة عامة على المبيعات الشهرية"
+
+#: .\inventory\templates\inventory\dashboard.html:108
+msgid "EGP"
+msgstr "(جنية مصري)"
+
+#: .\inventory\templates\inventory\dashboard.html:112
+msgid "No monthly inventory data available."
+msgstr "لا توجد بيانات شهرية للمخزون متاحة"
+
+#: .\inventory\templates\inventory\dashboard_new.html:5
+msgid "Cool New Dashboard - Lazordy Inventory"
+msgstr "لوحة القيادة - مخزون لازوردي"
+
+#: .\inventory\templates\inventory\dashboard_new.html:95
+msgid "Switch to Current Dashboard"
+msgstr "التبديل إلى لوحة المعلومات الحالية"
+
+#: .\inventory\templates\inventory\dashboard_new.html:105
+#: .\inventory\views.py:576
+msgid "Total Stock Value"
+msgstr "إجمالي القيمة المقدرة"
+
+#: .\inventory\templates\inventory\dashboard_new.html:123
+msgid "Products with Low Stock"
+msgstr "منتجات ذات مخزون منخفض"
+
+#: .\inventory\templates\inventory\dashboard_new.html:127
+msgid "in stock"
+msgstr "متوفر في المخزون"
+
+#: .\inventory\templates\inventory\invoice_confirm_delete.html:9
+#: .\inventory\templates\inventory\product_confirm_delete.html:7
+msgid "Confirm Deletion"
+msgstr "تأكيد الحذف"
+
+#: .\inventory\templates\inventory\invoice_confirm_delete.html:10
+#, python-format
+msgid ""
+"Are you sure you want to delete Invoice **#%(invoice.invoice_number)s**?"
+msgstr ""
+"هل أنت متأكد أنك تريد حذف الفاتورة رقم **#%(invoice.invoice_number)s**؟"
+
+#: .\inventory\templates\inventory\invoice_confirm_delete.html:11
+msgid "This action cannot be undone."
+msgstr "لا يمكن أن يكون هذا الحقل فارغًا (null)"
+
+#: .\inventory\templates\inventory\invoice_confirm_delete.html:16
+msgid "Yes, Delete"
+msgstr "نعم ,احذف"
+
+#: .\inventory\templates\inventory\invoice_detail.html:26
+msgid "Invoice Details"
+msgstr "تفاصيل الفاتورة"
+
+#: .\inventory\templates\inventory\invoice_detail.html:30
+#, python-format
+msgid "Company: %(company_name)s"
+msgstr "الشركة: %(company_name)s"
+
+#: .\inventory\templates\inventory\invoice_detail.html:33
+#, python-format
+msgid "Address: %(company_address)s"
+msgstr "العنوان: %(company_address)s"
+
+#: .\inventory\templates\inventory\invoice_detail.html:36
+#, python-format
+msgid "Phone: %(company_phone)s"
+msgstr "الهاتف: %(company_phone)s"
+
+#: .\inventory\templates\inventory\invoice_detail.html:42
+#, python-format
+msgid "Invoice #: %(invoice_number)s"
+msgstr "رقم الفاتورة: %(invoice_number)s"
+
+#: .\inventory\templates\inventory\invoice_detail.html:45
+#, python-format
+msgid "Date: %(date)s"
+msgstr " التاريخ: %(date)s"
+
+#: .\inventory\templates\inventory\invoice_detail.html:56
+msgid "Total"
+msgstr "الإجمالي"
+
+#: .\inventory\templates\inventory\invoice_detail.html:74
+#, python-format
+msgid "Subtotal: %(subtotal)s"
+msgstr "الإجمالي الفرعي: %(subtotal)s"
+
+#: .\inventory\templates\inventory\invoice_detail.html:77
+#, python-format
+msgid "Total: %(total)s"
+msgstr "الإجمالي: %(total)s "
+
+#: .\inventory\templates\inventory\invoice_detail.html:80
+#, python-format
+msgid "Paid: %(paid_amount)s"
+msgstr "المدفوع: %(paid_amount)s"
+
+#: .\inventory\templates\inventory\invoice_detail.html:83
+#, python-format
+msgid "Remaining: %(remaining_amount)s"
+msgstr "المتبقي: %(remaining_amount)s"
+
+#: .\inventory\templates\inventory\invoice_detail.html:89
+msgid "Scan to view invoice:"
+msgstr "امسح لعرض الفاتورة:"
+
+#: .\inventory\templates\inventory\invoice_detail.html:90
+msgid "QR Code"
+msgstr "رمز QR"
+
+#: .\inventory\templates\inventory\invoice_detail.html:97
+msgid "Download PDF"
+msgstr "تحميل PDF"
+
+#: .\inventory\templates\inventory\invoice_form.html:9
+msgid "Edit Invoice"
+msgstr "تعديل الفاتورة"
+
+#: .\inventory\templates\inventory\invoice_form.html:11
+msgid "Create Invoice"
+msgstr "إنشاء فاتورة"
+
+#: .\inventory\templates\inventory\invoice_form.html:28
+#: .\inventory\templates\inventory\invoice_form.html:39
+#: .\inventory\templates\inventory\product_list.html:105
+msgid "Edit"
+msgstr "تعديل"
+
+#: .\inventory\templates\inventory\invoice_list.html:10
+msgid "Invoice List"
+msgstr "قائمة الفواتير"
+
+#: .\inventory\templates\inventory\invoice_list.html:28
+#: .\inventory\views.py:309
+msgid "Create New Invoice"
+msgstr "إنشاء فاتورة جديدة"
+
+#: .\inventory\templates\inventory\invoice_list.html:35
+msgid "Search invoices..."
+msgstr "ابحث عن الفواتير..."
+
+#: .\inventory\templates\inventory\invoice_list.html:73
+msgid "Remaining"
+msgstr "المتبقي"
+
+#: .\inventory\templates\inventory\invoice_list.html:81
+msgid "Actions"
+msgstr "الإجراءات"
+
+#: .\inventory\templates\inventory\invoice_list.html:125
+msgid "Edit (Admin)"
+msgstr "تعديل (المشرف)"
+
+#: .\inventory\templates\inventory\invoice_list.html:144
+msgid "No invoices found."
+msgstr "لا توجد فواتير."
+
+#: .\inventory\templates\inventory\invoice_template.html:9
+#, python-format
+msgid "Invoice #%(invoice.invoice_number)s"
+msgstr "رقم الفاتورة: %(invoice.invoice_number)s"
+
+#: .\inventory\templates\inventory\invoice_template.html:131
+msgid "Scan to view/download invoice"
+msgstr "امسح لعرض / تحميل الفاتورة:"
+
+#: .\inventory\templates\inventory\invoice_template.html:135
+msgid "Company Logo"
+msgstr "شعار الشركة"
+
+#: .\inventory\templates\inventory\invoice_template.html:137
+msgid "Chandeliers - Furniture - Antiques"
+msgstr "النجف • الأثاث • التحف"
+
+#: .\inventory\templates\inventory\invoice_template.html:146
+msgid "Company Name:"
+msgstr "اسم الشركة:"
+
+#: .\inventory\templates\inventory\invoice_template.html:147
+#: .\inventory\templates\inventory\invoice_template.html:159
+msgid "Address:"
+msgstr "العنوان:"
+
+#: .\inventory\templates\inventory\invoice_template.html:148
+#: .\inventory\templates\inventory\invoice_template.html:160
+msgid "Phone:"
+msgstr "الهاتف:"
+
+#: .\inventory\templates\inventory\invoice_template.html:149
+msgid "Email:"
+msgstr "البريد الإلكتروني:"
+
+#: .\inventory\templates\inventory\invoice_template.html:150
+msgid "Invoice Number:"
+msgstr "رقم الفاتورة:"
+
+#: .\inventory\templates\inventory\invoice_template.html:151
+msgid "Invoice Date:"
+msgstr "تاريخ الفاتورة:"
+
+#: .\inventory\templates\inventory\invoice_template.html:152
+#: .\inventory\templates\inventory\product_detail.html:37
+msgid "Status:"
+msgstr "الحالة:"
+
+#: .\inventory\templates\inventory\invoice_template.html:153
+msgid "Prepared By:"
+msgstr "أعدها:"
+
+#: .\inventory\templates\inventory\invoice_template.html:157
+msgid "Bill To:"
+msgstr "فاتورة إلى:"
+
+#: .\inventory\templates\inventory\invoice_template.html:158
+msgid "Customer Name:"
+msgstr "اسم العميل:"
+
+#: .\inventory\templates\inventory\invoice_template.html:192
+msgid "No items found."
+msgstr "لم يتم العثور على عناصر."
+
+#: .\inventory\templates\inventory\invoice_template.html:197
+msgid "Subtotal:"
+msgstr "المجموع الفرعي:"
+
+#: .\inventory\templates\inventory\invoice_template.html:201
+msgid "Discount:"
+msgstr "الخصم:"
+
+#: .\inventory\templates\inventory\invoice_template.html:205
+msgid "Manager Discount:"
+msgstr "خصم المدير:"
+
+#: .\inventory\templates\inventory\invoice_template.html:209
+msgid "Total Amount:"
+msgstr "إجمالي المبلغ "
+
+#: .\inventory\templates\inventory\invoice_template.html:213
+msgid "Amount Paid:"
+msgstr "المبلغ المدفوع"
+
+#: .\inventory\templates\inventory\invoice_template.html:217
+msgid "Amount Remaining:"
+msgstr "المتبقي"
+
+#: .\inventory\templates\inventory\invoice_template.html:225
+msgid "Notes:"
+msgstr "ملاحظات:"
+
+#: .\inventory\templates\inventory\invoice_template.html:232
+msgid "Terms & Conditions:"
+msgstr "الشروط والأحكام:"
+
+#: .\inventory\templates\inventory\invoice_template.html:238
+msgid "Thank you for your business!"
+msgstr "شكراً لتعاملكم!"
+
+#: .\inventory\templates\inventory\invoice_template.html:239
+#, python-format
+msgid "Generated on: %(current_date)s"
+msgstr "تم الإنشاء في: %(current_date)s"
+
+#: .\inventory\templates\inventory\product_confirm_delete.html:10
+#, python-format
+msgid ""
+"Are you sure you want to delete the product: **%(product.name)s "
+"(%(product.item_code)s)**?"
+msgstr ""
+"هل أنت متأكد أنك تريد حذف المنتج: **%(product.name)s "
+"(%(product.item_code)s)**؟"
+
+#: .\inventory\templates\inventory\product_detail.html:10
+msgid "Back to Products"
+msgstr " العودة إلى المنتجات"
+
+#: .\inventory\templates\inventory\product_detail.html:22
+msgid "No Image Available"
+msgstr "لا توجد صورة متاحة"
+
+#: .\inventory\templates\inventory\product_detail.html:30
+msgid "Cost:"
+msgstr "التكلفة:"
+
+#: .\inventory\templates\inventory\product_detail.html:33
+#: .\inventory\templates\inventory\product_list.html:90
+msgid "Item Code:"
+msgstr "كود الصنف:"
+
+#: .\inventory\templates\inventory\product_detail.html:34
+#: .\inventory\templates\inventory\product_list.html:21
+#: .\inventory\templates\inventory\product_list.html:91
+msgid "Category:"
+msgstr "الفئة:"
+
+#: .\inventory\templates\inventory\product_detail.html:35
+msgid "Quantity in Stock:"
+msgstr "%(quantity)s في المخزون"
+
+#: .\inventory\templates\inventory\product_detail.html:38
+msgid "Color:"
+msgstr "اللون"
+
+#: .\inventory\templates\inventory\product_detail.html:39
+msgid "Measurements:"
+msgstr "القياسات:"
+
+#: .\inventory\templates\inventory\product_detail.html:42
+msgid "Description:"
+msgstr "الوصف:"
+
+#: .\inventory\templates\inventory\product_detail.html:43
+msgid "No description provided."
+msgstr "لم يتم توفير وصف."
+
+#: .\inventory\templates\inventory\product_detail.html:47
+msgid "Available Sizes:"
+msgstr "الأحجام المتاحة:"
+
+#: .\inventory\templates\inventory\product_detail.html:57
+msgid "No specific sizes listed."
+msgstr "لا توجد أحجام محددة مدرجة."
+
+#: .\inventory\templates\inventory\product_form.html:11
+msgid "Edit Product"
+msgstr "تعديل المنتج"
+
+#: .\inventory\templates\inventory\product_form.html:13
+#: .\inventory\templates\inventory\product_list.html:13
+#: .\inventory\views.py:153
+msgid "Add New Product"
+msgstr "إضافة منتج جديد"
+
+#: .\inventory\templates\inventory\product_form.html:40
+msgid "Update Product"
+msgstr "تعديل المنتج"
+
+#: .\inventory\templates\inventory\product_form.html:42
+msgid "Add Product"
+msgstr "إضافة منتج"
+
+#: .\inventory\templates\inventory\product_list.html:18
+msgid "Filter, Sort & Search Products"
+msgstr "تصفية، فرز، وبحث المنتجات"
+
+#: .\inventory\templates\inventory\product_list.html:23
+msgid "All Categories"
+msgstr "جميع الفئات"
+
+#: .\inventory\templates\inventory\product_list.html:31
+msgid "Size:"
+msgstr "الحجم:"
+
+#: .\inventory\templates\inventory\product_list.html:33
+msgid "All Sizes"
+msgstr "جميع الأحجام"
+
+#: .\inventory\templates\inventory\product_list.html:41
+msgid "Sort By:"
+msgstr "الترتيب حسب:"
+
+#: .\inventory\templates\inventory\product_list.html:44
+msgid "Name (A-Z)"
+msgstr "الاسم (أ-ي)"
+
+#: .\inventory\templates\inventory\product_list.html:45
+msgid "Name (Z-A)"
+msgstr "الاسم (ي-أ)"
+
+#: .\inventory\templates\inventory\product_list.html:46
+msgid "Price (Low to High)"
+msgstr "السعر (من الأقل للأعلى)"
+
+#: .\inventory\templates\inventory\product_list.html:47
+msgid "Price (High to Low)"
+msgstr "السعر (من الأعلى للأقل)"
+
+#: .\inventory\templates\inventory\product_list.html:52
+msgid "Search:"
+msgstr "بحث:"
+
+#: .\inventory\templates\inventory\product_list.html:53
+msgid "Search by name, code, color..."
+msgstr "البحث بالاسم، الكود، اللون..."
+
+#: .\inventory\templates\inventory\product_list.html:58
+msgid "Apply Filters"
+msgstr "تطبيق الفلاتر"
+
+#: .\inventory\templates\inventory\product_list.html:73
+msgid "🆕 New"
+msgstr "🆕 جديد"
+
+#: .\inventory\templates\inventory\product_list.html:76
+msgid "❌ Out of Stock"
+msgstr "❌ نفد من المخزون"
+
+#: .\inventory\templates\inventory\product_list.html:78
+msgid "⚠️ Low Stock"
+msgstr "⚠️ مخزون منخفض"
+
+#: .\inventory\templates\inventory\product_list.html:93
+msgid "Sizes:"
+msgstr "الأحجام:"
+
+#: .\inventory\templates\inventory\product_list.html:104
+msgid "View"
+msgstr "عرض"
+
+#: .\inventory\templates\inventory\product_list.html:111
+msgid "No products found matching your criteria."
+msgstr "لم يتم العثور على منتجات مطابقة لمعاييرك."
+
+#: .\inventory\templates\inventory\product_list.html:117
+#: .\inventory\templates\inventory\product_list.html:119
+msgid "Previous"
+msgstr "السابق"
+
+#: .\inventory\templates\inventory\product_list.html:123
+#, python-format
+msgid "Page %(current_page)s of %(total_pages)s"
+msgstr "صفحة %(current_page)s من %(total_pages)s"
+
+#: .\inventory\templates\inventory\product_list.html:127
+#: .\inventory\templates\inventory\product_list.html:129
+msgid "Next"
+msgstr "التالي"
+
+#: .\inventory\views.py:114
+msgid "Our Products"
+msgstr "المنتجات"
+
+#: .\inventory\views.py:136
+msgid "Product not found"
+msgstr "المنتج غير موجود"
+
+#: .\inventory\views.py:221
+msgid "All Invoices"
+msgstr "الفواتير"
+
+#: .\inventory\views.py:283
+msgid "Insufficient stock"
+msgstr "كمية المخزون غير كافية"
+
+#: .\inventory\views.py:302
+msgid "There was an error creating the invoice. Please review and try again."
+msgstr "حدث خطأ أثناء إنشاء الفاتورة. يرجى المراجعة والمحاولة مرة أخرى."
+
+#: .\inventory\views.py:413 .\inventory\views.py:527 .\inventory\views.py:662
+msgid "Lazordy"
+msgstr "لازوردي"
+
+#: .\inventory\views.py:414 .\inventory\views.py:528 .\inventory\views.py:663
+msgid "FPI, Damietta Furniture Mall"
+msgstr "FPI, Damietta Furniture Point Mall"
+
+#: .\inventory\views.py:415 .\inventory\views.py:529 .\inventory\views.py:664
+msgid "01110001559 - 01126905990 - 01065881729"
+msgstr "01110001559 - 01126905990 - 01065881729"
+
+#: .\inventory\views.py:416 .\inventory\views.py:530 .\inventory\views.py:665
+msgid "lazordyegypt@gmail.com"
+msgstr "lazordyegypt@gmail.com"
+
+#: .\inventory\views.py:478
+#, python-format
+msgid "An error occurred during PDF generation or upload for invoice ID: %s"
+msgstr "حدث خطأ أثناء إنشاء أو رفع ملف PDF للفاتورة رقم: %s"
+
+#: .\inventory\views.py:480 .\inventory\views.py:481
+msgid "An error occurred while generating or uploading the invoice PDF."
+msgstr "حدث خطأ أثناء توليد أو تحميل ملف PDF للفاتورة."
+
+#: .\inventory\views.py:554 .\inventory\views.py:555
+#| msgid "An error occurred while generating the secure invoice PDF."
+msgid "An error occurred while generating the test invoice PDF."
+msgstr "حدث خطأ أثناء إنشاء ملف PDF للفاتورة التجريبية."
+
+#: .\inventory\views.py:592
+msgid "Monthly Sales"
+msgstr "   المبيعات الشهرية"
+
+#: .\inventory\views.py:603
+msgid "Sales Overview"
+msgstr "نظرة عامة على المبيعات "
+
+#: .\inventory\views.py:605
+msgid "Total Invoices"
+msgstr "إجمالي الفواتير: "
+
+#: .\inventory\views.py:607
+msgid "Total Sales Amount"
+msgstr "إجمالي  قيمة المبيعات "
+
+#: .\inventory\views.py:609
+msgid "Average Invoice Value"
+msgstr "متوسط قيمة الفاتورة:"
+
+#: .\inventory\views.py:625
+msgid "Product Movement"
+msgstr " حركة المنتجات"
+
+#: .\inventory\views.py:627
+msgid "last 30 days"
+msgstr "آخر 30 يوما"
+
+#: .\inventory\views.py:637
+msgid "Invoice not uploaded yet."
+msgstr "الفاتورة لم يتم تحميلها بعد."
+
+#: .\inventory\views.py:683
+msgid "Expired"
+msgstr "منتهي الصلاحية"
+
+#: .\inventory\views.py:709
+#, python-format
+msgid "Failed to upload PDF for secure invoice %s."
+msgstr "فشل في رفع ملف PDF للفاتورة الآمنة %s."
+
+#: .\inventory\views.py:710
+msgid "Could not generate secure PDF link."
+msgstr "تعذّر إنشاء رابط PDF آمن."
+
+#: .\inventory\views.py:713
+#, python-format
+msgid "Error generating or uploading secure invoice PDF for token %s."
+msgstr " حدث خطأ أثناء إنشاء أو رفع ملف PDF الآمن للفاتورة بالرمز %s"
+
+#: .\inventory\views.py:714
+msgid "An error occurred while generating the secure invoice PDF."
+msgstr " حدث خطأ أثناء توليد ملف PDF الآمن للفاتورة."
+
+#: .\templates\base.html:342
+msgid "Chandeliers • Furniture • Antiques"
+msgstr "الثريات • الأثاث • التحف"
+
+#: .\templates\base.html:351
+msgid "Change Password"
+msgstr "تغيير كلمة المرور"
+
+#: .\templates\base.html:353
+msgid "Admin"
+msgstr "المسؤول"
+
+#: .\templates\base.html:365
+msgid "Toggle dark mode"
+msgstr "تبديل الوضع الداكن"
+
+#: .\templates\base.html:368
+msgid "Toggle Theme"
+msgstr "تبديل السمة"
+
+#: .\templates\base.html:373
+msgid "Select language"
+msgstr "اختر اللغة"
+
+#: .\templates\base.html:383
+msgid "Toggle sidebar"
+msgstr "تبديل الشريط الجانبي"
+
+#: .\templates\base.html:386
+msgid "Inventory Management"
+msgstr "إدارة المخزون"
+
+#: .\templates\base.html:396
+msgid "Based on current stock"
+msgstr "بناءً على المخزون الحالي"
+
+#: .\templates\base.html:399
+msgid "Threshold"
+msgstr "الحد الأدنى"
+
+#: .\templates\base.html:401
+msgid "Threshold: 2 units"
+msgstr "الحد الأدنى: وحدتان"
+
+#: .\templates\base.html:404
+msgid "Last 30 Days"
+msgstr "آخر 30 يوما"
+
+#: .\templates\base.html:406
+msgid "Total Sales (EGP)"
+msgstr "إجمالي المبيعات (جنيه مصري)"
+
+#: .\templates\base.html:409
+msgid "Sales Trend"
+msgstr "اتجاه المبيعات"
+
+#: .\templates\base.html:410
+msgid "Placeholder for sales chart"
+msgstr "عنصر نائب لمخطط المبيعات"
+
+#: .\templates\registration\login.html:24
+msgid "Please review the error below."
+msgstr "يرجى تصحيح الخطأ أدناه"
+
+#: .\templates\registration\login.html:31
+msgid "Error!"
+msgstr "خطأ!"
+
+#: .\templates\registration\login.html:42
+msgid "You are authenticated as"
+msgstr "لقد تم مصادقتك كـ"
+
+#: .\templates\registration\login.html:44
+msgid "but are not authorized to access this page."
+msgstr "ولكنك غير مصرح لك بالوصول إلى هذه الصفحة"
+
+#: .\templates\registration\login.html:54
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: .\templates\registration\login.html:71
+msgid "Password"
+msgstr "كلمة المرور"
+
 #: .\templates\registration\password_change_form.html:55
 msgid "Confirm new password"
 msgstr "تأكيد كلمة المرور الجديدة"
+
+#~ msgid "Remove"
+#~ msgstr "إزالة"
+
+#~ msgid "Update Invoice"
+#~ msgstr "تحديث الفاتورة"
+
+#~ msgid "Seller Information:"
+#~ msgstr "معلومات البائع:"
+
+#~ msgid "Company Address:"
+#~ msgstr "عنوان الشركة:"
+
+#~ msgid "Due Date:"
+#~ msgstr "تاريخ التسليم:"
+
+#~ msgid "Payment Method:"
+#~ msgstr "طريقة الدفع:"
+
+#~ msgid "fpi, damietta furniture mall"
+#~ msgstr "fpi, damietta furniture mall"
+
+#~ msgid "Upload or PDF generation error:"
+#~ msgstr "خطأ في التحميل أو توليد ملف PDF:"
+
+#~ msgid "Upload failed:"
+#~ msgstr "فشل التحميل:"

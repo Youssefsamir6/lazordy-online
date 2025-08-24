@@ -1,0 +1,203 @@
+/*
+ * =====================================================================
+ * Consolidated Django Admin Stylesheet
+ *
+ * This file unifies fixes for RTL languages, inline formset layout,
+ * and dark mode theming using clean, modern CSS.
+ * =====================================================================
+ */
+
+/* ------------------------------------------- */
+/* 1. CSS Variables for Theming                */
+/* ------------------------------------------- */
+/* Define color variables for easy theme management. These follow Tailwind's color palette. */
+:root {
+    --dm-bg-primary: #1f2937; /* Gray-800 */
+    --dm-bg-secondary: #374151; /* Gray-700 */
+    --dm-border-color: #4b5563; /* Gray-600 */
+    --dm-text-color: #f9fafb; /* Gray-50 */
+    --dm-muted-text-color: #d1d5db; /* Gray-300 */
+    --dm-accent-color: #fbbf24; /* Amber-400 */
+    --dm-accent-shadow: rgba(251, 191, 36, 0.5);
+}
+
+/* ------------------------------------------- */
+/* 2. Global Dark Mode and RTL Styles          */
+/* ------------------------------------------- */
+
+/* Set a general RTL direction for the entire body */
+body[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+/* --- The KEY Global Fix --- */
+/* Use flexbox to reverse the layout of the sidebar and content */
+#container {
+    display: flex;
+    flex-direction: row; /* Default for LTR */
+}
+
+body[dir="rtl"] #container {
+    flex-direction: row-reverse; /* Reverses for RTL */
+}
+/* ------------------------- */
+
+/* Apply dark theme styling to inline formsets */
+.inline-related {
+    background-color: var(--dm-bg-primary);
+    color: var(--dm-text-color);
+    border: 1px solid var(--dm-border-color);
+    border-radius: 0.375rem;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.inline-related input,
+.inline-related select,
+.inline-related textarea {
+    background-color: var(--dm-bg-secondary);
+    color: var(--dm-text-color);
+    border: 1px solid var(--dm-border-color);
+    border-radius: 0.25rem;
+}
+
+.inline-related input:focus,
+.inline-related select:focus,
+.inline-related textarea:focus {
+    border-color: var(--dm-accent-color);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--dm-accent-shadow);
+}
+
+.inline-related .readonly {
+    background-color: var(--dm-bg-secondary);
+    color: var(--dm-muted-text-color);
+}
+
+/* Fix photo display border and background */
+.inline-related .field-photo_display img {
+    border: 1px solid var(--dm-border-color);
+    background-color: var(--dm-bg-secondary);
+    border-radius: 0.375rem;
+}
+
+/* ------------------------------------------- */
+/* 3. Layout Fixes for Inline Forms            */
+/* ------------------------------------------- */
+
+/* Use Flexbox for consistent row layout in both LTR and RTL */
+.inline-related .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--dm-border-color);
+}
+
+.inline-related .form-row:last-child {
+    border-bottom: none;
+}
+
+.inline-related .form-row label {
+    flex-grow: 0;
+    flex-shrink: 0;
+    min-width: 120px;
+}
+
+/* Specific field widths and alignment */
+.inline-related .field-photo_display {
+    flex: 0 0 60px;
+}
+.inline-related .field-photo_display img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.inline-related .field-product,
+.inline-related .field-product_name {
+    flex: 1 1 220px;
+    min-width: 200px;
+}
+
+.inline-related .field-quantity,
+.inline-related .field-unit_price,
+.inline-related .field-subtotal {
+    flex: 0 0 90px;
+}
+
+.inline-related .field-subtotal {
+    text-align: right;
+}
+
+/* Delete checkbox alignment */
+.inline-related .field-delete {
+    flex: 0 0 30px;
+    text-align: center;
+    align-self: center;
+}
+
+/* ------------------------------------------- */
+/* 4. Comprehensive RTL Overrides              */
+/* ------------------------------------------- */
+
+/* Realign core admin elements for RTL */
+body[dir="rtl"] #branding { float: right; }
+body[dir="rtl"] #user-tools { float: left; text-align: left; }
+body[dir="rtl"] #nav-sidebar { right: 0; left: auto; }
+body[dir="rtl"] #content { margin-right: 250px; margin-left: 0; }
+body[dir="rtl"] #content-related { float: left; margin-left: 0; margin-right: 20px; }
+body[dir="rtl"] .submit-row { text-align: left; }
+body[dir="rtl"] .submit-row input,
+body[dir="rtl"] .submit-row .button { float: left; margin-left: 5px; margin-right: 0; }
+body[dir="rtl"] .object-tools { float: left; text-align: left; }
+body[dir="rtl"] #changelist-filter { float: left; margin-left: 0; margin-right: 20px; }
+
+/* Realign forms and labels for RTL */
+body[dir="rtl"] .form-row { flex-direction: row-reverse; }
+body[dir="rtl"] .form-row > div { margin-left: 10px; margin-right: 0; text-align: right; }
+body[dir="rtl"] .form-row label { text-align: left; margin-left: 10px; margin-right: 0; }
+
+/* Realign inline formset rows and controls for RTL */
+body[dir="rtl"] .inline-related .form-row { flex-direction: row-reverse; }
+body[dir="rtl"] .inline-related .field-photo_display { margin-right: 0; margin-left: 10px; }
+body[dir="rtl"] .inline-related .field-subtotal { text-align: left; }
+body[dir="rtl"] .inline-related .field-delete { margin-left: 0; margin-right: auto; }
+body[dir="rtl"] .inline-group .add-row,
+body[dir="rtl"] .inline-group .delete-row { float: left; margin-left: 10px; margin-right: 0; }
+
+/* Realign text, tables, and inputs for RTL */
+body[dir="rtl"] table thead th { text-align: right; }
+body[dir="rtl"] .help,
+body[dir="rtl"] .form-row .help { text-align: right; }
+body[dir="rtl"] input[type="checkbox"] + label { margin-left: 0; margin-right: 5px; }
+
+/* ------------------------------------------- */
+/* 5. Responsive Design for Mobile Devices     */
+/* ------------------------------------------- */
+
+@media (max-width: 768px) {
+    .inline-related .form-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .inline-related .field-photo_display,
+    .inline-related .field-product,
+    .inline-related .field-product_name,
+    .inline-related .field-quantity,
+    .inline-related .field-unit_price,
+    .inline-related .field-subtotal,
+    .inline-related .field-delete {
+        flex-basis: 100%;
+        min-width: 100%;
+    }
+
+    .inline-related .field-photo_display img {
+        margin: 0 auto;
+        display: block;
+    }
+}

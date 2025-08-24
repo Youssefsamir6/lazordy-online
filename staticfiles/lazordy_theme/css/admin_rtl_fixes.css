@@ -1,0 +1,1419 @@
+/* Comprehensive RTL Fixes for Django Admin in Arabic */
+/* This file contains additional RTL adjustments specifically for the Django admin interface */
+
+/* General RTL fixes for admin interface */
+body[dir="rtl"] #container {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Fix header alignment in RTL */
+body[dir="rtl"] #header {
+    text-align: right;
+}
+
+body[dir="rtl"] #branding {
+    float: right;
+}
+
+body[dir="rtl"] #user-tools {
+    float: left;
+    text-align: left;
+}
+
+/* Fix navigation sidebar alignment in RTL */
+body[dir="rtl"] #nav-sidebar {
+    right: 0;
+    left: auto;
+}
+
+body[dir="rtl"] #nav-sidebar .module ul {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+body[dir="rtl"] #nav-sidebar .module ul li a {
+    text-align: right;
+}
+
+/* Fix main content alignment in RTL */
+body[dir="rtl"] #content {
+    margin-right: 250px;
+    margin-left: 0;
+}
+
+body[dir="rtl"] #content .module {
+    text-align: right;
+}
+
+/* Fix form alignment in RTL */
+body[dir="rtl"] .form-row {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    text-align: right;
+}
+
+body[dir="rtl"] .form-row > div {
+    margin-left: 10px;
+    margin-right: 0;
+    text-align: right;
+}
+
+body[dir="rtl"] .form-row label {
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 0;
+    flex: 0 0 auto;
+}
+
+body[dir="rtl"] .form-row .help {
+    text-align: right;
+}
+
+/* Fix input fields alignment in RTL */
+body[dir="rtl"] input[type="text"],
+body[dir="rtl"] input[type="number"],
+body[dir="rtl"] input[type="email"],
+body[dir="rtl"] input[type="password"],
+body[dir="rtl"] select,
+body[dir="rtl"] textarea {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix readonly fields alignment in RTL */
+body[dir="rtl"] .readonly {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix table alignment in RTL */
+body[dir="rtl"] table {
+    text-align: right;
+}
+
+body[dir="rtl"] table thead th {
+    text-align: right;
+}
+
+body[dir="rtl"] table tbody td {
+    text-align: right;
+}
+
+/* Fix button alignment in RTL */
+body[dir="rtl"] .submit-row {
+    text-align: left;
+}
+
+body[dir="rtl"] .submit-row input,
+body[dir="rtl"] .submit-row .button {
+    float: left;
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Fix inline formset alignment in RTL */
+body[dir="rtl"] .inline-group .inline-related {
+    direction: rtl;
+    text-align: right;
+}
+
+body[dir="rtl"] .inline-related .form-row {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    text-align: right;
+}
+
+body[dir="rtl"] .inline-related .form-row > div {
+    margin-left: 10px;
+    margin-right: 0;
+    text-align: right;
+}
+
+body[dir="rtl"] .inline-related .form-row .field-delete {
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+}
+
+/* Fix add/delete icons alignment in RTL */
+body[dir="rtl"] .inline-group .add-row,
+body[dir="rtl"] .inline-group .delete-row {
+    float: left;
+    text-align: left;
+}
+
+/* Fix changelist alignment in RTL */
+body[dir="rtl"] #changelist {
+    text-align: right;
+}
+
+body[dir="rtl"] #changelist .actions {
+    text-align: left;
+}
+
+body[dir="rtl"] #changelist .actions select {
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+body[dir="rtl"] #changelist .actions .button {
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Fix search form alignment in RTL */
+body[dir="rtl"] #changelist-search {
+    text-align: right;
+}
+
+body[dir="rtl"] #changelist-search input[type="text"] {
+    float: right;
+    margin-left: 5px;
+    margin-right: 0;
+    text-align: right;
+    direction: rtl;
+}
+
+body[dir="rtl"] #changelist-search input[type="submit"] {
+    float: right;
+}
+
+/* Fix filter alignment in RTL */
+body[dir="rtl"] #changelist-filter {
+    float: left;
+    margin-left: 0;
+    margin-right: 20px;
+    text-align: right;
+}
+
+body[dir="rtl"] #changelist-filter h2 {
+    text-align: right;
+}
+
+body[dir="rtl"] #changelist-filter ul {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+body[dir="rtl"] #changelist-filter li {
+    text-align: right;
+}
+
+/* Fix object tools alignment in RTL */
+body[dir="rtl"] .object-tools {
+    float: left;
+    text-align: left;
+}
+
+body[dir="rtl"] .object-tools li {
+    float: right;
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Fix breadcrumbs alignment in RTL */
+body[dir="rtl"] .breadcrumbs {
+    text-align: right;
+}
+
+/* Fix pagination alignment in RTL */
+body[dir="rtl"] .paginator {
+    text-align: left;
+}
+
+body[dir="rtl"] .paginator a,
+body[dir="rtl"] .paginator span {
+    float: right;
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Fix messages alignment in RTL */
+body[dir="rtl"] .messagelist {
+    text-align: right;
+}
+
+body[dir="rtl"] .messagelist li {
+    text-align: right;
+}
+
+/* Fix login form alignment in RTL */
+body[dir="rtl"] .login #content {
+    text-align: right;
+}
+
+body[dir="rtl"] .login .form-row {
+    text-align: right;
+}
+
+body[dir="rtl"] .login .form-row label {
+    text-align: left;
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+body[dir="rtl"] .login .form-row input {
+    float: right;
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix selector alignment in RTL */
+body[dir="rtl"] .selector {
+    display: flex;
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+body[dir="rtl"] .selector .selector-available,
+body[dir="rtl"] .selector .selector-chosen {
+    text-align: right;
+}
+
+body[dir="rtl"] .selector .selector-available h2,
+body[dir="rtl"] .selector .selector-chosen h2 {
+    text-align: center;
+}
+
+body[dir="rtl"] .selector .selector-available select,
+body[dir="rtl"] .selector .selector-chosen select {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Fix calendar widget alignment in RTL */
+body[dir="rtl"] .calendarbox,
+body[dir="rtl"] .clockbox {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Fix vDateField and vTimeField alignment in RTL */
+body[dir="rtl"] .vDateField,
+body[dir="rtl"] .vTimeField {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix related widget wrapper alignment in RTL */
+body[dir="rtl"] .related-widget-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+body[dir="rtl"] .related-widget-wrapper-link {
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Fix fieldset alignment in RTL */
+body[dir="rtl"] fieldset {
+    text-align: right;
+}
+
+body[dir="rtl"] fieldset .fieldBox {
+    text-align: right;
+}
+
+/* Fix checkbox alignment in RTL */
+body[dir="rtl"] input[type="checkbox"] + label {
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+/* Fix radio button alignment in RTL */
+body[dir="rtl"] input[type="radio"] + label {
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+/* Fix error list alignment in RTL */
+body[dir="rtl"] .errorlist {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix help text alignment in RTL */
+body[dir="rtl"] .help,
+body[dir="rtl"] .form-row .help {
+    text-align: right;
+}
+
+/* Fix module alignment in RTL */
+body[dir="rtl"] .module {
+    text-align: right;
+}
+
+body[dir="rtl"] .module caption,
+body[dir="rtl"] .module h2 {
+    text-align: right;
+}
+
+/* Fix tabular inline alignment in RTL */
+body[dir="rtl"] .tabular th {
+    text-align: right;
+}
+
+body[dir="rtl"] .tabular td {
+    text-align: right;
+}
+
+/* Fix stacked inline alignment in RTL */
+body[dir="rtl"] .stacked th {
+    text-align: right;
+}
+
+body[dir="rtl"] .stacked td {
+    text-align: right;
+}
+
+/* Fix action list alignment in RTL */
+body[dir="rtl"] #actionlist {
+    text-align: right;
+}
+
+/* Fix dashboard alignment in RTL */
+body[dir="rtl"] #content-main {
+    text-align: right;
+}
+
+body[dir="rtl"] #content-related {
+    float: left;
+    margin-left: 0;
+    margin-right: 20px;
+    text-align: right;
+}
+
+/* Fix dashboard modules alignment in RTL */
+body[dir="rtl"] .dashboard-module {
+    text-align: right;
+}
+
+/* Fix dashboard summary alignment in RTL */
+body[dir="rtl"] .dashboard-summary {
+    text-align: right;
+}
+
+/* Fix dashboard app list alignment in RTL */
+body[dir="rtl"] .app-list {
+    text-align: right;
+}
+
+body[dir="rtl"] .app-list li {
+    text-align: right;
+}
+
+/* Fix dashboard table alignment in RTL */
+body[dir="rtl"] .dashboard-table {
+    text-align: right;
+}
+
+body[dir="rtl"] .dashboard-table th {
+    text-align: right;
+}
+
+body[dir="rtl"] .dashboard-table td {
+    text-align: right;
+}
+
+/* Fix dashboard link alignment in RTL */
+body[dir="rtl"] .dashboard-link {
+    text-align: right;
+}
+
+/* Fix dashboard form alignment in RTL */
+body[dir="rtl"] .dashboard-form {
+    text-align: right;
+}
+
+/* Fix dashboard input alignment in RTL */
+body[dir="rtl"] .dashboard-input {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard select alignment in RTL */
+body[dir="rtl"] .dashboard-select {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard textarea alignment in RTL */
+body[dir="rtl"] .dashboard-textarea {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard button alignment in RTL */
+body[dir="rtl"] .dashboard-button {
+    text-align: right;
+}
+
+/* Fix dashboard checkbox alignment in RTL */
+body[dir="rtl"] .dashboard-checkbox {
+    float: right;
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Fix dashboard radio button alignment in RTL */
+body[dir="rtl"] .dashboard-radio {
+    float: right;
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Fix dashboard file input alignment in RTL */
+body[dir="rtl"] .dashboard-file {
+    text-align: right;
+}
+
+/* Fix dashboard date input alignment in RTL */
+body[dir="rtl"] .dashboard-date {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard time input alignment in RTL */
+body[dir="rtl"] .dashboard-time {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard datetime input alignment in RTL */
+body[dir="rtl"] .dashboard-datetime {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard email input alignment in RTL */
+body[dir="rtl"] .dashboard-email {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard number input alignment in RTL */
+body[dir="rtl"] .dashboard-number {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard password input alignment in RTL */
+body[dir="rtl"] .dashboard-password {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard search input alignment in RTL */
+body[dir="rtl"] .dashboard-search {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard tel input alignment in RTL */
+body[dir="rtl"] .dashboard-tel {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard url input alignment in RTL */
+body[dir="rtl"] .dashboard-url {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard color input alignment in RTL */
+body[dir="rtl"] .dashboard-color {
+    text-align: right;
+}
+
+/* Fix dashboard range input alignment in RTL */
+body[dir="rtl"] .dashboard-range {
+    text-align: right;
+}
+
+/* Fix dashboard month input alignment in RTL */
+body[dir="rtl"] .dashboard-month {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard week input alignment in RTL */
+body[dir="rtl"] .dashboard-week {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard datetime-local input alignment in RTL */
+body[dir="rtl"] .dashboard-datetime-local {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard submit button alignment in RTL */
+body[dir="rtl"] .dashboard-submit {
+    float: left;
+    text-align: right;
+}
+
+/* Fix dashboard reset button alignment in RTL */
+body[dir="rtl"] .dashboard-reset {
+    float: left;
+    text-align: right;
+}
+
+/* Fix dashboard image alignment in RTL */
+body[dir="rtl"] .dashboard-image {
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+/* Fix dashboard icon alignment in RTL */
+body[dir="rtl"] .dashboard-icon {
+    float: right;
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Fix dashboard thumbnail alignment in RTL */
+body[dir="rtl"] .dashboard-thumbnail {
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+/* Fix dashboard badge alignment in RTL */
+body[dir="rtl"] .dashboard-badge {
+    float: right;
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Fix dashboard tag alignment in RTL */
+body[dir="rtl"] .dashboard-tag {
+    float: right;
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Fix dashboard label alignment in RTL */
+body[dir="rtl"] .dashboard-label {
+    float: right;
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Fix dashboard alert alignment in RTL */
+body[dir="rtl"] .dashboard-alert {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard panel alignment in RTL */
+body[dir="rtl"] .dashboard-panel {
+    text-align: right;
+}
+
+/* Fix dashboard card alignment in RTL */
+body[dir="rtl"] .dashboard-card {
+    text-align: right;
+}
+
+/* Fix dashboard modal alignment in RTL */
+body[dir="rtl"] .dashboard-modal {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard tooltip alignment in RTL */
+body[dir="rtl"] .dashboard-tooltip {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard popover alignment in RTL */
+body[dir="rtl"] .dashboard-popover {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard dropdown alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown menu alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard navbar alignment in RTL */
+body[dir="rtl"] .dashboard-navbar {
+    text-align: right;
+}
+
+/* Fix dashboard breadcrumb alignment in RTL */
+body[dir="rtl"] .dashboard-breadcrumb {
+    text-align: right;
+}
+
+/* Fix dashboard pagination alignment in RTL */
+body[dir="rtl"] .dashboard-pagination {
+    text-align: right;
+}
+
+/* Fix dashboard progress alignment in RTL */
+body[dir="rtl"] .dashboard-progress {
+    text-align: right;
+}
+
+/* Fix dashboard list group alignment in RTL */
+body[dir="rtl"] .dashboard-list-group {
+    text-align: right;
+}
+
+/* Fix dashboard media alignment in RTL */
+body[dir="rtl"] .dashboard-media {
+    text-align: right;
+}
+
+/* Fix dashboard jumbotron alignment in RTL */
+body[dir="rtl"] .dashboard-jumbotron {
+    text-align: right;
+}
+
+/* Fix dashboard carousel alignment in RTL */
+body[dir="rtl"] .dashboard-carousel {
+    text-align: right;
+}
+
+/* Fix dashboard accordion alignment in RTL */
+body[dir="rtl"] .dashboard-accordion {
+    text-align: right;
+}
+
+/* Fix dashboard tab alignment in RTL */
+body[dir="rtl"] .dashboard-tab {
+    text-align: right;
+}
+
+/* Fix dashboard pill alignment in RTL */
+body[dir="rtl"] .dashboard-pill {
+    text-align: right;
+}
+
+/* Fix dashboard well alignment in RTL */
+body[dir="rtl"] .dashboard-well {
+    text-align: right;
+}
+
+/* Fix dashboard jumbotron alignment in RTL */
+body[dir="rtl"] .dashboard-jumbotron {
+    text-align: right;
+}
+
+/* Fix dashboard thumbnail alignment in RTL */
+body[dir="rtl"] .dashboard-thumbnail {
+    text-align: right;
+}
+
+/* Fix dashboard media alignment in RTL */
+body[dir="rtl"] .dashboard-media {
+    text-align: right;
+}
+
+/* Fix dashboard media body alignment in RTL */
+body[dir="rtl"] .dashboard-media-body {
+    text-align: right;
+}
+
+/* Fix dashboard media heading alignment in RTL */
+body[dir="rtl"] .dashboard-media-heading {
+    text-align: right;
+}
+
+/* Fix dashboard media list alignment in RTL */
+body[dir="rtl"] .dashboard-media-list {
+    text-align: right;
+}
+
+/* Fix dashboard list-unstyled alignment in RTL */
+body[dir="rtl"] .dashboard-list-unstyled {
+    text-align: right;
+}
+
+/* Fix dashboard list-inline alignment in RTL */
+body[dir="rtl"] .dashboard-list-inline {
+    text-align: right;
+}
+
+/* Fix dashboard dl-horizontal alignment in RTL */
+body[dir="rtl"] .dashboard-dl-horizontal {
+    text-align: right;
+}
+
+body[dir="rtl"] .dashboard-dl-horizontal dt {
+    text-align: left;
+    float: right;
+    clear: right;
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+body[dir="rtl"] .dashboard-dl-horizontal dd {
+    margin-left: 0;
+    margin-right: 180px;
+}
+
+/* Fix dashboard blockquote alignment in RTL */
+body[dir="rtl"] .dashboard-blockquote {
+    text-align: right;
+    border-left: 0;
+    border-right: 5px solid #eee;
+    padding-left: 0;
+    padding-right: 15px;
+}
+
+body[dir="rtl"] .dashboard-blockquote.pull-right {
+    padding-left: 15px;
+    padding-right: 0;
+    border-left: 5px solid #eee;
+    border-right: 0;
+    text-align: left;
+}
+
+/* Fix dashboard text-left alignment in RTL */
+body[dir="rtl"] .dashboard-text-left {
+    text-align: right;
+}
+
+/* Fix dashboard text-right alignment in RTL */
+body[dir="rtl"] .dashboard-text-right {
+    text-align: left;
+}
+
+/* Fix dashboard text-center alignment in RTL */
+body[dir="rtl"] .dashboard-text-center {
+    text-align: center;
+}
+
+/* Fix dashboard pull-left alignment in RTL */
+body[dir="rtl"] .dashboard-pull-left {
+    float: right;
+}
+
+/* Fix dashboard pull-right alignment in RTL */
+body[dir="rtl"] .dashboard-pull-right {
+    float: left;
+}
+
+/* Fix dashboard navbar-nav alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-nav {
+    text-align: right;
+}
+
+body[dir="rtl"] .dashboard-navbar-nav > li {
+    float: right;
+}
+
+/* Fix dashboard navbar-left alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-left {
+    float: right;
+}
+
+/* Fix dashboard navbar-right alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-right {
+    float: left;
+}
+
+/* Fix dashboard navbar-brand alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-brand {
+    float: right;
+}
+
+/* Fix dashboard navbar-toggle alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-toggle {
+    float: left;
+}
+
+/* Fix dashboard navbar-form alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-form {
+    text-align: right;
+}
+
+/* Fix dashboard navbar-btn alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-btn {
+    float: right;
+}
+
+/* Fix dashboard navbar-text alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-text {
+    float: right;
+    text-align: right;
+}
+
+/* Fix dashboard navbar-link alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-link {
+    float: right;
+}
+
+/* Fix dashboard navbar-icon alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-icon {
+    float: right;
+}
+
+/* Fix dashboard navbar-avatar alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-avatar {
+    float: right;
+}
+
+/* Fix dashboard navbar-menu alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-menu {
+    float: right;
+    text-align: right;
+}
+
+/* Fix dashboard navbar-dropdown alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-dropdown {
+    float: right;
+}
+
+/* Fix dashboard navbar-collapse alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-collapse {
+    text-align: right;
+}
+
+/* Fix dashboard navbar-header alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-header {
+    float: right;
+    text-align: right;
+}
+
+/* Fix dashboard navbar-container alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-container {
+    text-align: right;
+}
+
+/* Fix dashboard navbar-wrapper alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-wrapper {
+    text-align: right;
+}
+
+/* Fix dashboard navbar-content alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-content {
+    text-align: right;
+}
+
+/* Fix dashboard navbar-footer alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-footer {
+    text-align: right;
+}
+
+/* Fix dashboard navbar-sidebar alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-sidebar {
+    float: right;
+    text-align: right;
+}
+
+/* Fix dashboard navbar-main alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-main {
+    text-align: right;
+}
+
+/* Fix dashboard navbar-secondary alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-secondary {
+    text-align: right;
+}
+
+/* Fix dashboard navbar-tertiary alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-tertiary {
+    text-align: right;
+}
+
+/* Fix dashboard navbar-quaternary alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-quaternary {
+    text-align: right;
+}
+
+/* Fix dashboard navbar-quinary alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-quinary {
+    text-align: right;
+}
+
+/* Fix dashboard navbar-senary alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-senary {
+    text-align: right;
+}
+
+/* Fix dashboard navbar-septenary alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-septenary {
+    text-align: right;
+}
+
+/* Fix dashboard navbar-octonary alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-octonary {
+    text-align: right;
+}
+
+/* Fix dashboard navbar-novenary alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-novenary {
+    text-align: right;
+}
+
+/* Fix dashboard navbar-decanary alignment in RTL */
+body[dir="rtl"] .dashboard-navbar-decanary {
+    text-align: right;
+}
+
+/* Fix dashboard form-inline alignment in RTL */
+body[dir="rtl"] .dashboard-form-inline {
+    text-align: right;
+}
+
+body[dir="rtl"] .dashboard-form-inline .form-group {
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+/* Fix dashboard form-horizontal alignment in RTL */
+body[dir="rtl"] .dashboard-form-horizontal {
+    text-align: right;
+}
+
+body[dir="rtl"] .dashboard-form-horizontal .control-label {
+    text-align: left;
+    float: right;
+}
+
+/* Fix dashboard checkbox-inline alignment in RTL */
+body[dir="rtl"] .dashboard-checkbox-inline {
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+/* Fix dashboard radio-inline alignment in RTL */
+body[dir="rtl"] .dashboard-radio-inline {
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+/* Fix dashboard input-group alignment in RTL */
+body[dir="rtl"] .dashboard-input-group {
+    text-align: right;
+}
+
+body[dir="rtl"] .dashboard-input-group .form-control {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard input-group-addon alignment in RTL */
+body[dir="rtl"] .dashboard-input-group-addon {
+    float: right;
+    text-align: right;
+}
+
+/* Fix dashboard input-group-btn alignment in RTL */
+body[dir="rtl"] .dashboard-input-group-btn {
+    float: right;
+}
+
+/* Fix dashboard btn-group alignment in RTL */
+body[dir="rtl"] .dashboard-btn-group {
+    float: right;
+    text-align: right;
+}
+
+body[dir="rtl"] .dashboard-btn-group > .btn {
+    float: right;
+    margin-left: -1px;
+    margin-right: 0;
+}
+
+body[dir="rtl"] .dashboard-btn-group > .btn:first-child {
+    margin-left: 0;
+}
+
+body[dir="rtl"] .dashboard-btn-group > .btn:last-child {
+    margin-right: -1px;
+    margin-left: 0;
+}
+
+/* Fix dashboard btn-toolbar alignment in RTL */
+body[dir="rtl"] .dashboard-btn-toolbar {
+    text-align: right;
+}
+
+body[dir="rtl"] .dashboard-btn-toolbar .btn-group {
+    float: right;
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Fix dashboard btn-group-vertical alignment in RTL */
+body[dir="rtl"] .dashboard-btn-group-vertical {
+    text-align: right;
+}
+
+body[dir="rtl"] .dashboard-btn-group-vertical > .btn {
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Fix dashboard dropdown-menu alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu {
+    text-align: right;
+    direction: rtl;
+}
+
+body[dir="rtl"] .dashboard-dropdown-menu > li > a {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-left alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-left {
+    left: auto;
+    right: 0;
+}
+
+/* Fix dashboard dropdown-menu-right alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-right {
+    left: 0;
+    right: auto;
+}
+
+/* Fix dashboard dropdown-header alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-header {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-divider alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-divider {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-item alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-item {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-toggle alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-toggle {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-scrollable alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-scrollable {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix dashboard dropdown-menu-sm alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-sm {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-md alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-md {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-lg alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-lg {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-xl alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-xl {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-xxl alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-xxl {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-auto alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-auto {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-static alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-static {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-fixed alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-fixed {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-absolute alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-absolute {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-relative alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-relative {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-sticky alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-sticky {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-responsive alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-responsive {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-dark alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-dark {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-light alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-light {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-primary alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-primary {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-secondary alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-secondary {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-success alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-success {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-danger alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-danger {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-warning alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-warning {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-info alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-info {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-link alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-link {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-inverse alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-inverse {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-transparent alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-transparent {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-opaque alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-opaque {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-blur alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-blur {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-shadow alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-shadow {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-border alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-border {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-rounded alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-rounded {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-circle alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-circle {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-square alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-square {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-rectangle alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-rectangle {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-ellipse alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-ellipse {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-triangle alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-triangle {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-pentagon alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-pentagon {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-hexagon alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-hexagon {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-octagon alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-octagon {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-star alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-star {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-heart alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-heart {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-arrow alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-arrow {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-chevron alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-chevron {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-caret alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-caret {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-plus alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-plus {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-minus alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-minus {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-times alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-times {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-divide alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-divide {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-equals alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-equals {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-percent alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-percent {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-dollar alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-dollar {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-euro alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-euro {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-pound alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-pound {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-yen alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-yen {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-rupee alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-rupee {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-won alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-won {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-ruble alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-ruble {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-rial alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-rial {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-lira alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-lira {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-bitcoin alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-bitcoin {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-ethereum alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-ethereum {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-litecoin alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-litecoin {
+    text-align: right;
+}
+
+/* Fix dashboard dropdown-menu-dogecoin alignment in RTL */
+body[dir="rtl"] .dashboard-dropdown-menu-dogecoin {
+    text-align: right;
+}

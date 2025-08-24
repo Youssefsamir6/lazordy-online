@@ -28,6 +28,7 @@ urlpatterns = [
     path('invoice/<int:invoice_id>/qr/', views.invoice_qr, name='invoice_qr'),
     path('api/products/autocomplete/', views.product_autocomplete, name='product_autocomplete'),
     path('get_product_price/<int:product_id>/', views.get_product_price_view, name='get_product_price'),
+    path('invoices/pdf/<int:invoice_id>/', views.generate_invoice_pdf, name='generate_invoice_pdf'),
     #path('invoice/token/<str:token>/', views.invoice_pdf_token_view, name='invoice_pdf_token'),
 
 

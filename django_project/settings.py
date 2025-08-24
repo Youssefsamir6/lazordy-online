@@ -14,10 +14,7 @@ from dotenv import load_dotenv
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
 
-
-
 BASE_URL = "http://127.0.0.1:8000"
-
 
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,10 +38,10 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
-
-    'inventory', 
+    'grappelli',
     'django.contrib.admin',
+    'rosetta',
+    'inventory',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -71,14 +68,13 @@ ROOT_URLCONF = 'django_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),
-                 os.path.join(BASE_DIR, 'django_project', 'templates'),],
-        'APP_DIRS': True, # This must be True
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                'django.template.context_processors.i18n', 
+                'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -94,19 +90,13 @@ import os
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'lazordydb',
-        'USER': 'postgres',
-        'PASSWORD': 'venom66samir+d',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME':
@@ -128,12 +118,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
-
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'ar'
 
 LANGUAGES = [
-    ('ar', 'العربية'), 
-    ('en', 'English'),  
+    ('ar', 'العربية'),
+    ('en', 'English'),
 ]
 TIME_ZONE = 'Africa/Cairo'
 
@@ -141,33 +130,25 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-
-
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
 ]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
-
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    
-    os.path.join(BASE_DIR, 'inventory', 'static'),
-      
+    BASE_DIR / 'static',
 ]
-STATIC_ROOT = os.path.join(
-    BASE_DIR,
-    'staticfiles',)  # Where 'collectstatic' will gather all static files
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 # Media files (for user-uploaded content like product photos)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,
-                           'media')  # Where user-uploaded files will be stored
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Add CSRF Trusted Origins for dynamic URLs
@@ -178,24 +159,14 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
 ]
 
-
-# jazzmin dark theme settings
-JAZZMIN_SETTINGS = {
-    "site_title": "Lazordy Inventory",
-    "site_header": "Lazordy Admin",
-    "site_brand": "Lazordy",
-    "site_logo": "lazordy_theme/img/lazordy_logo.png",  # Make sure this path is correct
-    "welcome_sign": "Welcome to Lazordy Admin",
-    "copyright": "© 2025 Lazordy",
-    "custom_css": "lazordy_theme/css/admin_dark_mode_fix.css",  
-}
-
-
 LOGIN_REDIRECT_URL = '/inventory/'
-
+LOGIN_URL = '/accounts/login/'
 
 CLOUDINARY = {
     'cloud_name': 'dkeopupxb',
     'api_key': '814938212617526',
     'api_secret': 'VRnq0HKU8uS8y0gG6nCTsrY1tt0',
 }
+
+# Google Drive settings - DEPRECATED - Using Cloudinary instead
+# GOOGLE_DRIVE_FOLDER_ID = os.getenv('GOOGLE_DRIVE_FOLDER_ID', '1YYGdZR60oxubyBUKJomuUlvf3tm-hMUh')

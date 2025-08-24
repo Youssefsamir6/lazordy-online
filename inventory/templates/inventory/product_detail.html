@@ -7,53 +7,54 @@
     <nav class="mb-8">
         <a href="{% url 'inventory:product_list' %}" class="text-blue-600 hover:text-blue-800 transition-colors duration-200 flex items-center space-x-1">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-            <span>Back to Products</span>
+            <span>{% trans "Back to Products" %}</span>
         </a>
     </nav>
 
-    <div class="bg-white rounded-xl shadow-xl overflow-hidden p-8 border border-gray-200 dark:bg-gray-800 dark:border-gray-700"> {# Added dark mode classes #}
+    <div class="bg-white rounded-xl shadow-xl overflow-hidden p-8 border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <h1 class="text-4xl font-extrabold text-gray-800 mb-6 dark:text-white">{{ product.name }}</h1>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start"> {# Increased gap, added items-start #}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
             <div>
                 {% if product.photo %}
-                    <img src="{{ product.photo.url }}" alt="{{ product.name }}" class="w-full max-h-[500px] object-contain rounded-lg shadow-md border border-gray-100 dark:border-gray-700"> {# Added dark mode class #}
+                    <img src="{{ product.photo.url }}" alt="{{ product.name }}" class="w-full max-h-[500px] object-contain rounded-lg shadow-md border border-gray-100 dark:border-gray-700">
                 {% else %}
-                    <div class="w-full h-80 bg-gray-200 flex items-center justify-center text-gray-500 text-xl rounded-lg shadow-md dark:bg-gray-700 dark:text-gray-400">No Image Available</div> {# Added dark mode classes #}
+                    <div class="w-full h-80 bg-gray-200 flex items-center justify-center text-gray-500 text-xl rounded-lg shadow-md dark:bg-gray-700 dark:text-gray-400">{% trans "No Image Available" %}</div>
                 {% endif %}
             </div>
-            <div class="space-y-4"> {# Increased spacing #}
-                <p class="text-gray-900 font-extrabold text-4xl mb-4 dark:text-white">{{ product.price|floatformat:2 }} EGP</p> {# Added dark:text-white and currency #}
+            <div class="space-y-4">
+                <p class="text-gray-900 font-extrabold text-4xl mb-4 dark:text-white">{{ product.price|floatformat:2 }} EGP</p>
 
                 {# ADDITION: Product Cost #}
                 {% if product.cost %}
-                    <p class="text-gray-700 dark:text-gray-300"><strong>Cost:</strong> <span class="font-semibold">{{ product.cost|floatformat:2 }} EGP</span></p> {# Added dark mode classes and currency #}
+                    <p class="text-gray-700 dark:text-gray-300"><strong>{% trans "Cost:" %}</strong> <span class="font-semibold">{{ product.cost|floatformat:2 }} EGP</span></p>
                 {% endif %}
                 
-                <p class="text-gray-700 dark:text-gray-300"><strong>Item Code:</strong> <span class="font-semibold">{{ product.item_code }}</span></p>
-                <p class="text-gray-700 dark:text-gray-300"><strong>Category:</strong> <span class="font-semibold">{{ product.category.name|default:"N/A" }}</span></p>
-                <p class="text-gray-700 dark:text-gray-300"><strong>Quantity in Stock:</strong> <span class="font-semibold">{{ product.quantity }}</span></p>
-                <p class="text-gray-700 dark:text-gray-300"><strong>Status:</strong> <span class="capitalize font-semibold {% if product.status == 'available' %}text-green-600{% elif product.status == 'out_of_stock' %}text-red-600{% else %}text-yellow-600{% endif %}">{{ product.status|cut:"_" }}</span></p>
-                <p class="text-gray-700 dark:text-gray-300"><strong>Color:</strong> <span class="font-semibold">{{ product.color|default:"N/A" }}</span></p>
-                <p class="text-gray-700 dark:text-gray-300"><strong>Measurements:</strong> <span class="font-semibold">{{ product.measurements|default:"N/A" }}</span></p>
+                <p class="text-gray-700 dark:text-gray-300"><strong>{% trans "Item Code:" %}</strong> <span class="font-semibold">{{ product.item_code }}</span></p>
+                <p class="text-gray-700 dark:text-gray-300"><strong>{% trans "Category:" %}</strong> <span class="font-semibold">{{ product.category.name|default:"N/A" }}</span></p>
+                <p class="text-gray-700 dark:text-gray-300"><strong>{% trans "Quantity in Stock:" %}</strong> <span class="font-semibold">{{ product.quantity }}</span></p>
+                {# Using get_status_display for translatable status #}
+                <p class="text-gray-700 dark:text-gray-300"><strong>{% trans "Status:" %}</strong> <span class="capitalize font-semibold {% if product.status == 'available' %}text-green-600{% elif product.status == 'out_of_stock' %}text-red-600{% else %}text-yellow-600{% endif %}">{{ product.get_status_display }}</span></p>
+                <p class="text-gray-700 dark:text-gray-300"><strong>{% trans "Color:" %}</strong> <span class="font-semibold">{{ product.color|default:"N/A" }}</span></p>
+                <p class="text-gray-700 dark:text-gray-300"><strong>{% trans "Measurements:" %}</strong> <span class="font-semibold">{{ product.measurements|default:"N/A" }}</span></p>
 
-                <div class="pt-4 border-t border-gray-200 dark:border-gray-700"> {# Added top border #}
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2 dark:text-white">Description:</h3> {# Added dark mode class #}
-                    <p class="text-gray-600 leading-relaxed dark:text-gray-300">{{ product.description|default:"No description provided." }}</p> {# Added dark mode class #}
+                <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 dark:text-white">{% trans "Description:" %}</h3>
+                    <p class="text-gray-600 leading-relaxed dark:text-gray-300">{{ product.description|default:_("No description provided.") }}</p> {# Using _() filter for default #}
                 </div>
 
-                <div class="pt-4 border-t border-gray-200 dark:border-gray-700"> {# Added top border #}
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2 dark:text-white">Available Sizes:</h3> {# Added dark mode class #}
+                <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 dark:text-white">{% trans "Available Sizes:" %}</h3>
                     {% if product.size.all %}
                         <div class="flex flex-wrap gap-2">
                             {% for size_item in product.size.all %}
                                 <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm dark:bg-purple-800 dark:text-purple-100">
-                                    {{ size_item.name }}
+                                    {{ size_item.name }} {# Assuming size.name is the actual size value (e.g., 'Small', 'Large'), which might need to be translated in its own model #}
                                 </span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        <p class="text-gray-600 dark:text-gray-300">No specific sizes listed.</p> {# Added dark mode class #}
+                        <p class="text-gray-600 dark:text-gray-300">{% trans "No specific sizes listed." %}</p>
                     {% endif %}
                 </div>
             </div>

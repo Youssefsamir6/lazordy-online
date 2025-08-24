@@ -1,75 +1,96 @@
 {% load i18n %}
 {% load static %}
+
 <!DOCTYPE html>
-<html lang="{{ lang }}">
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if lang == "ar" %}فاتورة رقم {{ invoice.invoice_number }}{% else %}Invoice #{{ invoice.invoice_number }}{% endif %}</title>
+    <title>{% blocktrans %}Invoice #{{ invoice.invoice_number }}{% endblocktrans %}</title>
     <style>
         body {
-            font-family: {% if lang == "ar" %} 'Amiri', serif {% else %} Arial, sans-serif {% endif %};
-            margin: 10mm;
-            font-size: 9pt;
+            font-family: 'Amiri', 'Cairo', 'Tahoma', 'Arial', sans-serif;
+            margin: 0;
+            font-size: 8pt; /* Reduced font size */
             line-height: 1.2;
-            direction: {% if lang == "ar" %} rtl {% else %} ltr {% endif %};
-            text-align: {% if lang == "ar" %} right {% else %} left {% endif %};
+            padding: 5mm; /* Reduced padding */
         }
         h1, h2, h3 {
             color: #333;
+            margin: 0;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
+            page-break-inside: avoid; /* Prevent page break inside table */
         }
         th, td {
             border: 1px solid #ddd;
-            padding: 4px;
-            text-align: {% if lang == "ar" %} right {% else %} left {% endif %};
+            padding: 3px; /* Reduced padding */
+            vertical-align: middle;
         }
         th {
             background-color: #f2f2f2;
         }
-        .header, .footer {
+
+        .logo-qr-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .logo-top {
+            flex-grow: 1;
             text-align: center;
-            margin-bottom: 10px;
         }
-        .invoice-details, .customer-details, .company-details {
-            margin-bottom: 10px;
+
+        .logo-top img {
+            max-width: 100px; /* Reduced size */
+            height: auto;
+            margin: 0 auto;
+            display: block;
         }
-        .invoice-details div, .customer-details div {
-            margin-bottom: 2px;
+
+        .qr-code {
+            text-align: right;
+            padding-right: 10px;
         }
-        .text-right {
-            text-align: {% if lang == "ar" %} left {% else %} right {% endif %};
+
+        .qr-code img {
+            width: 80px; /* Reduced size */
+            height: 80px;
         }
+
+        .invoice-header {
+            text-align: center;
+            margin: 10px 0 5px;
+        }
+
+        .info-block {
+            margin-top: 5px;
+            page-break-inside: avoid; /* Prevent page break inside info blocks */
+        }
+
         .total-row {
             font-weight: bold;
             background-color: #e0e0e0;
         }
+
         .amount-due {
             background-color: #ffcccc;
         }
+
         .amount-paid {
             background-color: #ccffcc;
         }
-        .logo-top {
+
+        .center-text {
             text-align: center;
-            margin-bottom: 10px;
+            padding: 10px;
         }
-        .logo-top img {
-            max-width: 120px;
-            height: auto;
-        }
-        .qr-code {
-            text-align: {% if lang == "ar" %} left {% else %} right {% endif %};
-            margin-top: -80px;
-        }
-        .qr-code img {
-            width: 90px;
-            height: 90px;
-        }
+
         .watermark {
             position: fixed;
             top: 0;
@@ -82,145 +103,140 @@
             opacity: 0.07;
             z-index: -999;
         }
-        @page {
-            size: A4;
-            margin: 10mm;
-            @top-right {
-                content: "Page " counter(page) " of " counter(pages);
-                font-size: 7pt;
-                color: #555;
-            }
+
+        /* Prevent page breaks inside rows */
+        tr, td, th {
+            page-break-inside: avoid !important;
+        }
+
+        /* Prevent page break after header */
+        thead {
+            display: table-header-group !important;
+        }
+
+        /* Prevent page break before footer */
+        tfoot {
+            display: table-footer-group !important;
         }
     </style>
 </head>
-<body>
+<body dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}" style="text-align: {% if LANGUAGE_CODE == 'ar' %}right{% else %}left{% endif %};">
+
+
     <div class="watermark" style="background-image: url('data:image/png;base64,{{ watermark_base64 }}');"></div>
 
-    <div class="header">
-        <div class="logo-top">
-            <img src="data:image/png;base64,{{ logo_base64 }}" alt="Company Logo">
-        </div>
-        <h1>{{ company_name }}</h1>
-        <p>{% if lang == "ar" %}ثريات - أثاث - تحف{% else %}Chandeliers Furniture Antiques{% endif %}</p>
+    <div class="logo-qr-container" style="position: relative; margin-bottom: 15px;">
+    <div class="qr-code" style="position: absolute; top: 0; {% if LANGUAGE_CODE == 'ar' %}right{% else %}left{% endif %}: 0;">
+        <img src="data:image/png;base64,{{ qr_code_base64 }}" alt="QR Code" style="width: 80px; height: 80px;">
+        <p style="font-size: 7pt; text-align: center;">{% trans "Scan to view/download invoice" %}</p>
     </div>
 
-    <div class="qr-code">
-        <img src="data:image/png;base64,{{ qr_code_base64 }}" alt="QR Code">
-        <p style="font-size: 8pt;">
-            {% if lang == "ar" %}
-            امسح لرؤية/تحميل الفاتورة
-            {% else %}
-            Scan to view/download invoice
-            {% endif %}
-        </p>
+    <div class="logo-top" style="text-align: center;">
+        <img src="data:image/png;base64,{{ logo_base64 }}" alt="{% trans 'Company Logo' %}" style="max-width: 100px; height: auto;">
+        <h1 style="font-size: 14pt;">{{ company_name }}</h1>
+        <p style="font-size: 8pt;">{% trans "Chandeliers - Furniture - Antiques" %}</p>
     </div>
+</div>
+
 
     <hr>
-    <h2 style="text-align: center;">
-        {% if lang == "ar" %}فاتورة{% else %}Invoice{% endif %}
-    </h2>
+    <h2 class="invoice-header" style="font-size: 12pt;">{% trans "Invoice" %}</h2>
 
-    <div class="company-details">
-        <h3>{% if lang == "ar" %}معلومات البائع:{% else %}Seller Information:{% endif %}</h3>
-        <p><strong>{{ company_name }}</strong></p>
-        <p><strong>{% if lang == "ar" %}العنوان:{% else %}Company Address:{% endif %}</strong> {{ company_address }}</p>
-        <p><strong>{% if lang == "ar" %}هاتف:{% else %}Phone:{% endif %}</strong> {{ company_phone }} | 
-           <strong>{% if lang == "ar" %}بريد إلكتروني:{% else %}Email:{% endif %}</strong> {{ company_email }}</p>
+    <div class="info-block" style="text-align: {% if LANGUAGE_CODE == 'ar' %}right{% else %}left{% endif %}; font-size: 8pt;">
+        <p><strong>{% trans "Company Name:" %}</strong> {{ company_name }}</p>
+        <p><strong>{% trans "Address:" %}</strong> {{ company_address }}</p>
+        <p><strong>{% trans "Phone:" %}</strong> {{ company_phone }}</p>
+        <p><strong>{% trans "Email:" %}</strong> {{ company_email }}</p>
+        <p><strong>{% trans "Invoice Number:" %}</strong> {{ invoice.invoice_number }}</p>
+        <p><strong>{% trans "Invoice Date:" %}</strong> {{ invoice.invoice_date|date:"Y-m-d" }}</p>
+        <p><strong>{% trans "Status:" %}</strong> {{ invoice.get_status_display }}</p>
+        <p><strong>{% trans "Prepared By:" %}</strong> {{ invoice_maker }}</p>
     </div>
 
-    <div class="invoice-details">
-        <div><strong>{% if lang == "ar" %}رقم الفاتورة:{% else %}Invoice Number:{% endif %}</strong> {{ invoice.invoice_number }}</div>
-        <div><strong>{% if lang == "ar" %}تاريخ الفاتورة:{% else %}Invoice Date:{% endif %}</strong> {{ invoice.invoice_date|date:"Y-m-d" }}</div>
-        <div><strong>{% if lang == "ar" %}الحالة:{% else %}Status:{% endif %}</strong> {{ invoice.status }}</div>
-        {% if invoice.due_date %}
-            <div><strong>{% if lang == "ar" %}تاريخ الاستحقاق:{% else %}Due Date:{% endif %}</strong> {{ invoice.due_date|date:"Y-m-d" }}</div>
-        {% endif %}
-        {% if invoice.payment_method %}
-            <div><strong>{% if lang == "ar" %}طريقة الدفع:{% else %}Payment Method:{% endif %}</strong> {{ invoice.get_payment_method_display }}</div>
-        {% endif %}
-        {% if invoice.manager_discount_amount > 0 %}
-            <div><strong>{% if lang == "ar" %}خصم المدير:{% else %}Manager Discount:{% endif %}</strong> -{{ invoice.manager_discount_amount|floatformat:2 }} EGP</div>
-        {% endif %}
-        <div><strong>{% if lang == "ar" %}أعدها:{% else %}Prepared By:{% endif %}</strong> {{ invoice_maker }}</div>
-    </div>
-
-    <div class="customer-details">
-        <h3>{% if lang == "ar" %}تفاصيل العميل:{% else %}Bill To:{% endif %}</h3>
-        <div><strong>{% if lang == "ar" %}الاسم:{% else %}Customer Name:{% endif %}</strong> {{ invoice.customer_name }}</div>
-        <div><strong>{% if lang == "ar" %}العنوان:{% else %}Address:{% endif %}</strong> {{ invoice.home_address }}</div>
-        <div><strong>{% if lang == "ar" %}الهاتف:{% else %}Phone:{% endif %}</strong> {{ invoice.customer_phone }}</div>
+    <div class="info-block" style="text-align: {% if LANGUAGE_CODE == 'ar' %}right{% else %}left{% endif %}; font-size: 8pt;">
+        <h3 style="font-size: 10pt;">{% trans "Bill To:" %}</h3>
+        <p><strong>{% trans "Customer Name:" %}</strong> {{ invoice.customer_name }}</p>
+        <p><strong>{% trans "Address:" %}</strong> {{ invoice.home_address }}</p>
+        <p><strong>{% trans "Phone:" %}</strong> {{ invoice.customer_phone }}</p>
     </div>
 
     <table>
         <thead>
             <tr>
-                <th>{% if lang == "ar" %}المنتج{% else %}Product{% endif %}</th>
-                <th class="text-right">{% if lang == "ar" %}سعر الوحدة{% else %}Unit Price{% endif %}</th>
-                <th class="text-right">{% if lang == "ar" %}الكمية{% else %}Quantity{% endif %}</th>
-                <th class="text-right">{% if lang == "ar" %}الإجمالي الفرعي{% else %}Subtotal{% endif %}</th>
+            {% if invoice.show_product_photos %}
+                <th>{% trans "Photo" %}</th>
+            {% endif %}
+                <th>{% trans "Product" %}</th>
+                <th>{% trans "Unit Price" %}</th>
+                <th>{% trans "Quantity" %}</th>
+                <th>{% trans "Subtotal" %}</th>
             </tr>
         </thead>
         <tbody>
-            {% if invoice_items %}
-                {% for item in invoice_items %}
+            {% for item in invoice_items %}
                 <tr>
+                    {% if invoice.show_product_photos %}
+                        <td>
+                            {% if item.product and item.product.photo_base64 %}
+                                <img src="data:image/png;base64,{{ item.product.photo_base64 }}" alt="{{ item.product_name }}" style="max-width: 40px; max-height: 40px;">
+                            {% endif %}
+                        </td>
+                    {% endif %}
                     <td>{{ item.product_name }}</td>
-                    <td class="text-right">{{ item.unit_price|floatformat:2 }} EGP</td>
-                    <td class="text-right">{{ item.quantity }}</td>
-                    <td class="text-right">{{ item.subtotal|floatformat:2 }} EGP</td>
+                    <td>{{ item.unit_price|floatformat:2 }} EGP</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.subtotal|floatformat:2 }} EGP</td>
                 </tr>
-                {% endfor %}
-            {% else %}
+            {% empty %}
                 <tr>
-                    <td colspan="4" style="text-align: center; padding: 15px;">
-                        {% if lang == "ar" %}لا توجد عناصر{% else %}No items found{% endif %}
-                    </td>
+                    <td colspan="5" class="center-text">{% trans "No items found." %}</td>
                 </tr>
-            {% endif %}
+            {% endfor %}
+
             <tr class="total-row">
-                <td colspan="3" class="text-right">{% if lang == "ar" %}الإجمالي الفرعي:{% else %}Subtotal:{% endif %}</td>
-                <td class="text-right">{{ invoice.subtotal_amount|floatformat:2 }} EGP</td>
+                <td colspan="4">{% trans "Subtotal:" %}</td>
+                <td>{{ invoice.subtotal_amount|floatformat:2 }} EGP</td>
             </tr>
             <tr class="total-row">
-                <td colspan="3" class="text-right">{% if lang == "ar" %}الخصم:{% else %}Discount:{% endif %}</td>
-                <td class="text-right">- {{ invoice.discount_amount|floatformat:2 }} EGP</td>
+                <td colspan="4">{% trans "Discount:" %}</td>
+                <td>-{{ invoice.discount_amount|floatformat:2 }} EGP</td>
             </tr>
             <tr class="total-row">
-                <td colspan="3" class="text-right">{% if lang == "ar" %}خصم المدير:{% else %}Manager Discount:{% endif %}</td>
-                <td class="text-right">- {{ invoice.manager_discount_amount|floatformat:2 }} EGP</td>
+                <td colspan="4">{% trans "Manager Discount:" %}</td>
+                <td>-{{ invoice.manager_discount_amount|floatformat:2 }} EGP</td>
             </tr>
             <tr class="total-row">
-                <td colspan="3" class="text-right">{% if lang == "ar" %}الإجمالي:{% else %}Total Amount:{% endif %}</td>
-                <td class="text-right">{{ invoice.total_amount|floatformat:2 }} EGP</td>
+                <td colspan="4">{% trans "Total Amount:" %}</td>
+                <td>{{ invoice.total_amount|floatformat:2 }} EGP</td>
             </tr>
             <tr class="total-row amount-paid">
-                <td colspan="3" class="text-right">{% if lang == "ar" %}المدفوع:{% else %}Amount Paid:{% endif %}</td>
-                <td class="text-right">{{ invoice.amount_paid|floatformat:2 }} EGP</td>
+                <td colspan="4">{% trans "Amount Paid:" %}</td>
+                <td>{{ invoice.amount_paid|floatformat:2 }} EGP</td>
             </tr>
             <tr class="total-row amount-due">
-                <td colspan="3" class="text-right">{% if lang == "ar" %}المتبقي:{% else %}Amount Remaining:{% endif %}</td>
-                <td class="text-right">{{ invoice.amount_remaining|floatformat:2 }} EGP</td>
+                <td colspan="4">{% trans "Amount Remaining:" %}</td>
+                <td>{{ invoice.amount_remaining|floatformat:2 }} EGP</td>
             </tr>
         </tbody>
     </table>
 
     {% if invoice.notes %}
-        <div style="margin-top: 10px;">
-            <strong>{% if lang == "ar" %}ملاحظات:{% else %}Notes:{% endif %}</strong>
+        <div class="info-block" style="text-align: {% if LANGUAGE_CODE == 'ar' %}right{% else %}left{% endif %}; font-size: 8pt;">
+            <strong>{% trans "Notes:" %}</strong>
             <p>{{ invoice.notes }}</p>
         </div>
     {% endif %}
 
     {% if invoice.terms_and_conditions %}
-        <div style="margin-top: 10px;">
-            <strong>{% if lang == "ar" %}الشروط والأحكام:{% else %}Terms & Conditions:{% endif %}</strong>
+        <div class="info-block" style="text-align: {% if LANGUAGE_CODE == 'ar' %}right{% else %}left{% endif %}; font-size: 8pt;">
+            <strong>{% trans "Terms & Conditions:" %}</strong>
             <p>{{ invoice.terms_and_conditions }}</p>
         </div>
     {% endif %}
 
-    <div class="footer">
-        <p>{% if lang == "ar" %}شكراً لتعاملكم معنا{% else %}Thank you for your business!{% endif %}</p>
-        <p>{% if lang == "ar" %}تم إنشاء الفاتورة بتاريخ{% else %}Generated on:{% endif %} {{ current_date }}</p>
+    <div class="info-block" style="text-align: center; margin-top: 15px; font-size: 8pt;">
+        <p>{% trans "Thank you for your business!" %}</p>
+        <p>{% blocktrans %}Generated on: {{ current_date }}{% endblocktrans %}</p>
     </div>
 </body>
 </html>

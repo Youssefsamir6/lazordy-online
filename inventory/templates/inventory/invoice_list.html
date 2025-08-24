@@ -1,41 +1,38 @@
-{% extends 'base.html' %} {# IMPORTANT: Make sure it's 'base.html' #}
-{% load i18n %}
+{% extends 'base.html' %}
+{% load i18n %} {# Essential for Django's i18n #}
 
 {% load static %}
 
 {% block content %}
 <div class="container mx-auto p-4">
     <div class="flex justify-between items-center mb-6">
-        <h1 id="pageTitle"
-            class="text-3xl font-bold"
-            data-en="Invoice List"
-            data-ar="قائمة الفواتير">
-            Invoice List
+        <h1 id="pageTitle" class="text-3xl font-bold">
+            {% trans "Invoice List" %} {# Using trans #}
         </h1>
 
-        <!-- Language Toggle -->
-        <button id="langToggle"
-                class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800 transition">
-            🇸🇦 Arabic
-        </button>
+        {% get_current_language as CURRENT_LANGUAGE %}
+        <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ request.path }}">
+            <input type="hidden" name="language" value="{% if CURRENT_LANGUAGE == 'ar' %}en{% else %}ar{% endif %}">
+            <button type="submit" id="langToggle" class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800 transition">
+                {% if CURRENT_LANGUAGE == 'ar' %}🇬🇧 English{% else %}🇸🇦 Arabic{% endif %}
+            </button>
+        </form>
     </div>
 
     <div class="mb-4 flex justify-between items-center">
         {# Button to create new invoice in Admin #}
         <a href="{% url 'admin:inventory_invoice_add' %}"
-           class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-           data-en="Create New Invoice"
-           data-ar="إنشاء فاتورة جديدة">
-            Create New Invoice
+           class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            {% trans "Create New Invoice" %} {# Using trans #}
         </a>
 
         <div class="relative">
             <input type="text"
                    id="invoiceSearch"
                    class="border border-gray-300 p-2 rounded-lg pl-10 w-64"
-                   placeholder="Search invoices..."
-                   data-en-placeholder="Search invoices..."
-                   data-ar-placeholder="ابحث عن الفواتير...">
+                   placeholder="{% trans 'Search invoices...' %}"> {# Using trans for placeholder #}
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd"
@@ -52,115 +49,89 @@
             <thead class="bg-gray-50">
                 <tr>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        data-en="Invoice Number"
-                        data-ar="رقم الفاتورة">
-                        Invoice Number
+                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {% trans "Invoice Number" %} {# Using trans #}
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        data-en="Customer Name"
-                        data-ar="اسم العميل">
-                        Customer Name
+                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {% trans "Customer Name" %} {# Using trans #}
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        data-en="Invoice Date"
-                        data-ar="تاريخ الفاتورة">
-                        Invoice Date
+                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {% trans "Invoice Date" %} {# Using trans #}
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        data-en="Total Amount"
-                        data-ar="الإجمالي">
-                        Total Amount
+                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {% trans "Total Amount" %} {# Using trans #}
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        data-en="Amount Paid"
-                        data-ar="المدفوع">
-                        Amount Paid
+                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {% trans "Amount Paid" %} {# Using trans #}
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        data-en="Remaining"
-                        data-ar="المتبقي">
-                        Remaining
+                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {% trans "Remaining" %} {# Using trans #}
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        data-en="Status"
-                        data-ar="الحالة">
-                        Status
+                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {% trans "Status" %} {# Using trans #}
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        data-en="Actions"
-                        data-ar="إجراءات">
-                        Actions
+                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {% trans "Actions" %} {# Using trans #}
                     </th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
                 {% for invoice in invoices %}
                 <tr class="hover:bg-gray-100">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium text-gray-900">
                         <a href="{% url 'inventory:invoice_detail' invoice.pk %}"
                            class="text-blue-600 hover:text-blue-900">
                             {{ invoice.invoice_number }}
                         </a>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
                         {{ invoice.customer_name }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
                         {{ invoice.invoice_date|date:"Y-m-d" }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
                         ${{ invoice.total_amount|floatformat:2 }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
                         ${{ invoice.amount_paid|floatformat:2 }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
                         ${{ invoice.amount_remaining|floatformat:2 }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm">
-                        {# use model choice display #}
-                        {% with status_display=invoice.get_status_display %}
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm">
+                        {# Django's get_FOO_display automatically uses i18n for model choices #}
                         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full
                             {% if invoice.status == 'paid' %}bg-green-100 text-green-800
                             {% elif invoice.status == 'uncompleted' %}bg-yellow-100 text-yellow-800
                             {% elif invoice.status == 'sent' %}bg-blue-100 text-blue-800
                             {% elif invoice.status == 'draft' %}bg-gray-100 text-gray-800
                             {% elif invoice.status == 'cancelled' %}bg-red-100 text-red-800
-                            {% else %}bg-gray-100 text-gray-800{% endif %}"
-                            data-status="{{ invoice.status }}"
-                            data-en="{{ status_display }}"
-                            data-ar="{% if invoice.status == 'paid' %}مدفوع{% elif invoice.status == 'uncompleted' %}غير مكتمل{% elif invoice.status == 'sent' %}تم الإرسال{% elif invoice.status == 'draft' %}مسودة{% elif invoice.status == 'cancelled' %}ملغي{% else %}غير معروف{% endif %}">
-                            {{ status_display }}
+                            {% else %}bg-gray-100 text-gray-800{% endif %}">
+
+                            {% trans invoice.get_status_display %} {# Translatable via model choices #}
                         </span>
-                        {% endwith %}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2 rtl:space-x-reverse">
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium space-x-2 rtl:space-x-reverse">
                         <a href="{% url 'admin:inventory_invoice_change' invoice.pk %}"
-                           class="text-indigo-600 hover:text-indigo-900"
-                           data-en="Edit (Admin)"
-                           data-ar="تعديل (المشرف)">
-                           Edit (Admin)
+                           class="text-indigo-600 hover:text-indigo-900">
+                            {% trans "Edit (Admin)" %} {# Using trans #}
                         </a>
                         <a href="{% url 'inventory:invoice_delete' invoice.pk %}"
-                           class="text-red-600 hover:text-red-900"
-                           data-en="Delete"
-                           data-ar="حذف">
-                           Delete
+                           class="text-red-600 hover:text-red-900">
+                            {% trans "Delete" %} {# Using trans #}
                         </a>
                         <a href="{% url 'inventory:invoice_pdf' invoice.pk %}"
                            target="_blank"
-                           class="text-blue-600 hover:text-blue-900"
-                           data-en="PDF"
-                           data-ar="ملف PDF">
-                           PDF
+                           class="text-blue-600 hover:text-blue-900">
+                            {% trans "PDF" %} {# Using trans #}
                         </a>
                     </td>
                 </tr>
@@ -169,60 +140,30 @@
         </table>
     </div>
     {% else %}
-    <p id="noInvoicesMsg"
-       class="text-center text-gray-600 text-lg"
-       data-en="No invoices found."
-       data-ar="لا توجد فواتير.">
-       No invoices found.
+    <p id="noInvoicesMsg" class="text-center text-gray-600 text-lg">
+        {% trans "No invoices found." %} {# Using trans #}
     </p>
     {% endif %}
 </div>
 
+{# The JavaScript for client-side language toggle is removed here #}
+{# The search filter can remain, as it operates on the displayed text regardless of language #}
 <script>
-(function(){
-    const langBtn = document.getElementById('langToggle');
-    const searchInput = document.getElementById('invoiceSearch');
-    let arabicMode = false;
-
-    langBtn.addEventListener('click', () => {
-        arabicMode = !arabicMode;
-
-        // Page dir + alignment
-        document.documentElement.setAttribute('dir', arabicMode ? 'rtl' : 'ltr');
-        document.body.classList.toggle('text-right', arabicMode);
-        document.body.classList.toggle('text-left', !arabicMode);
-
-        // Update button label
-        langBtn.textContent = arabicMode ? '🇬🇧 English' : '🇸🇦 Arabic';
-
-        // Translate all elements with data-en/data-ar
-        document.querySelectorAll('[data-en][data-ar]').forEach(el => {
-            el.textContent = arabicMode ? el.getAttribute('data-ar') : el.getAttribute('data-en');
-        });
-
-        // Translate placeholder
-        if (searchInput) {
-            const enPH = searchInput.getAttribute('data-en-placeholder');
-            const arPH = searchInput.getAttribute('data-ar-placeholder');
-            searchInput.setAttribute('placeholder', arabicMode ? arPH : enPH);
-        }
+// Search filter (operates on displayed text, so works with translated content)
+document.getElementById('invoiceSearch').addEventListener('keyup', function() {
+    const filter = this.value.toUpperCase();
+    const rows = document.querySelectorAll('#invoiceTable tbody tr');
+    rows.forEach(row => {
+        const cells = row.getElementsByTagName('td');
+        if (!cells.length) return;
+        // Adjust indices if columns change order or count
+        const invNum = cells[0].innerText.toUpperCase(); // Invoice Number
+        const cust   = cells[1].innerText.toUpperCase(); // Customer Name
+        const status = cells[6].innerText.toUpperCase(); // Status (now translated by Django)
+        row.style.display = (invNum.indexOf(filter) > -1 ||
+                             cust.indexOf(filter) > -1 ||
+                             status.indexOf(filter) > -1) ? '' : 'none';
     });
-
-    // Search filter (English fields in DOM; still works in Arabic mode)
-    document.getElementById('invoiceSearch').addEventListener('keyup', function() {
-        const filter = this.value.toUpperCase();
-        const rows = document.querySelectorAll('#invoiceTable tbody tr');
-        rows.forEach(row => {
-            const cells = row.getElementsByTagName('td');
-            if (!cells.length) return;
-            const invNum = cells[0].innerText.toUpperCase();
-            const cust   = cells[1].innerText.toUpperCase();
-            const status = cells[6].innerText.toUpperCase();
-            row.style.display = (invNum.indexOf(filter) > -1 ||
-                                 cust.indexOf(filter) > -1 ||
-                                 status.indexOf(filter) > -1) ? '' : 'none';
-        });
-    });
-})();
+});
 </script>
 {% endblock %}

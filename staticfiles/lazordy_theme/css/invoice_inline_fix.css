@@ -1,0 +1,52 @@
+/* Targeted fixes for Invoice Inline Form in Django Admin */
+
+/* Fix photo display size and alignment */
+.inline-related .field-photo_display img {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: contain !important;
+    border-radius: 6px !important;
+    border: 1px solid #555 !important;
+    margin-right: 10px !important;
+}
+
+/* Fix inline form row layout */
+.inline-related .form-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+/* Fix input field widths */
+.inline-related .form-row input,
+.inline-related .form-row select {
+    min-width: 100px !important;
+}
+
+/* Dark mode background and text */
+.inline-related {
+    background-color: #2d3748 !important; /* Dark gray */
+    color: #e2e8f0 !important; /* Light gray */
+    padding: 12px !important;
+    border-radius: 8px !important;
+    margin-bottom: 12px !important;
+}
+
+/* Dark mode input fields */
+.inline-related input,
+.inline-related select,
+.inline-related textarea {
+    background-color: #4a5568 !important; /* Medium gray */
+    color: #e2e8f0 !important;
+    border: 1px solid #718096 !important;
+    border-radius: 4px !important;
+}
+
+/* Dark mode input focus */
+.inline-related input:focus,
+.inline-related select:focus,
+.inline-related textarea:focus {
+    border-color: #f6ad55 !important; /* Amber */
+    box-shadow: 0 0 0 3px rgba(246, 173, 85, 0.5) !important;
+    outline: none !important;
+}

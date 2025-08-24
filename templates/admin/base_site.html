@@ -1,0 +1,280 @@
+{% extends "admin/base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ title }} | {% trans "Lazordy Admin" %}{% endblock %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <style>
+        /* Your existing custom theme styles */
+        :root {
+            --primary-color: #d97706; /* amber-600 */
+            --primary-hover: #b45309; /* amber-700 */
+            --secondary-color: #1f2937; /* gray-800 */
+            --text-color: #374151; /* gray-700 */
+            --background-color: #f9fafb; /* gray-50 */
+            --sidebar-width: 250px;
+        }
+
+        .dark-mode {
+            --text-color: #f3f4f6;
+            --background-color: #1f2937;
+            --sidebar-bg: #111827;
+            --main-bg: #1f2937;
+            --border-color: #374151;
+            --primary-color: #fcd34d;
+            --primary-hover: #fbbf24;
+        }
+
+        body {
+            background-color: var(--background-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+        }
+
+        #header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+        }
+
+        #branding h1, #branding h1 a:link, #branding h1 a:visited {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        #nav-sidebar {
+            background-color: var(--secondary-color);
+            width: var(--sidebar-width);
+            transition: all 0.3s ease;
+        }
+
+        #nav-sidebar .module { background-color: transparent; }
+        #nav-sidebar .module h2 {
+            color: #d1d5db; /* gray-300 */
+            background-color: #111827; /* gray-900 */
+            padding: 10px 15px;
+            font-size: 1rem;
+        }
+
+        #nav-sidebar .module ul li a {
+            color: #d1d5db; /* gray-300 */
+            padding: 8px 15px;
+            border-radius: 0.25rem;
+            margin: 2px 10px;
+        }
+
+        #nav-sidebar .module ul li a:hover,
+        #nav-sidebar .module ul li a:focus {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        #nav-sidebar .module ul li a.section {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        #content {
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        /* Module styling */
+        .module {
+            background-color: white;
+            border: 1px solid #e5e7eb; /* gray-200 */
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .module h2, .module caption, .inline-group h2 {
+            background-color: white;
+            color: var(--text-color);
+            padding: 10px 15px;
+            border-bottom: 1px solid #e5e7eb; /* gray-200 */
+            font-size: 1.125rem;
+        }
+
+        .button, input[type=submit], input[type=button], .submit-row input, a.button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .button:hover, input[type=submit]:hover, input[type=button]:hover, .submit-row input:hover, a.button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .button.default, input[type=submit].default, .submit-row input.default {
+            background-color: var(--primary-color);
+            box-shadow: none;
+        }
+
+        .form-row {
+            padding: 10px;
+            border-bottom: 1px solid #f3f4f6; /* gray-100 */
+        }
+
+        .form-row:last-child {
+            border-bottom: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #f3f4f6; /* gray-100 */
+            color: var(--text-color);
+            font-weight: 600;
+            text-align: left;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #e5e7eb; /* gray-200 */
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9fafb; /* gray-50 */
+        }
+
+        @media (max-width: 768px) {
+            #nav-sidebar {
+                width: 100%;
+                position: relative;
+            }
+            #content {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+
+        /* ------------------- BEGIN RTL FIXES ------------------- */
+        [dir="rtl"] body {
+            direction: rtl;
+        }
+
+        /* The CRITICAL fix: Flips the main layout */
+        [dir="rtl"] #container {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        /* Sets the correct margin for the main content area */
+        [dir="rtl"] #content {
+            margin-right: var(--sidebar-width);
+            margin-left: 0;
+        }
+
+        [dir="rtl"] #nav-sidebar {
+            right: 0;
+            left: auto;
+        }
+        
+        [dir="rtl"] #user-tools {
+            float: left;
+        }
+
+        [dir="rtl"] .submit-row {
+            text-align: left; /* Pushes the buttons to the left */
+        }
+
+        [dir="rtl"] .submit-row input,
+        [dir="rtl"] .submit-row .button {
+            float: left;
+            margin-left: 5px;
+            margin-right: 0;
+        }
+
+        /* Adjusts labels and form fields on add/change pages */
+        [dir="rtl"] .form-row label {
+            text-align: right;
+            padding-right: 0;
+            padding-left: 10px;
+        }
+
+        /* Fixes the alignment of table headers and cells */
+        [dir="rtl"] th,
+        [dir="rtl"] td {
+            text-align: right;
+        }
+
+        /* Fixes the alignment of inline formsets */
+        [dir="rtl"] .inline-related {
+            direction: rtl;
+            text-align: right;
+        }
+        [dir="rtl"] .inline-related .form-row > div {
+            margin-right: 5px;
+            margin-left: 5px;
+        }
+        [dir="rtl"] .inline-related .field-delete {
+            float: left;
+            margin-left: 5px;
+            margin-right: 0;
+        }
+        [dir="rtl"] .inline-related .field-delete label {
+             text-align: center;
+             padding-left: 0;
+        }
+
+        /* Adjusts the 'Add another' and 'Delete' buttons on inlines */
+        [dir="rtl"] .inline-related .add-row,
+        [dir="rtl"] .inline-related .delete-row {
+            float: right !important;
+            margin-right: 0;
+            margin-left: 10px;
+        }
+
+        /* Additional fix for the main content margin */
+        [dir="rtl"] #content-main {
+            float: right;
+        }
+
+        [dir="rtl"] #content-related {
+            float: left;
+        }
+        /* -------------------- END RTL FIXES -------------------- */
+    </style>
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+{% endblock %}
+
+{% block extra_js %}
+    {{ block.super }}
+    <script src="{% static 'lazordy_theme/js/invoice_item_price_fill.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            {% if messages %}
+                {% for message in messages %}
+                    Swal.fire({
+                        toast: true,
+                        position: '{% if LANGUAGE_CODE == 'ar' %}top-start{% else %}top-end{% endif %}',
+                        icon: '{% if "success" in message.tags %}success{% elif "error" in message.tags %}error{% elif "warning" in message.tags %}warning{% else %}info{% endif %}',
+                        title: '{{ message|escapejs }}',
+                        showConfirmButton: false,
+                        timer: 4000,
+                        timerProgressBar: true,
+                        background: '#1f2937',
+                        color: '#fcd34d',
+                        customClass: {
+                            popup: 'rounded-xl shadow-lg'
+                        }
+                    });
+                {% endfor %}
+            {% endif %}
+        });
+    </script>
+{% endblock %}
